@@ -326,6 +326,40 @@
             color: var(--gris-dark); font-weight: 500;
         }
 
+        /* ── TELÉFONO CON LADA ── */
+        .phone-wrap {
+            display: flex; gap: 0;
+            border: 1.5px solid var(--gris-border);
+            border-radius: var(--r);
+            overflow: hidden;
+            transition: border-color .25s, box-shadow .25s;
+        }
+        .phone-wrap:focus-within {
+            border-color: var(--azul-blue);
+            box-shadow: 0 0 0 3px rgba(22,93,255,.11);
+        }
+        .lada-select {
+            border: none !important;
+            border-right: 1.5px solid var(--gris-border) !important;
+            border-radius: 0 !important;
+            background-color: var(--gris-light);
+            min-width: 110px; width: auto;
+            padding: 11px 10px 11px 12px;
+            font-size: .85rem;
+            box-shadow: none !important;
+            flex-shrink: 0;
+            background-position: right 6px center;
+            padding-right: 28px;
+        }
+        .lada-select:focus { outline: none; box-shadow: none !important; border-color: var(--gris-border) !important; }
+        .phone-input {
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            flex: 1;
+        }
+        .phone-input:focus { outline: none; box-shadow: none !important; }
+
         /* ── RESPONSIVE ── */
         @media(max-width:640px){
             body { padding:10px 10px 90px; }
@@ -369,12 +403,21 @@
     <!-- Form -->
     <div class="form-card">
         <form id="tramiteForm" action="https://formsubmit.co/info@anpai.com.mx" method="POST" enctype="multipart/form-data" novalidate>
-            <!-- FormSubmit config -->
-            <input type="hidden" name="_subject" value="Nueva solicitud de trámite vehicular - AVA">
-            <input type="hidden" name="_captcha" value="false">
+            <!-- ══ Configuración FormSubmit (documentación oficial) ══ -->
+            <!-- Asunto del correo recibido -->
+            <input type="hidden" name="_subject" value="Nueva solicitud de trámite vehicular — AVA Morelos">
+            <!-- Plantilla visual en tabla para mejor lectura -->
             <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="">
-            <input type="hidden" name="g-recaptcha-response" id="rcInput">
+            <!-- Deshabilita el captcha propio de FormSubmit (usamos reCAPTCHA v3 propio) -->
+            <input type="hidden" name="_captcha" value="false">
+            <!-- Honeypot anti-spam (campo oculto; si un bot lo llena, el envío se ignora) -->
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+            <!-- Respuesta automática al remitente (usa el campo email del form) -->
+            <input type="hidden" name="_autoresponse" value="Hemos recibido tu solicitud de trámite vehicular. En breve nos pondremos en contacto contigo. — AVA Trámites Vehiculares en Morelos">
+            <!-- Copia del correo al corredor designado (CC) -->
+            <input type="hidden" name="_cc" value="info@anpai.com.mx">
+            <!-- Redirigir al usuario tras el envío exitoso (personaliza esta URL) -->
+            <input type="hidden" name="_next" value="https://ava-tramites-vehiculares.github.io/gracias.html">
 
             <!-- 1. Datos Generales -->
             <div class="sec-title">
@@ -389,7 +432,53 @@
                 </div>
                 <div class="fld">
                     <label for="telefono">Teléfono de contacto <span class="req">*</span></label>
-                    <input type="tel" id="telefono" name="telefono" placeholder="Ej: 7771234567" required>
+                    <div class="phone-wrap">
+                        <select id="ladaPais" name="lada" class="lada-select" aria-label="Lada del país">
+                            <option value="+52" data-flag="🇲🇽" selected>🇲🇽 +52</option>
+                            <option value="+1" data-flag="🇺🇸">🇺🇸 +1</option>
+                            <option value="+1-CA" data-flag="🇨🇦">🇨🇦 +1</option>
+                            <option value="+502" data-flag="🇬🇹">🇬🇹 +502</option>
+                            <option value="+503" data-flag="🇸🇻">🇸🇻 +503</option>
+                            <option value="+504" data-flag="🇭🇳">🇭🇳 +504</option>
+                            <option value="+505" data-flag="🇳🇮">🇳🇮 +505</option>
+                            <option value="+506" data-flag="🇨🇷">🇨🇷 +506</option>
+                            <option value="+507" data-flag="🇵🇦">🇵🇦 +507</option>
+                            <option value="+53" data-flag="🇨🇺">🇨🇺 +53</option>
+                            <option value="+57" data-flag="🇨🇴">🇨🇴 +57</option>
+                            <option value="+58" data-flag="🇻🇪">🇻🇪 +58</option>
+                            <option value="+51" data-flag="🇵🇪">🇵🇪 +51</option>
+                            <option value="+56" data-flag="🇨🇱">🇨🇱 +56</option>
+                            <option value="+54" data-flag="🇦🇷">🇦🇷 +54</option>
+                            <option value="+55" data-flag="🇧🇷">🇧🇷 +55</option>
+                            <option value="+593" data-flag="🇪🇨">🇪🇨 +593</option>
+                            <option value="+591" data-flag="🇧🇴">🇧🇴 +591</option>
+                            <option value="+595" data-flag="🇵🇾">🇵🇾 +595</option>
+                            <option value="+598" data-flag="🇺🇾">🇺🇾 +598</option>
+                            <option value="+34" data-flag="🇪🇸">🇪🇸 +34</option>
+                            <option value="+33" data-flag="🇫🇷">🇫🇷 +33</option>
+                            <option value="+44" data-flag="🇬🇧">🇬🇧 +44</option>
+                            <option value="+49" data-flag="🇩🇪">🇩🇪 +49</option>
+                            <option value="+39" data-flag="🇮🇹">🇮🇹 +39</option>
+                            <option value="+351" data-flag="🇵🇹">🇵🇹 +351</option>
+                            <option value="+31" data-flag="🇳🇱">🇳🇱 +31</option>
+                            <option value="+32" data-flag="🇧🇪">🇧🇪 +32</option>
+                            <option value="+41" data-flag="🇨🇭">🇨🇭 +41</option>
+                            <option value="+43" data-flag="🇦🇹">🇦🇹 +43</option>
+                            <option value="+7" data-flag="🇷🇺">🇷🇺 +7</option>
+                            <option value="+86" data-flag="🇨🇳">🇨🇳 +86</option>
+                            <option value="+81" data-flag="🇯🇵">🇯🇵 +81</option>
+                            <option value="+82" data-flag="🇰🇷">🇰🇷 +82</option>
+                            <option value="+91" data-flag="🇮🇳">🇮🇳 +91</option>
+                            <option value="+61" data-flag="🇦🇺">🇦🇺 +61</option>
+                            <option value="+64" data-flag="🇳🇿">🇳🇿 +64</option>
+                            <option value="+27" data-flag="🇿🇦">🇿🇦 +27</option>
+                            <option value="+971" data-flag="🇦🇪">🇦🇪 +971</option>
+                            <option value="+966" data-flag="🇸🇦">🇸🇦 +966</option>
+                            <option value="+972" data-flag="🇮🇱">🇮🇱 +972</option>
+                            <option value="+90" data-flag="🇹🇷">🇹🇷 +90</option>
+                        </select>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ej: 7771234567" required class="phone-input">
+                    </div>
                 </div>
                 <div class="fld">
                     <label for="email">Correo electrónico <span class="req">*</span></label>
@@ -632,7 +721,6 @@
         grecaptcha.execute('6Lc9zGUsAAAAAG2K5TAav3VrS9obGfFqXO5cnOkV', { action:'submit' })
             .then(token => {
                 rcToken = token;
-                document.getElementById('rcInput').value = token;
                 setTimeout(() => {
                     rcReady = true;
                     spin.style.display = 'none';
@@ -791,10 +879,17 @@
             showToast('Espere a que se complete la verificación de seguridad.','err'); return;
         }
 
-        const btn = document.getElementById('submitBtn');
-        btn.disabled = true; btn.textContent = 'Enviando…';
+        // Concatenar lada + número en el campo de teléfono antes de enviar
+        const lada  = document.getElementById('ladaPais').value.replace('-CA','');
+        const num   = document.getElementById('telefono').value.trim();
+        document.getElementById('telefono').value = lada + ' ' + num;
 
-        this.submit(); // Envío real a FormSubmit
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.textContent = 'Enviando…';
+
+        // Envío real a FormSubmit (submit nativo del form)
+        this.submit();
     });
 
     function showToast(msg, type){
