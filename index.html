@@ -290,6 +290,42 @@
         /* ── Elfsight: z-index seguro, no tape el form ── */
         .elfsight-app-beb4a331-0ecc-4c09-b401-4d88d35cbf03 { z-index:950 !important; }
 
+        /* ── CASILLA DE VERIFICACIÓN ── */
+        .check-wrap {
+            background: var(--gris-light);
+            border: 1.5px solid var(--gris-border);
+            border-radius: var(--r-lg);
+            padding: 18px 20px;
+        }
+        .check-label {
+            display: flex; align-items: flex-start; gap: 14px; cursor: pointer;
+        }
+        .check-label input[type="checkbox"] { display: none; }
+        .check-box {
+            width: 22px; height: 22px; min-width: 22px;
+            border: 2px solid var(--gris-border);
+            border-radius: 5px; background: var(--blanco);
+            display: flex; align-items: center; justify-content: center;
+            margin-top: 1px;
+            transition: all .2s ease;
+        }
+        .check-box::after {
+            content: ''; display: none;
+            width: 6px; height: 11px;
+            border: 2.5px solid var(--blanco);
+            border-top: none; border-left: none;
+            transform: rotate(45deg) translateY(-1px);
+        }
+        .check-label input:checked ~ .check-box {
+            background: var(--azul-blue); border-color: var(--azul-blue);
+        }
+        .check-label input:checked ~ .check-box::after { display: block; }
+        .check-label:hover .check-box { border-color: var(--azul-blue); }
+        .check-txt {
+            font-size: .77rem; line-height: 1.65;
+            color: var(--gris-dark); font-weight: 500;
+        }
+
         /* ── RESPONSIVE ── */
         @media(max-width:640px){
             body { padding:10px 10px 90px; }
@@ -332,7 +368,13 @@
 
     <!-- Form -->
     <div class="form-card">
-        <form id="tramiteForm" novalidate>
+        <form id="tramiteForm" action="https://formsubmit.co/info@anpai.com.mx" method="POST" enctype="multipart/form-data" novalidate>
+            <!-- FormSubmit config -->
+            <input type="hidden" name="_subject" value="Nueva solicitud de trámite vehicular - AVA">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="">
+            <input type="hidden" name="g-recaptcha-response" id="rcInput">
 
             <!-- 1. Datos Generales -->
             <div class="sec-title">
@@ -465,27 +507,97 @@
                     <h2>Datos del Refrendo</h2>
                 </div>
 
-                <div class="fld">
-                    <label for="numeroPlacas">Número de placas <span class="req">*</span></label>
-                    <input type="text" id="numeroPlacas" name="numeroPlacas" placeholder="Ej: ABC-123-X">
+                <div class="g2">
+                    <div class="fld g-full">
+                        <label for="numeroPlacas">Número de placas <span class="req">*</span></label>
+                        <input type="text" id="numeroPlacas" name="numeroPlacas" placeholder="Ej: ABC-123-X">
+                    </div>
+                    <div class="fld g-full">
+                        <label for="tipoUnidad">Tipo de unidad a refrendar <span class="req">*</span></label>
+                        <select id="tipoUnidad" name="tipoUnidad">
+                            <option value="">— Seleccione el tipo de unidad —</option>
+                            <option value="autos" data-costo="2764.28">Automóviles particulares</option>
+                            <option value="camiones" data-costo="2655.71">Camiones, remolques, autos antiguos y demostradoras</option>
+                            <option value="motos" data-costo="2384.28">Motocicletas</option>
+                            <option value="capacidades" data-costo="2492.85">Vehículos con capacidades diferentes</option>
+                            <option value="publico" data-costo="3144.27">Transporte público</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="cost-pill" id="costPillRef">
+                    <span class="cp-lbl">Costo total del refrendo</span>
+                    <span class="cp-amt" id="costoTotalRef">$0.00</span>
                 </div>
 
                 <div class="div"></div>
 
+                <!-- Requisitos Refrendo -->
+                <div class="sec-title">
+                    <div class="sec-icon">📋</div>
+                    <h2>Requisitos para Refrendo</h2>
+                </div>
+
+                <div class="rbox">
+                    <div class="rbox-head"><span>📌</span> Documentación necesaria</div>
+                    <div class="rbox-body">
+
+                        <div class="r-alert">
+                            <strong>IMPORTANTE:</strong> Todos los requisitos son indispensables para procesar el trámite. El costo total incluye el pago de derechos e impuestos correspondientes, por lo que no es necesario que el cliente los abone por separado.
+                        </div>
+
+                        <div class="rg-title">Personas Físicas</div>
+                        <ul class="rlist">
+                            <li class="ob"><span class="bOb">Obligatorio</span> Identificación oficial con fotografía vigente (INE — por los dos lados, pasaporte, licencia de conducir de Morelos, etc.).</li>
+                            <li class="ob"><span class="bOb">Obligatorio</span> Póliza de seguro automotriz vigente expedida por una aseguradora registrada.</li>
+                            <li class="ob"><span class="bOb">Obligatorio</span> Tarjeta de circulación anterior.</li>
+                        </ul>
+
+                        <div class="rg-title">Personas Morales</div>
+                        <ul class="rlist">
+                            <li class="ob"><span class="bOb">Obligatorio</span> Todos los requisitos de Personas Físicas, más:</li>
+                            <li class="ob"><span class="bOb">Obligatorio</span> RFC de la empresa (constancia de situación fiscal).</li>
+                            <li class="ob"><span class="bOb">Obligatorio</span> Acta constitutiva certificada ante notario público.</li>
+                            <li class="ob"><span class="bOb">Obligatorio</span> Poder notarial que acredite la representación legal.</li>
+                        </ul>
+
+                        <div class="r-fmt">
+                            <strong>📄 REQUISITOS DE FORMATO</strong><br>
+                            Todos los documentos deben estar escaneados en <strong>formato PDF</strong> y ser completamente legibles. Texto, sellos y datos visibles sin necesidad de ajustes; sin sombras, reflejos, borrosidad ni manchas. Colores fieles o en escala de grises con buen contraste; orientación correcta y tamaño proporcional. Copia fiel de la original, sin modificaciones; para identificaciones, incluir anverso y reverso.<br><br>
+                            Se pueden enviar en un solo archivo o <strong>comprimidos en ZIP o RAR</strong> si es necesario.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="div"></div>
+
+                <!-- Docs Refrendo -->
                 <div class="sec-title">
                     <div class="sec-icon">📎</div>
-                    <h2>Tarjeta de Circulación</h2>
+                    <h2>Cargar Documentación</h2>
                 </div>
 
                 <div class="fld">
-                    <label>Adjuntar tarjeta de circulación <span class="req">*</span></label>
+                    <label>Documentación <span class="req">*</span></label>
                     <div class="fdrop" id="dropRef">
-                        <input type="file" id="tarjetaCirculacion" name="tarjetaCirculacion" accept=".pdf,.jpg,.jpeg,.png">
-                        <div class="fd-icon">📄</div>
-                        <div class="fd-main">Haga clic o arrastre el archivo aquí</div>
-                        <div class="fd-sub">Formatos aceptados: PDF, JPG, PNG</div>
+                        <input type="file" id="docsRefrendo" name="docsRefrendo" accept=".pdf,.zip,.rar" multiple>
+                        <div class="fd-icon">📁</div>
+                        <div class="fd-main">Haga clic o arrastre sus archivos aquí</div>
+                        <div class="fd-sub">Documentación en PDF. Si es necesario, comprimir en ZIP/RAR.</div>
                         <div class="fd-chips" id="chipsRef"></div>
                     </div>
+                </div>
+            </div>
+
+            <!-- ══ CASILLA DE VERIFICACIÓN (ambos trámites) ══ -->
+            <div id="sec-declaracion" class="sec-hide">
+                <div class="div"></div>
+                <div class="check-wrap">
+                    <label class="check-label" for="declaracion">
+                        <input type="checkbox" id="declaracion" name="declaracion">
+                        <span class="check-box"></span>
+                        <span class="check-txt">DECLARO BAJO MI RESPONSABILIDAD QUE TODA LA INFORMACIÓN PROPORCIONADA EN ESTE FORMULARIO ES VERDADERA, ACTUAL Y AUTÉNTICA. ASIMISMO, CERTIFICO QUE LOS DOCUMENTOS ADJUNTADOS SON COPIAS FIELES DE SUS ORIGINALES Y NO HAN SIDO ALTERADOS DE NINGUNA MANERA. CON ESTA ACCIÓN, VALIDO QUE HE TOMADO CONOCIMIENTO DE LOS ASPECTOS RELEVANTES DEL TRÁMITE Y QUE LOS REQUISITOS MARCADOS COMO OBLIGATORIOS LOS HE REUNIDO.</span>
+                    </label>
                 </div>
             </div>
 
@@ -520,12 +632,13 @@
         grecaptcha.execute('6Lc9zGUsAAAAAG2K5TAav3VrS9obGfFqXO5cnOkV', { action:'submit' })
             .then(token => {
                 rcToken = token;
+                document.getElementById('rcInput').value = token;
                 setTimeout(() => {
                     rcReady = true;
                     spin.style.display = 'none';
-                    txt.textContent = '✓ Verificación completada';
+                    txt.textContent = '✓ Verificación de seguridad completada';
                     txt.className = 'recap-txt ok';
-                    document.getElementById('submitBtn').disabled = false;
+                    checkEnvio();
                 }, 1200);
             })
             .catch(() => {
@@ -535,32 +648,48 @@
             });
     });
 
-    /* ── Tipo de trámite ── */
+    /* ── Mostrar/ocultar secciones según trámite ── */
     document.getElementById('tipoTramite').addEventListener('change', function(){
-        const alta = document.getElementById('sec-alta');
-        const ref  = document.getElementById('sec-ref');
-        const vVal = document.getElementById('valorVehiculo');
-        const docs = document.getElementById('documentos');
-        const plac = document.getElementById('numeroPlacas');
-        const tCir = document.getElementById('tarjetaCirculacion');
+        const alta  = document.getElementById('sec-alta');
+        const ref   = document.getElementById('sec-ref');
+        const decl  = document.getElementById('sec-declaracion');
+
+        // Reset required de refrendo
+        document.getElementById('numeroPlacas').required  = false;
+        document.getElementById('tipoUnidad').required    = false;
+        document.getElementById('docsRefrendo').required  = false;
+        // Reset required de alta
+        document.getElementById('valorVehiculo').required = false;
+        document.getElementById('documentos').required    = false;
 
         if (this.value === 'alta') {
             alta.style.display = 'block';
             ref.style.display  = 'none';
-            vVal.required = true;  docs.required = true;
-            plac.required = false; tCir.required = false;
+            decl.style.display = 'block';
+            document.getElementById('valorVehiculo').required = true;
+            document.getElementById('documentos').required    = true;
+            // Reset costo refrendo al ocultar
+            document.getElementById('costPillRef').classList.remove('show');
+            document.getElementById('tipoUnidad').value = '';
         } else if (this.value === 'refrendo') {
             alta.style.display = 'none';
             ref.style.display  = 'block';
-            vVal.required = false; docs.required = false;
-            plac.required = true;  tCir.required = true;
+            decl.style.display = 'block';
+            document.getElementById('numeroPlacas').required  = true;
+            document.getElementById('tipoUnidad').required    = true;
+            document.getElementById('docsRefrendo').required  = true;
+            // Reset costo alta al ocultar
+            document.getElementById('costPill').classList.remove('show');
+            document.getElementById('valorVehiculo').value = '';
         } else {
-            alta.style.display = 'none';
-            ref.style.display  = 'none';
+            alta.style.display  = 'none';
+            ref.style.display   = 'none';
+            decl.style.display  = 'none';
         }
+        checkEnvio();
     });
 
-    /* ── Cálculo de costo ── */
+    /* ── Cálculo de costo — Alta vehicular ── */
     document.getElementById('valorVehiculo').addEventListener('input', function(){
         const v    = parseFloat(this.value) || 0;
         const pill = document.getElementById('costPill');
@@ -577,27 +706,44 @@
         } else {
             pill.classList.remove('show');
         }
+        checkEnvio();
     });
 
-    /* ── File drop alta ── */
-    const dA  = document.getElementById('dropAlta');
-    const iA  = document.getElementById('documentos');
-    const cA  = document.getElementById('chipsAlta');
+    /* ── Cálculo de costo — Refrendo ── */
+    document.getElementById('tipoUnidad').addEventListener('change', function(){
+        const pill = document.getElementById('costPillRef');
+        const amt  = document.getElementById('costoTotalRef');
+        const opt  = this.options[this.selectedIndex];
+        const c    = parseFloat(opt.dataset.costo) || 0;
+
+        if (c > 0) {
+            amt.textContent = '$' + c.toLocaleString('es-MX', { minimumFractionDigits:2 });
+            pill.classList.add('show');
+        } else {
+            pill.classList.remove('show');
+        }
+        checkEnvio();
+    });
+
+    /* ── File drop — Alta vehicular ── */
+    const dA = document.getElementById('dropAlta');
+    const iA = document.getElementById('documentos');
+    const cA = document.getElementById('chipsAlta');
 
     ['dragenter','dragover'].forEach(e => dA.addEventListener(e, ev => { ev.preventDefault(); dA.classList.add('drag'); }));
     ['dragleave','drop'].forEach(e => dA.addEventListener(e, ev => { ev.preventDefault(); dA.classList.remove('drag'); }));
-    dA.addEventListener('drop', ev => { iA.files = ev.dataTransfer.files; renderChips(iA.files, cA); });
-    iA.addEventListener('change', () => { renderChips(iA.files, cA); });
+    dA.addEventListener('drop', ev => { iA.files = ev.dataTransfer.files; renderChips(iA.files, cA); checkEnvio(); });
+    iA.addEventListener('change', () => { renderChips(iA.files, cA); checkEnvio(); });
 
-    /* ── File drop refrendo ── */
-    const dR  = document.getElementById('dropRef');
-    const iR  = document.getElementById('tarjetaCirculacion');
-    const cR  = document.getElementById('chipsRef');
+    /* ── File drop — Refrendo ── */
+    const dR = document.getElementById('dropRef');
+    const iR = document.getElementById('docsRefrendo');
+    const cR = document.getElementById('chipsRef');
 
     ['dragenter','dragover'].forEach(e => dR.addEventListener(e, ev => { ev.preventDefault(); dR.classList.add('drag'); }));
     ['dragleave','drop'].forEach(e => dR.addEventListener(e, ev => { ev.preventDefault(); dR.classList.remove('drag'); }));
-    dR.addEventListener('drop', ev => { iR.files = ev.dataTransfer.files; renderChips(iR.files, cR); });
-    iR.addEventListener('change', () => { renderChips(iR.files, cR); });
+    dR.addEventListener('drop', ev => { iR.files = ev.dataTransfer.files; renderChips(iR.files, cR); checkEnvio(); });
+    iR.addEventListener('change', () => { renderChips(iR.files, cR); checkEnvio(); });
 
     function renderChips(files, wrap){
         wrap.innerHTML = '';
@@ -609,23 +755,46 @@
         });
     }
 
-    ['nombre','telefono','email'].forEach(id =>
-        document.getElementById(id).addEventListener('input', () => {})
-    );
+    /* ── Casilla de verificación ── */
+    document.getElementById('declaracion').addEventListener('change', checkEnvio);
+
+    /* ── Habilitar/deshabilitar botón Enviar ── */
+    function checkEnvio(){
+        const tramite   = document.getElementById('tipoTramite').value;
+        const declarado = document.getElementById('declaracion').checked;
+        const btn       = document.getElementById('submitBtn');
+
+        if (!tramite || !declarado || !rcReady) { btn.disabled = true; return; }
+
+        if (tramite === 'alta') {
+            const val  = parseFloat(document.getElementById('valorVehiculo').value) || 0;
+            const docs = iA.files.length > 0;
+            btn.disabled = !(val > 0 && docs);
+        } else if (tramite === 'refrendo') {
+            const plac  = document.getElementById('numeroPlacas').value.trim() !== '';
+            const unid  = document.getElementById('tipoUnidad').value !== '';
+            const docs  = iR.files.length > 0;
+            btn.disabled = !(plac && unid && docs);
+        } else {
+            btn.disabled = true;
+        }
+    }
 
     /* ── Envío ── */
     document.getElementById('tramiteForm').addEventListener('submit', function(e){
         e.preventDefault();
-        if (!rcReady) { showToast('Espere a que se complete la verificación de seguridad.','err'); return; }
+
+        if (!document.getElementById('declaracion').checked) {
+            showToast('Debe marcar la casilla de declaración para continuar.','err'); return;
+        }
+        if (!rcReady) {
+            showToast('Espere a que se complete la verificación de seguridad.','err'); return;
+        }
 
         const btn = document.getElementById('submitBtn');
         btn.disabled = true; btn.textContent = 'Enviando…';
 
-        // Aquí conectas con tu backend real
-        setTimeout(() => {
-            showToast('¡Solicitud enviada exitosamente! Nos pondremos en contacto con usted pronto.','ok');
-            btn.disabled = false; btn.textContent = 'Enviar Solicitud';
-        }, 2000);
+        this.submit(); // Envío real a FormSubmit
     });
 
     function showToast(msg, type){
