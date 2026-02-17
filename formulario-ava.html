@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVA - Trámites Vehiculares en Morelos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lc9zGUsAAAAAG2K5TAav3VrS9obGfFqXO5cnOkV"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-principal: #0A1F44;
+            --color-destacado: #165DFF;
+            --color-texto-claro: #FFFFFF;
+            --color-texto-oscuro: #333333;
+            --color-borde: #e0e0e0;
+            --color-fondo: #f8f9fa;
+            --color-error: #dc3545;
+            --color-exito: #28a745;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--color-texto-oscuro);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(10, 31, 68, 0.15);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--color-principal) 0%, #162d54 100%);
+            color: var(--color-texto-claro);
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-content {
+            padding: 50px 40px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-principal);
+            font-size: 0.95rem;
+        }
+
+        .required {
+            color: var(--color-destacado);
+            margin-left: 3px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--color-borde);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--color-destacado);
+            box-shadow: 0 0 0 4px rgba(22, 93, 255, 0.1);
+        }
+
+        input[readonly] {
+            background: var(--color-fondo);
+            cursor: not-allowed;
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23165DFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 20px;
+            padding-right: 45px;
+        }
+
+        .cost-display {
+            background: linear-gradient(135deg, #e8f2ff 0%, #f0f7ff 100%);
+            border: 2px solid var(--color-destacado);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .cost-display .label {
+            font-size: 0.9rem;
+            color: var(--color-principal);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .cost-display .amount {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--color-destacado);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .requirements-box {
+            background: var(--color-fondo);
+            border-left: 4px solid var(--color-destacado);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .requirements-box h3 {
+            color: var(--color-principal);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .requirements-box h4 {
+            color: var(--color-destacado);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .requirements-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .requirements-box li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .requirements-box li.obligatorio::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-destacado);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .requirements-box li.opcional::before {
+            content: '○';
+            position: absolute;
+            left: 3px;
+            color: #999;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .requirements-box .importante {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: #856404;
+            font-weight: 600;
+        }
+
+        .requirements-box .formato {
+            background: #d1ecf1;
+            border: 1px solid #17a2b8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: #0c5460;
+        }
+
+        .file-upload {
+            border: 3px dashed var(--color-borde);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--color-fondo);
+        }
+
+        .file-upload:hover {
+            border-color: var(--color-destacado);
+            background: #f0f7ff;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .file-upload-label {
+            display: block;
+            cursor: pointer;
+        }
+
+        .file-upload-icon {
+            font-size: 3rem;
+            color: var(--color-destacado);
+            margin-bottom: 10px;
+        }
+
+        .file-upload-text {
+            color: var(--color-principal);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .file-upload-subtext {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .file-name {
+            margin-top: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            color: var(--color-exito);
+            font-weight: 600;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .recaptcha-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--color-fondo);
+            border-top: 4px solid var(--color-destacado);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .recaptcha-status {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--color-texto-oscuro);
+        }
+
+        .recaptcha-status.success {
+            color: var(--color-exito);
+        }
+
+        .recaptcha-status.error {
+            color: var(--color-error);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--color-destacado) 0%, #0d47cc 100%);
+            color: var(--color-texto-claro);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(22, 93, 255, 0.3);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(22, 93, 255, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .message {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        /* WhatsApp float premium */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 50px;
+            left: 50px;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            animation: floatPremium 3s ease-in-out infinite;
+            border: 4px solid white;
+            overflow: hidden;
+        }
+
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.2) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.6);
+            animation: none;
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            left: 95px;
+            background: white;
+            color: #333;
+            padding: 15px 25px;
+            border-radius: 12px;
+            white-space: nowrap;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            font-weight: 600;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            transform: translateX(10px);
+        }
+
+        .whatsapp-icon {
+            width: 36px;
+            height: 36px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .whatsapp-icon path {
+            fill: white;
+        }
+
+        @keyframes floatPremium {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-15px) rotate(2deg);
+            }
+            75% {
+                transform: translateY(-5px) rotate(-2deg);
+            }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 35px 25px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .form-content {
+                padding: 30px 25px;
+            }
+
+            .whatsapp-float {
+                width: 65px;
+                height: 65px;
+                bottom: 30px;
+                left: 30px;
+            }
+
+            .whatsapp-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .whatsapp-tooltip {
+                display: none;
+            }
+
+            .cost-display .amount {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/527771234567?text=Hola,%20tengo%20una%20consulta%20sobre%20tr%C3%A1mites%20vehiculares" 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener noreferrer">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        <div class="whatsapp-tooltip">💬 ¿Dudas? Chatea con nosotros</div>
+    </a>
+
+    <!-- Formulario principal -->
+    <div class="container">
+        <div class="header">
+            <h1>AVA - Trámites Vehiculares en Morelos</h1>
+            <p>Complete el formulario para iniciar su trámite vehicular</p>
+        </div>
+
+        <div class="form-content">
+            <form id="tramiteForm">
+                <!-- Datos Generales -->
+                <div class="form-group">
+                    <label for="nombre">Nombre completo <span class="required">*</span></label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ingrese su nombre completo">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono de contacto <span class="required">*</span></label>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="Ej: 7771234567">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo electrónico <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com">
+                </div>
+
+                <!-- Tipo de Trámite -->
+                <div class="form-group">
+                    <label for="tipoTramite">Tipo de trámite <span class="required">*</span></label>
+                    <select id="tipoTramite" name="tipoTramite" required>
+                        <option value="">Seleccione un tipo de trámite</option>
+                        <option value="alta">Alta vehicular</option>
+                        <option value="refrendo">Refrendo</option>
+                    </select>
+                </div>
+
+                <!-- Campos para Alta Vehicular -->
+                <div id="altaVehicularFields" class="hidden">
+                    <div class="form-group">
+                        <label for="valorVehiculo">Valor del vehículo (MXN) <span class="required">*</span></label>
+                        <input type="number" id="valorVehiculo" name="valorVehiculo" min="0" step="0.01" placeholder="Ej: 850000">
+                        
+                        <div id="costDisplay" class="cost-display hidden">
+                            <div class="label">Costo total del trámite:</div>
+                            <div class="amount" id="costoTotal">$0.00</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="requirements-box">
+                            <h3>📋 Requisitos para Alta Vehicular</h3>
+                            
+                            <div class="importante">
+                                <strong>IMPORTANTE:</strong> Todos los requisitos marcados como obligatorios son indispensables para procesar el trámite. El costo total incluye el pago de derechos e impuestos correspondientes, por lo que no es necesario que el cliente los abone por separado.
+                            </div>
+
+                            <h4>Personas Físicas:</h4>
+                            <ul>
+                                <li class="obligatorio"><strong>Obligatorio:</strong> Factura de origen y archivo XML de la misma.</li>
+                                <li class="obligatorio"><strong>Obligatorio:</strong> Carta factura (vigente por 30 días como máximo) - solo si la compra fue a crédito.</li>
+                                <li class="obligatorio"><strong>Obligatorio:</strong> Identificación oficial vigente con fotografía (INE, pasaporte, licencia de conducir de Morelos, etc.).</li>
+                                <li class="opcional"><strong>Opcional:</strong> Comprobante de domicilio en Morelos no mayor a 3 meses (recibo de luz, agua, predial, estado de cuenta bancario, etc.).</li>
+                                <li class="opcional"><strong>Opcional:</strong> Identificación del titular del comprobante de domicilio (si no es el propietario del vehículo).</li>
+                                <li class="obligatorio"><strong>Obligatorio:</strong> Póliza de seguro automotriz vigente.</li>
+                            </ul>
+
+                            <h4>Personas Morales:</h4>
+                            <ul>
+                                <li class="obligatorio"><strong>Obligatorio:</strong> Factura de origen y archivo XML de la misma.</li>
+                                <li class="obligatorio"><strong>Obligatorio:</strong> Carta factura (vigente por 30 días como máximo).</li>
+                                <li class="obligatorio"><strong>Obligatorio:</strong> Acta constitutiva.</li>
+                                <li class="obligatorio"><strong>Obligatorio:</strong> Poder notarial que acredite la representación legal.</li>
+                                <li class="obligatorio"><strong>Obligatorio:</strong> Identificación oficial vigente del representante legal.</li>
+                                <li class="opcional"><strong>Opcional:</strong> Comprobante de domicilio en Morelos a nombre de la empresa, no mayor a 3 meses.</li>
+                                <li class="obligatorio"><strong>Obligatorio:</strong> Constancia de situación fiscal actualizada de la empresa y del representante legal.</li>
+                                <li class="obligatorio"><strong>Obligatorio:</strong> Póliza de seguro automotriz vigente.</li>
+                            </ul>
+
+                            <div class="formato">
+                                <strong>REQUISITOS DE FORMATO:</strong><br>
+                                • Todos los documentos deben estar escaneados en formato PDF y ser completamente legibles (texto, sellos y datos claros, sin sombras ni reflejos, orientación correcta, copia fiel a la original).<br>
+                                • Si hay muchos archivos o son muy grandes, se deben comprimir en formato ZIP o RAR.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="documentos">Documentación <span class="required">*</span></label>
+                        <div class="file-upload">
+                            <label for="documentos" class="file-upload-label">
+                                <div class="file-upload-icon">📁</div>
+                                <div class="file-upload-text">Haga clic para seleccionar archivos</div>
+                                <div class="file-upload-subtext">Documentación en PDF. Si es necesario, comprimir en ZIP/RAR</div>
+                            </label>
+                            <input type="file" id="documentos" name="documentos" accept=".pdf,.zip,.rar" multiple>
+                            <div id="fileNames" class="file-name hidden"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campos para Refrendo -->
+                <div id="refrendoFields" class="hidden">
+                    <div class="form-group">
+                        <label for="numeroPlacas">Número de placas <span class="required">*</span></label>
+                        <input type="text" id="numeroPlacas" name="numeroPlacas" placeholder="Ej: ABC-123-X">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tarjetaCirculacion">Tarjeta de circulación <span class="required">*</span></label>
+                        <div class="file-upload">
+                            <label for="tarjetaCirculacion" class="file-upload-label">
+                                <div class="file-upload-icon">📄</div>
+                                <div class="file-upload-text">Haga clic para seleccionar archivo</div>
+                                <div class="file-upload-subtext">Tarjeta de circulación en PDF o imagen</div>
+                            </label>
+                            <input type="file" id="tarjetaCirculacion" name="tarjetaCirculacion" accept=".pdf,.jpg,.jpeg,.png">
+                            <div id="tarjetaFileName" class="file-name hidden"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- reCAPTCHA v3 (invisible) -->
+                <div class="recaptcha-container" id="recaptchaContainer">
+                    <div class="loading-spinner hidden" id="loadingSpinner"></div>
+                    <div class="recaptcha-status" id="recaptchaStatus"></div>
+                </div>
+
+                <!-- Botón de envío -->
+                <button type="submit" class="submit-btn" id="submitBtn" disabled>Enviar Solicitud</button>
+
+                <!-- Mensajes de respuesta -->
+                <div id="responseMessage"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let recaptchaToken = null;
+        let recaptchaVerified = false;
+
+        // Inicialización de reCAPTCHA v3
+        grecaptcha.ready(function() {
+            document.getElementById('loadingSpinner').classList.remove('hidden');
+            document.getElementById('recaptchaStatus').textContent = 'Verificando seguridad...';
+            
+            grecaptcha.execute('6Lc9zGUsAAAAAG2K5TAav3VrS9obGfFqXO5cnOkV', {action: 'submit'})
+                .then(function(token) {
+                    recaptchaToken = token;
+                    // Aquí verificarías el token en el backend
+                    // Por ahora, simulamos una verificación exitosa
+                    setTimeout(() => {
+                        recaptchaVerified = true;
+                        document.getElementById('loadingSpinner').classList.add('hidden');
+                        document.getElementById('recaptchaStatus').textContent = '✓ Verificación completada';
+                        document.getElementById('recaptchaStatus').classList.add('success');
+                        document.getElementById('submitBtn').disabled = false;
+                    }, 1500);
+                })
+                .catch(function(error) {
+                    document.getElementById('loadingSpinner').classList.add('hidden');
+                    document.getElementById('recaptchaStatus').textContent = '✗ Error en la verificación. Por favor, recargue la página.';
+                    document.getElementById('recaptchaStatus').classList.add('error');
+                });
+        });
+
+        // Manejo del tipo de trámite
+        document.getElementById('tipoTramite').addEventListener('change', function() {
+            const altaFields = document.getElementById('altaVehicularFields');
+            const refrendoFields = document.getElementById('refrendoFields');
+            
+            if (this.value === 'alta') {
+                altaFields.classList.remove('hidden');
+                refrendoFields.classList.add('hidden');
+                document.getElementById('valorVehiculo').required = true;
+                document.getElementById('documentos').required = true;
+                document.getElementById('numeroPlacas').required = false;
+                document.getElementById('tarjetaCirculacion').required = false;
+            } else if (this.value === 'refrendo') {
+                altaFields.classList.add('hidden');
+                refrendoFields.classList.remove('hidden');
+                document.getElementById('valorVehiculo').required = false;
+                document.getElementById('documentos').required = false;
+                document.getElementById('numeroPlacas').required = true;
+                document.getElementById('tarjetaCirculacion').required = true;
+            } else {
+                altaFields.classList.add('hidden');
+                refrendoFields.classList.add('hidden');
+            }
+        });
+
+        // Cálculo automático del costo
+        document.getElementById('valorVehiculo').addEventListener('input', function() {
+            const valor = parseFloat(this.value) || 0;
+            const costDisplay = document.getElementById('costDisplay');
+            const costoTotal = document.getElementById('costoTotal');
+            
+            let costo = 0;
+            
+            if (valor > 0 && valor <= 990000) {
+                costo = 6000;
+            } else if (valor >= 1000000 && valor <= 1950000) {
+                costo = 6500;
+            } else if (valor >= 2000000 && valor <= 2950000) {
+                costo = 7500;
+            } else if (valor > 2950000) {
+                costo = 7500; // Mantener el máximo
+            }
+            
+            if (costo > 0) {
+                costDisplay.classList.remove('hidden');
+                costoTotal.textContent = '$' + costo.toLocaleString('es-MX', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            } else {
+                costDisplay.classList.add('hidden');
+            }
+        });
+
+        // Mostrar nombres de archivos seleccionados
+        document.getElementById('documentos').addEventListener('change', function() {
+            const fileNames = document.getElementById('fileNames');
+            if (this.files.length > 0) {
+                const names = Array.from(this.files).map(f => f.name).join(', ');
+                fileNames.textContent = '✓ ' + names;
+                fileNames.classList.remove('hidden');
+            } else {
+                fileNames.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('tarjetaCirculacion').addEventListener('change', function() {
+            const fileName = document.getElementById('tarjetaFileName');
+            if (this.files.length > 0) {
+                fileName.textContent = '✓ ' + this.files[0].name;
+                fileName.classList.remove('hidden');
+            } else {
+                fileName.classList.add('hidden');
+            }
+        });
+
+        // Envío del formulario
+        document.getElementById('tramiteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!recaptchaVerified) {
+                showMessage('Por favor, espere a que se complete la verificación de seguridad.', 'error');
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+
+            // Aquí iría la lógica para enviar el formulario a tu servidor
+            // Por ahora, simulamos un envío exitoso
+            setTimeout(() => {
+                showMessage('¡Solicitud enviada exitosamente! Nos pondremos en contacto con usted pronto.', 'success');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Solicitud';
+                
+                // Opcional: resetear el formulario
+                // this.reset();
+                // document.getElementById('altaVehicularFields').classList.add('hidden');
+                // document.getElementById('refrendoFields').classList.add('hidden');
+            }, 2000);
+        });
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('responseMessage');
+            messageDiv.textContent = text;
+            messageDiv.className = 'message ' + type;
+            messageDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
