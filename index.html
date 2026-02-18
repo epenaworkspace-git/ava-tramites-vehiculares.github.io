@@ -375,30 +375,77 @@
             display: flex; gap: 0;
             border: 1.5px solid var(--gris-border);
             border-radius: var(--r);
-            overflow: hidden;
+            overflow: visible;
             transition: border-color .25s, box-shadow .25s;
+            position: relative;
         }
         .phone-wrap:focus-within {
             border-color: var(--azul-blue);
             box-shadow: 0 0 0 3px rgba(22,93,255,.11);
         }
-        .lada-select {
-            border: none !important;
-            border-right: 1.5px solid var(--gris-border) !important;
-            border-radius: 0 !important;
-            background-color: var(--gris-light);
-            min-width: 110px; width: auto;
-            padding: 11px 10px 11px 12px;
-            font-size: .85rem;
-            box-shadow: none !important;
-            flex-shrink: 0;
-            background-position: right 6px center;
-            padding-right: 28px;
+
+        /* ── CUSTOM LADA DROPDOWN ── */
+        .lada-custom {
+            position: relative; flex-shrink: 0;
+            border-right: 1.5px solid var(--gris-border);
+            background: var(--gris-light);
+            border-radius: var(--r) 0 0 var(--r);
+            user-select: none;
         }
-        .lada-select:focus { outline: none; box-shadow: none !important; border-color: var(--gris-border) !important; }
+        .lada-trigger {
+            display: flex; align-items: center; gap: 6px;
+            padding: 11px 10px 11px 12px;
+            cursor: pointer; min-width: 108px;
+            font-size: .85rem; font-family: 'Inter', sans-serif;
+            color: var(--gris-dark); white-space: nowrap;
+        }
+        .lada-trigger .lada-flag  { font-size: 1.15rem; line-height: 1; }
+        .lada-trigger .lada-code  { font-weight: 600; }
+        .lada-trigger .lada-arrow {
+            margin-left: auto; font-size: .65rem; color: var(--azul-blue);
+            transition: transform .2s;
+        }
+        .lada-custom.open .lada-arrow { transform: rotate(180deg); }
+
+        .lada-dropdown {
+            display: none; position: absolute; top: calc(100% + 4px); left: -1px;
+            width: 220px; max-height: 280px; overflow-y: auto;
+            background: var(--blanco); border: 1.5px solid var(--azul-blue);
+            border-radius: var(--r); box-shadow: 0 8px 24px rgba(10,31,68,.14);
+            z-index: 200;
+        }
+        .lada-custom.open .lada-dropdown { display: block; }
+
+        .lada-search {
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--gris-border);
+            position: sticky; top: 0; background: var(--blanco); z-index: 1;
+        }
+        .lada-search input {
+            width: 100%; border: 1.5px solid var(--gris-border); border-radius: 7px;
+            padding: 6px 10px; font-size: .8rem; font-family: 'Inter', sans-serif;
+            outline: none; color: var(--gris-dark);
+            transition: border-color .2s;
+        }
+        .lada-search input:focus { border-color: var(--azul-blue); }
+
+        .lada-opt {
+            display: flex; align-items: center; gap: 9px;
+            padding: 9px 12px; cursor: pointer; font-size: .83rem;
+            transition: background .15s;
+        }
+        .lada-opt:hover   { background: var(--azul-light); }
+        .lada-opt.active  { background: var(--azul-light); font-weight: 700; }
+        .lada-opt .lo-flag { font-size: 1.1rem; line-height: 1; flex-shrink: 0; }
+        .lada-opt .lo-name { color: var(--gris-mid); font-size: .76rem; flex: 1; }
+        .lada-opt .lo-code { font-weight: 600; color: var(--azul-dark); flex-shrink: 0; }
+
+        /* hidden real select (mantiene compatibilidad con FormSubmit) */
+        .lada-select-hidden { display: none !important; }
+
         .phone-input {
             border: none !important;
-            border-radius: 0 !important;
+            border-radius: 0 var(--r) var(--r) 0 !important;
             box-shadow: none !important;
             flex: 1;
         }
@@ -477,49 +524,64 @@
                 <div class="fld">
                     <label for="telefono">Teléfono de contacto <span class="req">*</span></label>
                     <div class="phone-wrap">
-                        <select id="ladaPais" name="lada" class="lada-select" aria-label="Lada del país">
-                            <option value="+52" data-flag="🇲🇽" selected>🇲🇽 +52</option>
-                            <option value="+1" data-flag="🇺🇸">🇺🇸 +1</option>
-                            <option value="+1-CA" data-flag="🇨🇦">🇨🇦 +1</option>
-                            <option value="+502" data-flag="🇬🇹">🇬🇹 +502</option>
-                            <option value="+503" data-flag="🇸🇻">🇸🇻 +503</option>
-                            <option value="+504" data-flag="🇭🇳">🇭🇳 +504</option>
-                            <option value="+505" data-flag="🇳🇮">🇳🇮 +505</option>
-                            <option value="+506" data-flag="🇨🇷">🇨🇷 +506</option>
-                            <option value="+507" data-flag="🇵🇦">🇵🇦 +507</option>
-                            <option value="+53" data-flag="🇨🇺">🇨🇺 +53</option>
-                            <option value="+57" data-flag="🇨🇴">🇨🇴 +57</option>
-                            <option value="+58" data-flag="🇻🇪">🇻🇪 +58</option>
-                            <option value="+51" data-flag="🇵🇪">🇵🇪 +51</option>
-                            <option value="+56" data-flag="🇨🇱">🇨🇱 +56</option>
-                            <option value="+54" data-flag="🇦🇷">🇦🇷 +54</option>
-                            <option value="+55" data-flag="🇧🇷">🇧🇷 +55</option>
-                            <option value="+593" data-flag="🇪🇨">🇪🇨 +593</option>
-                            <option value="+591" data-flag="🇧🇴">🇧🇴 +591</option>
-                            <option value="+595" data-flag="🇵🇾">🇵🇾 +595</option>
-                            <option value="+598" data-flag="🇺🇾">🇺🇾 +598</option>
-                            <option value="+34" data-flag="🇪🇸">🇪🇸 +34</option>
-                            <option value="+33" data-flag="🇫🇷">🇫🇷 +33</option>
-                            <option value="+44" data-flag="🇬🇧">🇬🇧 +44</option>
-                            <option value="+49" data-flag="🇩🇪">🇩🇪 +49</option>
-                            <option value="+39" data-flag="🇮🇹">🇮🇹 +39</option>
-                            <option value="+351" data-flag="🇵🇹">🇵🇹 +351</option>
-                            <option value="+31" data-flag="🇳🇱">🇳🇱 +31</option>
-                            <option value="+32" data-flag="🇧🇪">🇧🇪 +32</option>
-                            <option value="+41" data-flag="🇨🇭">🇨🇭 +41</option>
-                            <option value="+43" data-flag="🇦🇹">🇦🇹 +43</option>
-                            <option value="+7" data-flag="🇷🇺">🇷🇺 +7</option>
-                            <option value="+86" data-flag="🇨🇳">🇨🇳 +86</option>
-                            <option value="+81" data-flag="🇯🇵">🇯🇵 +81</option>
-                            <option value="+82" data-flag="🇰🇷">🇰🇷 +82</option>
-                            <option value="+91" data-flag="🇮🇳">🇮🇳 +91</option>
-                            <option value="+61" data-flag="🇦🇺">🇦🇺 +61</option>
-                            <option value="+64" data-flag="🇳🇿">🇳🇿 +64</option>
-                            <option value="+27" data-flag="🇿🇦">🇿🇦 +27</option>
-                            <option value="+971" data-flag="🇦🇪">🇦🇪 +971</option>
-                            <option value="+966" data-flag="🇸🇦">🇸🇦 +966</option>
-                            <option value="+972" data-flag="🇮🇱">🇮🇱 +972</option>
-                            <option value="+90" data-flag="🇹🇷">🇹🇷 +90</option>
+                        <!-- Custom lada dropdown con banderas visibles -->
+                        <div class="lada-custom" id="ladaCustom">
+                            <div class="lada-trigger" id="ladaTrigger">
+                                <span class="lada-flag">🇲🇽</span>
+                                <span class="lada-code">+52</span>
+                                <span class="lada-arrow">▼</span>
+                            </div>
+                            <div class="lada-dropdown" id="ladaDropdown">
+                                <div class="lada-search">
+                                    <input type="text" id="ladaSearchInput" placeholder="🔍 Buscar país…" autocomplete="off">
+                                </div>
+                                <div id="ladaOptionsList"></div>
+                            </div>
+                        </div>
+                        <!-- Select oculto para compatibilidad con FormSubmit -->
+                        <select id="ladaPais" name="lada" class="lada-select-hidden" aria-label="Lada del país">
+                            <option value="+52" selected>+52</option>
+                            <option value="+1">+1</option>
+                            <option value="+1-CA">+1</option>
+                            <option value="+502">+502</option>
+                            <option value="+503">+503</option>
+                            <option value="+504">+504</option>
+                            <option value="+505">+505</option>
+                            <option value="+506">+506</option>
+                            <option value="+507">+507</option>
+                            <option value="+53">+53</option>
+                            <option value="+57">+57</option>
+                            <option value="+58">+58</option>
+                            <option value="+51">+51</option>
+                            <option value="+56">+56</option>
+                            <option value="+54">+54</option>
+                            <option value="+55">+55</option>
+                            <option value="+593">+593</option>
+                            <option value="+591">+591</option>
+                            <option value="+595">+595</option>
+                            <option value="+598">+598</option>
+                            <option value="+34">+34</option>
+                            <option value="+33">+33</option>
+                            <option value="+44">+44</option>
+                            <option value="+49">+49</option>
+                            <option value="+39">+39</option>
+                            <option value="+351">+351</option>
+                            <option value="+31">+31</option>
+                            <option value="+32">+32</option>
+                            <option value="+41">+41</option>
+                            <option value="+43">+43</option>
+                            <option value="+7">+7</option>
+                            <option value="+86">+86</option>
+                            <option value="+81">+81</option>
+                            <option value="+82">+82</option>
+                            <option value="+91">+91</option>
+                            <option value="+61">+61</option>
+                            <option value="+64">+64</option>
+                            <option value="+27">+27</option>
+                            <option value="+971">+971</option>
+                            <option value="+966">+966</option>
+                            <option value="+972">+972</option>
+                            <option value="+90">+90</option>
                         </select>
                         <input type="tel" id="telefono" name="telefono" placeholder="Ej: 7771234567" required class="phone-input">
                     </div>
@@ -776,8 +838,112 @@
 </div>
 
 <script>
-    /* ════════════════════════════════════════════
-       reCAPTCHA v3 — arquitectura robusta
+    /* ══════════════════════════════════════════
+       CUSTOM LADA DROPDOWN CON BANDERAS
+    ══════════════════════════════════════════ */
+    const LADAS = [
+        { flag:'🇲🇽', name:'México',           code:'+52',  val:'+52'    },
+        { flag:'🇺🇸', name:'Estados Unidos',   code:'+1',   val:'+1'     },
+        { flag:'🇨🇦', name:'Canadá',           code:'+1',   val:'+1-CA'  },
+        { flag:'🇬🇹', name:'Guatemala',        code:'+502', val:'+502'   },
+        { flag:'🇸🇻', name:'El Salvador',      code:'+503', val:'+503'   },
+        { flag:'🇭🇳', name:'Honduras',         code:'+504', val:'+504'   },
+        { flag:'🇳🇮', name:'Nicaragua',        code:'+505', val:'+505'   },
+        { flag:'🇨🇷', name:'Costa Rica',       code:'+506', val:'+506'   },
+        { flag:'🇵🇦', name:'Panamá',           code:'+507', val:'+507'   },
+        { flag:'🇨🇺', name:'Cuba',             code:'+53',  val:'+53'    },
+        { flag:'🇨🇴', name:'Colombia',         code:'+57',  val:'+57'    },
+        { flag:'🇻🇪', name:'Venezuela',        code:'+58',  val:'+58'    },
+        { flag:'🇵🇪', name:'Perú',             code:'+51',  val:'+51'    },
+        { flag:'🇨🇱', name:'Chile',            code:'+56',  val:'+56'    },
+        { flag:'🇦🇷', name:'Argentina',        code:'+54',  val:'+54'    },
+        { flag:'🇧🇷', name:'Brasil',           code:'+55',  val:'+55'    },
+        { flag:'🇪🇨', name:'Ecuador',          code:'+593', val:'+593'   },
+        { flag:'🇧🇴', name:'Bolivia',          code:'+591', val:'+591'   },
+        { flag:'🇵🇾', name:'Paraguay',         code:'+595', val:'+595'   },
+        { flag:'🇺🇾', name:'Uruguay',          code:'+598', val:'+598'   },
+        { flag:'🇪🇸', name:'España',           code:'+34',  val:'+34'    },
+        { flag:'🇫🇷', name:'Francia',          code:'+33',  val:'+33'    },
+        { flag:'🇬🇧', name:'Reino Unido',      code:'+44',  val:'+44'    },
+        { flag:'🇩🇪', name:'Alemania',         code:'+49',  val:'+49'    },
+        { flag:'🇮🇹', name:'Italia',           code:'+39',  val:'+39'    },
+        { flag:'🇵🇹', name:'Portugal',         code:'+351', val:'+351'   },
+        { flag:'🇳🇱', name:'Países Bajos',     code:'+31',  val:'+31'    },
+        { flag:'🇧🇪', name:'Bélgica',          code:'+32',  val:'+32'    },
+        { flag:'🇨🇭', name:'Suiza',            code:'+41',  val:'+41'    },
+        { flag:'🇦🇹', name:'Austria',          code:'+43',  val:'+43'    },
+        { flag:'🇷🇺', name:'Rusia',            code:'+7',   val:'+7'     },
+        { flag:'🇨🇳', name:'China',            code:'+86',  val:'+86'    },
+        { flag:'🇯🇵', name:'Japón',            code:'+81',  val:'+81'    },
+        { flag:'🇰🇷', name:'Corea del Sur',    code:'+82',  val:'+82'    },
+        { flag:'🇮🇳', name:'India',            code:'+91',  val:'+91'    },
+        { flag:'🇦🇺', name:'Australia',        code:'+61',  val:'+61'    },
+        { flag:'🇳🇿', name:'Nueva Zelanda',    code:'+64',  val:'+64'    },
+        { flag:'🇿🇦', name:'Sudáfrica',        code:'+27',  val:'+27'    },
+        { flag:'🇦🇪', name:'Emiratos Árabes',  code:'+971', val:'+971'   },
+        { flag:'🇸🇦', name:'Arabia Saudita',   code:'+966', val:'+966'   },
+        { flag:'🇮🇱', name:'Israel',           code:'+972', val:'+972'   },
+        { flag:'🇹🇷', name:'Turquía',          code:'+90',  val:'+90'    },
+    ];
+
+    let ladaSelected = LADAS[0];
+
+    const ladaCustom   = document.getElementById('ladaCustom');
+    const ladaTrigger  = document.getElementById('ladaTrigger');
+    const ladaDropdown = document.getElementById('ladaDropdown');
+    const ladaSearchIn = document.getElementById('ladaSearchInput');
+    const ladaOptsList = document.getElementById('ladaOptionsList');
+    const ladaHidden   = document.getElementById('ladaPais');
+
+    function renderLadaOptions(filter) {
+        const q = (filter || '').toLowerCase();
+        ladaOptsList.innerHTML = '';
+        LADAS.filter(l =>
+            !q || l.name.toLowerCase().includes(q) || l.code.includes(q)
+        ).forEach(l => {
+            const div = document.createElement('div');
+            div.className = 'lada-opt' + (l.val === ladaSelected.val ? ' active' : '');
+            div.innerHTML = `<span class="lo-flag">${l.flag}</span>
+                             <span class="lo-name">${l.name}</span>
+                             <span class="lo-code">${l.code}</span>`;
+            div.addEventListener('click', () => {
+                ladaSelected = l;
+                ladaTrigger.querySelector('.lada-flag').textContent = l.flag;
+                ladaTrigger.querySelector('.lada-code').textContent = l.code;
+                // Sync hidden select
+                ladaHidden.value = l.val;
+                closeLada();
+            });
+            ladaOptsList.appendChild(div);
+        });
+    }
+
+    function openLada() {
+        ladaCustom.classList.add('open');
+        ladaSearchIn.value = '';
+        renderLadaOptions('');
+        ladaSearchIn.focus();
+    }
+    function closeLada() {
+        ladaCustom.classList.remove('open');
+        ladaSearchIn.value = '';
+        renderLadaOptions('');
+    }
+
+    ladaTrigger.addEventListener('click', () => {
+        ladaCustom.classList.contains('open') ? closeLada() : openLada();
+    });
+    ladaSearchIn.addEventListener('input', () => renderLadaOptions(ladaSearchIn.value));
+
+    // Cerrar al hacer clic fuera
+    document.addEventListener('click', e => {
+        if (!ladaCustom.contains(e.target)) closeLada();
+    });
+
+    // Render inicial
+    renderLadaOptions('');
+
+
        ─────────────────────────────────────────────
        • No llama grecaptcha.ready() al cargar:
          evita ReferenceError si la API no llegó aún.
@@ -1041,23 +1207,48 @@
     /* ── Casilla de verificación ── */
     document.getElementById('declaracion').addEventListener('change', checkEnvio);
 
+    /* ── Refrendo: listeners en tiempo real para desbloquear botón ── */
+    document.getElementById('numeroPlacas').addEventListener('input', checkEnvio);
+    document.getElementById('tipoUnidad').addEventListener('change', checkEnvio);
+
     /* ── Habilitar/deshabilitar botón Enviar ── */
     function checkEnvio(){
         const tramite   = document.getElementById('tipoTramite').value;
         const declarado = document.getElementById('declaracion').checked;
         const btn       = document.getElementById('submitBtn');
 
+        // Prerequisitos globales
         if (!tramite || !declarado || !rcApiReady) { btn.disabled = true; return; }
 
         if (tramite === 'alta') {
             const val  = parseFloat(document.getElementById('valorVehiculo').value) || 0;
-            const docs = state.alta.length > 0;
+            const docs = state.alta.length > 0;   // ← OBLIGATORIO en Alta
+
+            // Feedback visual en el drop zone si está vacío
+            const drop = document.getElementById('dropAlta');
+            if (!docs) {
+                drop.style.borderColor = '#f59e0b';
+            } else {
+                drop.style.borderColor = '';
+            }
+
             btn.disabled = !(val > 0 && docs);
+
         } else if (tramite === 'refrendo') {
             const plac  = document.getElementById('numeroPlacas').value.trim() !== '';
             const unid  = document.getElementById('tipoUnidad').value !== '';
-            const docs  = state.ref.length > 0;
+            const docs  = state.ref.length > 0;   // ← OBLIGATORIO en Refrendo
+
+            // Feedback visual en el drop zone de refrendo si está vacío
+            const drop = document.getElementById('dropRef');
+            if (!docs) {
+                drop.style.borderColor = '#f59e0b';
+            } else {
+                drop.style.borderColor = '';
+            }
+
             btn.disabled = !(plac && unid && docs);
+
         } else {
             btn.disabled = true;
         }
