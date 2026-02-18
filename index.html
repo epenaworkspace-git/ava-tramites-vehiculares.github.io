@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AVA - Trámites Vehiculares en Morelos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lc9zGUsAAAAAG2K5TAav3VrS9obGfFqXO5cnOkV"></script>
+    <!-- reCAPTCHA v3: async + defer para evitar ReferenceError si la API aún no cargó -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lc9zGUsAAAAAG2K5TAav3VrS9obGfFqXO5cnOkV" async defer></script>
     <!-- Elfsight AI Chatbot — se carga de forma asíncrona, no bloquea el formulario -->
     <script src="https://elfsightcdn.com/platform.js" async></script>
 
@@ -204,13 +205,56 @@
         .fd-icon  { font-size:2rem; margin-bottom:6px; }
         .fd-main  { font-size:.85rem; font-weight:700; color:var(--azul-dark); margin-bottom:3px; }
         .fd-sub   { font-size:.75rem; color:var(--gris-mid); }
-        .fd-chips { margin-top:10px; display:flex; flex-direction:column; gap:5px; }
-        .fd-chip  {
-            display:inline-flex; align-items:center; gap:5px;
-            background:var(--blanco); border:1px solid var(--verde);
-            border-radius:6px; padding:4px 10px;
-            font-size:.76rem; color:var(--verde); font-weight:600;
+        .fd-link  { color:var(--azul-blue); font-weight:700; text-decoration:underline; }
+        .fd-hint  { font-size:.72rem; color:var(--gris-mid); margin-top:4px; }
+        .fd-hint strong { color:var(--azul-dark); }
+
+        /* ── FILE MANAGER ── */
+        .fmgr { margin-top:14px; }
+        .fmgr-bar-wrap { margin-bottom:6px; }
+        .fmgr-bar-label {
+            display:flex; justify-content:space-between; align-items:center;
+            font-size:.76rem; font-weight:600; color:var(--azul-dark); margin-bottom:5px;
         }
+        .fmgr-bar-track {
+            width:100%; height:10px; background:#e5e7eb; border-radius:99px; overflow:hidden;
+        }
+        .fmgr-bar-fill {
+            height:100%; border-radius:99px; transition:width .4s ease, background .4s ease;
+            background: var(--verde);
+        }
+        .fmgr-status {
+            display:flex; align-items:center; gap:6px;
+            font-size:.75rem; margin-top:5px; margin-bottom:10px;
+            font-weight:500;
+        }
+        .fmgr-dot {
+            width:10px; height:10px; border-radius:50%; flex-shrink:0;
+            background: var(--verde);
+        }
+        .fmgr-error {
+            font-size:.76rem; color:#b91c1c; background:#fef2f2;
+            border:1px solid #fecaca; border-radius:7px;
+            padding:7px 12px; margin-bottom:8px; display:none;
+        }
+        .fmgr-list { display:flex; flex-direction:column; gap:6px; }
+        .fmgr-item {
+            display:flex; align-items:center; justify-content:space-between;
+            background:var(--blanco); border:1px solid var(--gris-border);
+            border-radius:9px; padding:9px 12px;
+            font-size:.78rem; gap:8px;
+        }
+        .fmgr-item-left { display:flex; align-items:center; gap:8px; flex:1; min-width:0; }
+        .fmgr-item-icon { font-size:1.1rem; flex-shrink:0; }
+        .fmgr-item-name { font-weight:600; color:var(--azul-dark); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .fmgr-item-size { color:var(--gris-mid); flex-shrink:0; font-size:.74rem; }
+        .fmgr-item-del {
+            background:none; border:none; cursor:pointer;
+            color:#9ca3af; font-size:1.1rem; line-height:1;
+            padding:2px 4px; border-radius:4px; flex-shrink:0;
+            transition:color .2s, background .2s;
+        }
+        .fmgr-item-del:hover { color:#ef4444; background:#fef2f2; }
 
         /* ── RECAPTCHA ── */
         .recap { margin:26px 0 18px; text-align:center; min-height:32px; }
@@ -576,13 +620,25 @@
                 </div>
 
                 <div class="fld">
-                    <label>Documentación en PDF <span class="req">*</span><span class="opt">Si es necesario, comprimir en ZIP/RAR</span></label>
+                    <label>Adjuntar Documentos <span class="opt">(opcional — factura, póliza, etc.)</span></label>
                     <div class="fdrop" id="dropAlta">
-                        <input type="file" id="documentos" name="documentos" accept=".pdf,.zip,.rar" multiple>
+                        <input type="file" id="documentos" name="documentos" accept=".pdf,.jpg,.jpeg,.png,.zip,.rar" multiple>
                         <div class="fd-icon">📁</div>
-                        <div class="fd-main">Haga clic o arrastre sus archivos aquí</div>
-                        <div class="fd-sub">Formatos aceptados: PDF, ZIP, RAR</div>
-                        <div class="fd-chips" id="chipsAlta"></div>
+                        <div class="fd-main">Arrastra tus archivos aquí o <span class="fd-link">haz clic para seleccionar</span></div>
+                        <div class="fd-sub">Formatos: PDF, JPG, PNG, ZIP, RAR &nbsp;|&nbsp; <strong>Límite total: 5 MB</strong> — puedes adjuntar varios archivos</div>
+                        <div class="fd-hint">💡 Si tus documentos superan el límite, comprímelos en un archivo <strong>ZIP o RAR</strong> antes de adjuntarlos</div>
+                    </div>
+                    <div class="fmgr" id="fmgrAlta" style="display:none">
+                        <div class="fmgr-bar-wrap">
+                            <div class="fmgr-bar-label">
+                                <span>Capacidad utilizada</span>
+                                <span id="fmgrAltaLabel">0 MB de 5 MB</span>
+                            </div>
+                            <div class="fmgr-bar-track"><div class="fmgr-bar-fill" id="fmgrAltaFill" style="width:0%"></div></div>
+                            <div class="fmgr-status"><div class="fmgr-dot" id="fmgrAltaDot"></div><span id="fmgrAltaStatus"></span></div>
+                        </div>
+                        <div class="fmgr-error" id="fmgrAltaError"></div>
+                        <div class="fmgr-list" id="fmgrAltaList"></div>
                     </div>
                 </div>
             </div>
@@ -667,13 +723,25 @@
                 </div>
 
                 <div class="fld">
-                    <label>Documentación <span class="req">*</span></label>
+                    <label>Adjuntar Documentos <span class="req">*</span></label>
                     <div class="fdrop" id="dropRef">
-                        <input type="file" id="docsRefrendo" name="docsRefrendo" accept=".pdf,.zip,.rar" multiple>
+                        <input type="file" id="docsRefrendo" name="docsRefrendo" accept=".pdf,.jpg,.jpeg,.png,.zip,.rar" multiple>
                         <div class="fd-icon">📁</div>
-                        <div class="fd-main">Haga clic o arrastre sus archivos aquí</div>
-                        <div class="fd-sub">Documentación en PDF. Si es necesario, comprimir en ZIP/RAR.</div>
-                        <div class="fd-chips" id="chipsRef"></div>
+                        <div class="fd-main">Arrastra tus archivos aquí o <span class="fd-link">haz clic para seleccionar</span></div>
+                        <div class="fd-sub">Formatos: PDF, JPG, PNG, ZIP, RAR &nbsp;|&nbsp; <strong>Límite total: 5 MB</strong> — puedes adjuntar varios archivos</div>
+                        <div class="fd-hint">💡 Si tus documentos superan el límite, comprímelos en un archivo <strong>ZIP o RAR</strong> antes de adjuntarlos</div>
+                    </div>
+                    <div class="fmgr" id="fmgrRef" style="display:none">
+                        <div class="fmgr-bar-wrap">
+                            <div class="fmgr-bar-label">
+                                <span>Capacidad utilizada</span>
+                                <span id="fmgrRefLabel">0 MB de 5 MB</span>
+                            </div>
+                            <div class="fmgr-bar-track"><div class="fmgr-bar-fill" id="fmgrRefFill" style="width:0%"></div></div>
+                            <div class="fmgr-status"><div class="fmgr-dot" id="fmgrRefDot"></div><span id="fmgrRefStatus"></span></div>
+                        </div>
+                        <div class="fmgr-error" id="fmgrRefError"></div>
+                        <div class="fmgr-list" id="fmgrRefList"></div>
                     </div>
                 </div>
             </div>
@@ -708,33 +776,50 @@
 </div>
 
 <script>
-    /* ── reCAPTCHA v3 ── */
-    let rcToken  = null;
-    let rcReady  = false;
+    /* ════════════════════════════════════════════
+       reCAPTCHA v3 — arquitectura robusta
+       ─────────────────────────────────────────────
+       • No llama grecaptcha.ready() al cargar:
+         evita ReferenceError si la API no llegó aún.
+       • El token se genera JUSTO ANTES de enviar
+         (siempre fresco, nunca caduca).
+       • Se inyecta como <input hidden> para que
+         FormSubmit lo reciba correctamente.
+       • Indicador visual: spinner mientras el usuario
+         llena el form → se reemplaza con ✓ cuando
+         la API ya está disponible en background.
+    ════════════════════════════════════════════ */
 
-    grecaptcha.ready(() => {
+    const RC_KEY = '6Lc9zGUsAAAAAG2K5TAav3VrS9obGfFqXO5cnOkV';
+    let   rcApiReady = false;   // true cuando grecaptcha.ready() disparó
+
+    /* ── Esperar a que la API cargue (polling seguro) ── */
+    function waitForRecaptcha(cb) {
+        if (typeof grecaptcha !== 'undefined') {
+            grecaptcha.ready(cb);
+        } else {
+            // La API aún no llegó (async/defer); reintentamos cada 200 ms
+            setTimeout(() => waitForRecaptcha(cb), 200);
+        }
+    }
+
+    waitForRecaptcha(() => {
+        rcApiReady = true;
+        // Actualizar indicador visual silenciosamente
         const spin = document.getElementById('recapSpin');
         const txt  = document.getElementById('recapTxt');
-        spin.style.display = 'inline-block';
-        txt.textContent    = 'Verificando seguridad…';
-
-        grecaptcha.execute('6Lc9zGUsAAAAAG2K5TAav3VrS9obGfFqXO5cnOkV', { action:'submit' })
-            .then(token => {
-                rcToken = token;
-                setTimeout(() => {
-                    rcReady = true;
-                    spin.style.display = 'none';
-                    txt.textContent = '✓ Verificación de seguridad completada';
-                    txt.className = 'recap-txt ok';
-                    checkEnvio();
-                }, 1200);
-            })
-            .catch(() => {
-                spin.style.display = 'none';
-                txt.textContent = '✗ Error en la verificación. Recargue la página.';
-                txt.className = 'recap-txt err';
-            });
+        if (spin) spin.style.display = 'none';
+        if (txt)  { txt.textContent = '✓ Verificación de seguridad lista'; txt.className = 'recap-txt ok'; }
+        checkEnvio();
     });
+
+    /* ── Indicador inicial mientras carga ── */
+    (function initRecapUI(){
+        const spin = document.getElementById('recapSpin');
+        const txt  = document.getElementById('recapTxt');
+        if (spin) spin.style.display = 'inline-block';
+        if (txt)  { txt.textContent = 'Cargando verificación de seguridad…'; txt.className = 'recap-txt'; }
+    })();
 
     /* ── Mostrar/ocultar secciones según trámite ── */
     document.getElementById('tipoTramite').addEventListener('change', function(){
@@ -813,35 +898,145 @@
         checkEnvio();
     });
 
+    /* ── File Manager ── */
+    const MAX_BYTES = 5 * 1024 * 1024; // 5 MB
+
+    // State: store files as arrays (not FileList)
+    const state = { alta: [], ref: [] };
+
+    function formatSize(bytes) {
+        if (bytes >= 1024 * 1024) return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+        return (bytes / 1024).toFixed(1) + ' KB';
+    }
+
+    function totalBytes(files) { return files.reduce((s, f) => s + f.size, 0); }
+
+    function updateManager(key) {
+        const files  = state[key];
+        const idPfx  = key === 'alta' ? 'fmgrAlta' : 'fmgrRef';
+        const mgr    = document.getElementById('fmgr' + (key === 'alta' ? 'Alta' : 'Ref'));
+        const fill   = document.getElementById(idPfx + 'Fill');
+        const lbl    = document.getElementById(idPfx + 'Label');
+        const dot    = document.getElementById(idPfx + 'Dot');
+        const status = document.getElementById(idPfx + 'Status');
+        const err    = document.getElementById(idPfx + 'Error');
+        const list   = document.getElementById(idPfx + 'List');
+
+        if (files.length === 0) { mgr.style.display = 'none'; return; }
+        mgr.style.display = 'block';
+
+        const used  = totalBytes(files);
+        const pct   = Math.min((used / MAX_BYTES) * 100, 100);
+
+        fill.style.width = pct + '%';
+        lbl.textContent  = formatSize(used) + ' de 5 MB';
+
+        // Semáforo
+        let color, dotColor, statusTxt;
+        if (pct >= 100) {
+            color = '#ef4444'; dotColor = '#ef4444';
+            statusTxt = '🔴 Límite alcanzado — no puedes añadir más archivos';
+        } else if (pct >= 75) {
+            color = '#f59e0b'; dotColor = '#f59e0b';
+            const left = formatSize(MAX_BYTES - used);
+            statusTxt = '⚠️ Casi lleno — quedan ' + left + ' disponibles';
+        } else {
+            color = '#22c55e'; dotColor = '#22c55e';
+            const left = formatSize(MAX_BYTES - used);
+            statusTxt = '✅ Capacidad disponible — quedan ' + left;
+        }
+        fill.style.background = color;
+        dot.style.background  = dotColor;
+        status.textContent    = statusTxt;
+        status.style.color    = dotColor;
+
+        // Render list
+        list.innerHTML = '';
+        files.forEach((f, idx) => {
+            const item = document.createElement('div');
+            item.className = 'fmgr-item';
+            item.innerHTML = `
+                <div class="fmgr-item-left">
+                    <span class="fmgr-item-icon">📄</span>
+                    <span class="fmgr-item-name" title="${f.name}">${f.name}</span>
+                </div>
+                <span class="fmgr-item-size">${formatSize(f.size)}</span>
+                <button type="button" class="fmgr-item-del" data-idx="${idx}" data-key="${key}" title="Eliminar archivo">✕</button>`;
+            list.appendChild(item);
+        });
+
+        // Delete buttons
+        list.querySelectorAll('.fmgr-item-del').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const k   = this.dataset.key;
+                const i   = parseInt(this.dataset.idx);
+                state[k].splice(i, 1);
+                syncInput(k);
+                updateManager(k);
+                checkEnvio();
+            });
+        });
+
+        // Error messages
+        err.style.display = 'none';
+    }
+
+    function showFmgrError(key, msg) {
+        const idPfx = key === 'alta' ? 'fmgrAlta' : 'fmgrRef';
+        const err   = document.getElementById(idPfx + 'Error');
+        const mgr   = document.getElementById('fmgr' + (key === 'alta' ? 'Alta' : 'Ref'));
+        mgr.style.display = 'block';
+        err.textContent   = msg;
+        err.style.display = 'block';
+    }
+
+    function syncInput(key) {
+        // We can't assign to FileList, so we use a DataTransfer trick
+        const dt = new DataTransfer();
+        state[key].forEach(f => dt.items.add(f));
+        if (key === 'alta') iA.files = dt.files;
+        else                iR.files = dt.files;
+    }
+
+    function handleFiles(key, newFiles) {
+        const existing = state[key];
+        const usedNow  = totalBytes(existing);
+        const errs     = [];
+
+        Array.from(newFiles).forEach(f => {
+            const projectedTotal = totalBytes(existing) + f.size;
+            if (projectedTotal > MAX_BYTES) {
+                errs.push(`"${f.name}" supera el límite de 5 MB. Comprime en ZIP/RAR.`);
+            } else {
+                existing.push(f);
+            }
+        });
+
+        syncInput(key);
+        updateManager(key);
+
+        if (errs.length) showFmgrError(key, errs.join(' | '));
+
+        checkEnvio();
+    }
+
     /* ── File drop — Alta vehicular ── */
     const dA = document.getElementById('dropAlta');
     const iA = document.getElementById('documentos');
-    const cA = document.getElementById('chipsAlta');
 
     ['dragenter','dragover'].forEach(e => dA.addEventListener(e, ev => { ev.preventDefault(); dA.classList.add('drag'); }));
     ['dragleave','drop'].forEach(e => dA.addEventListener(e, ev => { ev.preventDefault(); dA.classList.remove('drag'); }));
-    dA.addEventListener('drop', ev => { iA.files = ev.dataTransfer.files; renderChips(iA.files, cA); checkEnvio(); });
-    iA.addEventListener('change', () => { renderChips(iA.files, cA); checkEnvio(); });
+    dA.addEventListener('drop', ev => { handleFiles('alta', ev.dataTransfer.files); });
+    iA.addEventListener('change', () => { handleFiles('alta', iA.files); iA.value = ''; });
 
     /* ── File drop — Refrendo ── */
     const dR = document.getElementById('dropRef');
     const iR = document.getElementById('docsRefrendo');
-    const cR = document.getElementById('chipsRef');
 
     ['dragenter','dragover'].forEach(e => dR.addEventListener(e, ev => { ev.preventDefault(); dR.classList.add('drag'); }));
     ['dragleave','drop'].forEach(e => dR.addEventListener(e, ev => { ev.preventDefault(); dR.classList.remove('drag'); }));
-    dR.addEventListener('drop', ev => { iR.files = ev.dataTransfer.files; renderChips(iR.files, cR); checkEnvio(); });
-    iR.addEventListener('change', () => { renderChips(iR.files, cR); checkEnvio(); });
-
-    function renderChips(files, wrap){
-        wrap.innerHTML = '';
-        Array.from(files).forEach(f => {
-            const ch = document.createElement('div');
-            ch.className = 'fd-chip';
-            ch.innerHTML = `<span>✓</span><span>${f.name}</span>`;
-            wrap.appendChild(ch);
-        });
-    }
+    dR.addEventListener('drop', ev => { handleFiles('ref', ev.dataTransfer.files); });
+    iR.addEventListener('change', () => { handleFiles('ref', iR.files); iR.value = ''; });
 
     /* ── Casilla de verificación ── */
     document.getElementById('declaracion').addEventListener('change', checkEnvio);
@@ -852,44 +1047,64 @@
         const declarado = document.getElementById('declaracion').checked;
         const btn       = document.getElementById('submitBtn');
 
-        if (!tramite || !declarado || !rcReady) { btn.disabled = true; return; }
+        if (!tramite || !declarado || !rcApiReady) { btn.disabled = true; return; }
 
         if (tramite === 'alta') {
             const val  = parseFloat(document.getElementById('valorVehiculo').value) || 0;
-            const docs = iA.files.length > 0;
+            const docs = state.alta.length > 0;
             btn.disabled = !(val > 0 && docs);
         } else if (tramite === 'refrendo') {
             const plac  = document.getElementById('numeroPlacas').value.trim() !== '';
             const unid  = document.getElementById('tipoUnidad').value !== '';
-            const docs  = iR.files.length > 0;
+            const docs  = state.ref.length > 0;
             btn.disabled = !(plac && unid && docs);
         } else {
             btn.disabled = true;
         }
     }
 
-    /* ── Envío ── */
+    /* ── Envío — token fresco generado en el momento del submit ── */
     document.getElementById('tramiteForm').addEventListener('submit', function(e){
         e.preventDefault();
+        const form = this;
 
         if (!document.getElementById('declaracion').checked) {
             showToast('Debe marcar la casilla de declaración para continuar.','err'); return;
         }
-        if (!rcReady) {
+        if (!rcApiReady) {
             showToast('Espere a que se complete la verificación de seguridad.','err'); return;
         }
 
+        const btn = document.getElementById('submitBtn');
+        btn.disabled    = true;
+        btn.textContent = 'Verificando…';
+
         // Concatenar lada + número en el campo de teléfono antes de enviar
-        const lada  = document.getElementById('ladaPais').value.replace('-CA','');
-        const num   = document.getElementById('telefono').value.trim();
+        const lada = document.getElementById('ladaPais').value.replace('-CA','');
+        const num  = document.getElementById('telefono').value.trim();
         document.getElementById('telefono').value = lada + ' ' + num;
 
-        const btn = document.getElementById('submitBtn');
-        btn.disabled = true;
-        btn.textContent = 'Enviando…';
+        /* Generar token fresco (caduca en ~2 min; siempre pedimos uno nuevo aquí) */
+        grecaptcha.execute(RC_KEY, { action: 'submit' })
+            .then(token => {
+                // Inyectar token como campo hidden para que FormSubmit lo reciba
+                let hiddenToken = form.querySelector('input[name="g-recaptcha-response"]');
+                if (!hiddenToken) {
+                    hiddenToken = document.createElement('input');
+                    hiddenToken.type = 'hidden';
+                    hiddenToken.name = 'g-recaptcha-response';
+                    form.appendChild(hiddenToken);
+                }
+                hiddenToken.value = token;
 
-        // Envío real a FormSubmit (submit nativo del form)
-        this.submit();
+                btn.textContent = 'Enviando…';
+                form.submit();   // submit nativo → FormSubmit recibe el token limpio
+            })
+            .catch(() => {
+                btn.disabled    = false;
+                btn.textContent = 'Enviar Solicitud';
+                showToast('Error en la verificación de seguridad. Intente de nuevo.','err');
+            });
     });
 
     function showToast(msg, type){
