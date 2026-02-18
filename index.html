@@ -682,7 +682,7 @@
                 </div>
 
                 <div class="fld">
-                    <label>Adjuntar Documentos <span class="opt">(opcional — factura, póliza, etc.)</span></label>
+                    <label>Adjuntar Documentos <span class="req">*</span></label>
                     <div class="fdrop" id="dropAlta">
                         <input type="file" id="documentos" name="documentos" accept=".pdf,.jpg,.jpeg,.png,.zip,.rar" multiple>
                         <div class="fd-icon">📁</div>
@@ -842,48 +842,55 @@
        CUSTOM LADA DROPDOWN CON BANDERAS
     ══════════════════════════════════════════ */
     const LADAS = [
-        { flag:'🇲🇽', name:'México',           code:'+52',  val:'+52'    },
-        { flag:'🇺🇸', name:'Estados Unidos',   code:'+1',   val:'+1'     },
-        { flag:'🇨🇦', name:'Canadá',           code:'+1',   val:'+1-CA'  },
-        { flag:'🇬🇹', name:'Guatemala',        code:'+502', val:'+502'   },
-        { flag:'🇸🇻', name:'El Salvador',      code:'+503', val:'+503'   },
-        { flag:'🇭🇳', name:'Honduras',         code:'+504', val:'+504'   },
-        { flag:'🇳🇮', name:'Nicaragua',        code:'+505', val:'+505'   },
-        { flag:'🇨🇷', name:'Costa Rica',       code:'+506', val:'+506'   },
-        { flag:'🇵🇦', name:'Panamá',           code:'+507', val:'+507'   },
-        { flag:'🇨🇺', name:'Cuba',             code:'+53',  val:'+53'    },
-        { flag:'🇨🇴', name:'Colombia',         code:'+57',  val:'+57'    },
-        { flag:'🇻🇪', name:'Venezuela',        code:'+58',  val:'+58'    },
-        { flag:'🇵🇪', name:'Perú',             code:'+51',  val:'+51'    },
-        { flag:'🇨🇱', name:'Chile',            code:'+56',  val:'+56'    },
-        { flag:'🇦🇷', name:'Argentina',        code:'+54',  val:'+54'    },
-        { flag:'🇧🇷', name:'Brasil',           code:'+55',  val:'+55'    },
-        { flag:'🇪🇨', name:'Ecuador',          code:'+593', val:'+593'   },
-        { flag:'🇧🇴', name:'Bolivia',          code:'+591', val:'+591'   },
-        { flag:'🇵🇾', name:'Paraguay',         code:'+595', val:'+595'   },
-        { flag:'🇺🇾', name:'Uruguay',          code:'+598', val:'+598'   },
-        { flag:'🇪🇸', name:'España',           code:'+34',  val:'+34'    },
-        { flag:'🇫🇷', name:'Francia',          code:'+33',  val:'+33'    },
-        { flag:'🇬🇧', name:'Reino Unido',      code:'+44',  val:'+44'    },
-        { flag:'🇩🇪', name:'Alemania',         code:'+49',  val:'+49'    },
-        { flag:'🇮🇹', name:'Italia',           code:'+39',  val:'+39'    },
-        { flag:'🇵🇹', name:'Portugal',         code:'+351', val:'+351'   },
-        { flag:'🇳🇱', name:'Países Bajos',     code:'+31',  val:'+31'    },
-        { flag:'🇧🇪', name:'Bélgica',          code:'+32',  val:'+32'    },
-        { flag:'🇨🇭', name:'Suiza',            code:'+41',  val:'+41'    },
-        { flag:'🇦🇹', name:'Austria',          code:'+43',  val:'+43'    },
-        { flag:'🇷🇺', name:'Rusia',            code:'+7',   val:'+7'     },
-        { flag:'🇨🇳', name:'China',            code:'+86',  val:'+86'    },
-        { flag:'🇯🇵', name:'Japón',            code:'+81',  val:'+81'    },
-        { flag:'🇰🇷', name:'Corea del Sur',    code:'+82',  val:'+82'    },
-        { flag:'🇮🇳', name:'India',            code:'+91',  val:'+91'    },
-        { flag:'🇦🇺', name:'Australia',        code:'+61',  val:'+61'    },
-        { flag:'🇳🇿', name:'Nueva Zelanda',    code:'+64',  val:'+64'    },
-        { flag:'🇿🇦', name:'Sudáfrica',        code:'+27',  val:'+27'    },
-        { flag:'🇦🇪', name:'Emiratos Árabes',  code:'+971', val:'+971'   },
-        { flag:'🇸🇦', name:'Arabia Saudita',   code:'+966', val:'+966'   },
-        { flag:'🇮🇱', name:'Israel',           code:'+972', val:'+972'   },
-        { flag:'🇹🇷', name:'Turquía',          code:'+90',  val:'+90'    },
+        // ── América del Norte ──
+        { region:'América del Norte', flag:'🇨🇦', name:'Canadá',           code:'+1',   val:'+1-CA'  },
+        { region:'América del Norte', flag:'🇲🇽', name:'México',           code:'+52',  val:'+52'    },
+        { region:'América del Norte', flag:'🇺🇸', name:'Estados Unidos',   code:'+1',   val:'+1'     },
+        // ── América Central y Caribe ──
+        { region:'América Central y Caribe', flag:'🇨🇷', name:'Costa Rica',    code:'+506', val:'+506'   },
+        { region:'América Central y Caribe', flag:'🇨🇺', name:'Cuba',          code:'+53',  val:'+53'    },
+        { region:'América Central y Caribe', flag:'🇸🇻', name:'El Salvador',   code:'+503', val:'+503'   },
+        { region:'América Central y Caribe', flag:'🇬🇹', name:'Guatemala',     code:'+502', val:'+502'   },
+        { region:'América Central y Caribe', flag:'🇭🇳', name:'Honduras',      code:'+504', val:'+504'   },
+        { region:'América Central y Caribe', flag:'🇳🇮', name:'Nicaragua',     code:'+505', val:'+505'   },
+        { region:'América Central y Caribe', flag:'🇵🇦', name:'Panamá',        code:'+507', val:'+507'   },
+        // ── América del Sur ──
+        { region:'América del Sur', flag:'🇦🇷', name:'Argentina',       code:'+54',  val:'+54'    },
+        { region:'América del Sur', flag:'🇧🇴', name:'Bolivia',         code:'+591', val:'+591'   },
+        { region:'América del Sur', flag:'🇧🇷', name:'Brasil',          code:'+55',  val:'+55'    },
+        { region:'América del Sur', flag:'🇨🇱', name:'Chile',           code:'+56',  val:'+56'    },
+        { region:'América del Sur', flag:'🇨🇴', name:'Colombia',        code:'+57',  val:'+57'    },
+        { region:'América del Sur', flag:'🇪🇨', name:'Ecuador',         code:'+593', val:'+593'   },
+        { region:'América del Sur', flag:'🇵🇾', name:'Paraguay',        code:'+595', val:'+595'   },
+        { region:'América del Sur', flag:'🇵🇪', name:'Perú',            code:'+51',  val:'+51'    },
+        { region:'América del Sur', flag:'🇺🇾', name:'Uruguay',         code:'+598', val:'+598'   },
+        { region:'América del Sur', flag:'🇻🇪', name:'Venezuela',       code:'+58',  val:'+58'    },
+        // ── Europa ──
+        { region:'Europa', flag:'🇩🇪', name:'Alemania',        code:'+49',  val:'+49'    },
+        { region:'Europa', flag:'🇦🇹', name:'Austria',         code:'+43',  val:'+43'    },
+        { region:'Europa', flag:'🇧🇪', name:'Bélgica',         code:'+32',  val:'+32'    },
+        { region:'Europa', flag:'🇪🇸', name:'España',          code:'+34',  val:'+34'    },
+        { region:'Europa', flag:'🇫🇷', name:'Francia',         code:'+33',  val:'+33'    },
+        { region:'Europa', flag:'🇮🇹', name:'Italia',          code:'+39',  val:'+39'    },
+        { region:'Europa', flag:'🇳🇱', name:'Países Bajos',    code:'+31',  val:'+31'    },
+        { region:'Europa', flag:'🇵🇹', name:'Portugal',        code:'+351', val:'+351'   },
+        { region:'Europa', flag:'🇬🇧', name:'Reino Unido',     code:'+44',  val:'+44'    },
+        { region:'Europa', flag:'🇷🇺', name:'Rusia',           code:'+7',   val:'+7'     },
+        { region:'Europa', flag:'🇨🇭', name:'Suiza',           code:'+41',  val:'+41'    },
+        // ── Asia y Medio Oriente ──
+        { region:'Asia y Medio Oriente', flag:'🇸🇦', name:'Arabia Saudita',  code:'+966', val:'+966'   },
+        { region:'Asia y Medio Oriente', flag:'🇨🇳', name:'China',           code:'+86',  val:'+86'    },
+        { region:'Asia y Medio Oriente', flag:'🇦🇪', name:'Emiratos Árabes', code:'+971', val:'+971'   },
+        { region:'Asia y Medio Oriente', flag:'🇮🇳', name:'India',           code:'+91',  val:'+91'    },
+        { region:'Asia y Medio Oriente', flag:'🇮🇱', name:'Israel',          code:'+972', val:'+972'   },
+        { region:'Asia y Medio Oriente', flag:'🇯🇵', name:'Japón',           code:'+81',  val:'+81'    },
+        { region:'Asia y Medio Oriente', flag:'🇰🇷', name:'Corea del Sur',   code:'+82',  val:'+82'    },
+        { region:'Asia y Medio Oriente', flag:'🇹🇷', name:'Turquía',         code:'+90',  val:'+90'    },
+        // ── Oceanía ──
+        { region:'Oceanía', flag:'🇦🇺', name:'Australia',       code:'+61',  val:'+61'    },
+        { region:'Oceanía', flag:'🇳🇿', name:'Nueva Zelanda',   code:'+64',  val:'+64'    },
+        // ── África ──
+        { region:'África', flag:'🇿🇦', name:'Sudáfrica',        code:'+27',  val:'+27'    },
     ];
 
     let ladaSelected = LADAS[0];
@@ -898,24 +905,43 @@
     function renderLadaOptions(filter) {
         const q = (filter || '').toLowerCase();
         ladaOptsList.innerHTML = '';
-        LADAS.filter(l =>
+
+        const filtered = LADAS.filter(l =>
             !q || l.name.toLowerCase().includes(q) || l.code.includes(q)
-        ).forEach(l => {
-            const div = document.createElement('div');
-            div.className = 'lada-opt' + (l.val === ladaSelected.val ? ' active' : '');
-            div.innerHTML = `<span class="lo-flag">${l.flag}</span>
-                             <span class="lo-name">${l.name}</span>
-                             <span class="lo-code">${l.code}</span>`;
-            div.addEventListener('click', () => {
-                ladaSelected = l;
-                ladaTrigger.querySelector('.lada-flag').textContent = l.flag;
-                ladaTrigger.querySelector('.lada-code').textContent = l.code;
-                // Sync hidden select
-                ladaHidden.value = l.val;
-                closeLada();
+        );
+
+        // Agrupar por región solo cuando no hay búsqueda activa
+        if (!q) {
+            let currentRegion = null;
+            filtered.forEach(l => {
+                if (l.region !== currentRegion) {
+                    currentRegion = l.region;
+                    const hdr = document.createElement('div');
+                    hdr.style.cssText = 'padding:6px 12px 3px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--azul-blue);background:var(--gris-light);border-bottom:1px solid var(--gris-border);position:sticky;top:40px;';
+                    hdr.textContent = l.region;
+                    ladaOptsList.appendChild(hdr);
+                }
+                ladaOptsList.appendChild(buildLadaOpt(l));
             });
-            ladaOptsList.appendChild(div);
+        } else {
+            filtered.forEach(l => ladaOptsList.appendChild(buildLadaOpt(l)));
+        }
+    }
+
+    function buildLadaOpt(l) {
+        const div = document.createElement('div');
+        div.className = 'lada-opt' + (l.val === ladaSelected.val ? ' active' : '');
+        div.innerHTML = `<span class="lo-flag">${l.flag}</span>
+                         <span class="lo-name">${l.name}</span>
+                         <span class="lo-code">${l.code}</span>`;
+        div.addEventListener('click', () => {
+            ladaSelected = l;
+            ladaTrigger.querySelector('.lada-flag').textContent = l.flag;
+            ladaTrigger.querySelector('.lada-code').textContent = l.code;
+            ladaHidden.value = l.val;
+            closeLada();
         });
+        return div;
     }
 
     function openLada() {
