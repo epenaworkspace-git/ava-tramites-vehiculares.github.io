@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AVA - Trámites Vehiculares en Morelos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
-    <!-- reCAPTCHA v3: async + defer para evitar ReferenceError si la API aún no cargó -->
     <script src="https://www.google.com/recaptcha/api.js?render=6Lc9zGUsAAAAAG2K5TAav3VrS9obGfFqXO5cnOkV" async defer></script>
-    <!-- Elfsight AI Chatbot — se carga de forma asíncrona, no bloquea el formulario -->
     <script src="https://elfsightcdn.com/platform.js" async></script>
 
     <style>
@@ -37,6 +35,7 @@
             color: var(--gris-dark);
             min-height: 100vh;
             padding: 24px 16px 100px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .wrapper {
@@ -75,14 +74,13 @@
             position:relative; z-index:1;
         }
 
-
-
         /* ── FORM CARD ── */
         .form-card {
             background: var(--blanco);
             border:1px solid var(--gris-border); border-top:none;
             border-radius:0 0 var(--r-lg) var(--r-lg);
             padding: 40px; box-shadow: var(--shadow-lg);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         /* ── SECTION TITLE ── */
@@ -95,10 +93,12 @@
             width:34px; height:34px; background:var(--azul-light);
             border-radius:8px; display:flex; align-items:center; justify-content:center;
             font-size:1rem; flex-shrink:0;
+            transition: background 0.3s ease;
         }
         .sec-title h2 {
             font-size:.88rem; font-weight:700; letter-spacing:1.5px;
             text-transform:uppercase; color:var(--azul-dark);
+            transition: color 0.3s ease;
         }
 
         /* ── GRID ── */
@@ -109,6 +109,7 @@
         .fld { display:flex; flex-direction:column; gap:6px; }
         .fld label {
             font-size:.8rem; font-weight:600; color:var(--azul-dark); letter-spacing:.2px;
+            transition: color 0.3s ease;
         }
         .fld label .req { color:var(--azul-blue); margin-left:2px; }
         .fld label .opt { color:var(--gris-mid); font-weight:400; font-style:italic; margin-left:4px; font-size:.75rem; }
@@ -123,9 +124,9 @@
             border-radius:var(--r);
             font-size:.9rem; font-family:'Inter',sans-serif; color:var(--gris-dark);
             background:var(--blanco);
-            transition:border-color .25s, box-shadow .25s;
+            transition:border-color .25s, box-shadow .25s, background-color 0.3s ease, color 0.3s ease;
         }
-        input::placeholder { color:#b0b9c8; }
+        input::placeholder { color:#b0b9c8; transition: color 0.3s ease; }
         input:focus, select:focus {
             outline:none; border-color:var(--azul-blue);
             box-shadow:0 0 0 3px rgba(22,93,255,.11);
@@ -138,7 +139,7 @@
         }
 
         /* ── DIVIDER ── */
-        .div { height:1px; background:var(--gris-border); margin:30px 0; }
+        .div { height:1px; background:var(--gris-border); margin:30px 0; transition: background 0.3s ease; }
 
         /* ── COST PILL ── */
         .cost-pill {
@@ -147,13 +148,14 @@
             border:1.5px solid var(--azul-blue);
             border-radius:var(--r-lg); padding:14px 20px; margin-top:10px;
             animation:fadeUp .4s ease;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
         .cost-pill.show { display:flex; }
-        .cp-lbl { font-size:.8rem; font-weight:700; color:var(--azul-dark); }
+        .cp-lbl { font-size:.8rem; font-weight:700; color:var(--azul-dark); transition: color 0.3s ease; }
         .cp-amt { font-size:1.65rem; font-weight:800; color:var(--azul-blue); font-feature-settings:"tnum"; }
 
         /* ── REQ BOX ── */
-        .rbox { background:var(--gris-light); border-radius:var(--r-lg); border:1px solid var(--gris-border); overflow:hidden; }
+        .rbox { background:var(--gris-light); border-radius:var(--r-lg); border:1px solid var(--gris-border); overflow:hidden; transition: background 0.3s ease, border-color 0.3s ease; }
         .rbox-head {
             background:var(--azul-dark); color:var(--blanco);
             padding:12px 18px; font-size:.78rem; font-weight:700;
@@ -165,6 +167,7 @@
             background:#fefce8; border:1px solid #facc15;
             border-radius:8px; padding:12px 14px;
             font-size:.8rem; color:#854d0e; margin-bottom:16px; line-height:1.6;
+            transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
         .rg-title {
             font-size:.75rem; font-weight:700; text-transform:uppercase;
@@ -174,6 +177,7 @@
         .rlist li {
             font-size:.8rem; line-height:1.6; padding:5px 0 5px 22px;
             position:relative; border-bottom:1px solid rgba(0,0,0,.04);
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
         .rlist li:last-child { border-bottom:none; }
         .rlist li.ob::before { content:'✓'; position:absolute; left:0; top:5px; color:var(--azul-blue); font-weight:800; }
@@ -192,6 +196,7 @@
             background:#eff6ff; border:1px solid #93c5fd;
             border-radius:8px; padding:12px 14px;
             font-size:.79rem; color:#1e40af; margin-top:14px; line-height:1.7;
+            transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
 
         /* ── FILE DROP ── */
@@ -203,11 +208,11 @@
         .fdrop:hover, .fdrop.drag { border-color:var(--azul-blue); background:var(--azul-light); }
         .fdrop input[type="file"] { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
         .fd-icon  { font-size:2rem; margin-bottom:6px; }
-        .fd-main  { font-size:.85rem; font-weight:700; color:var(--azul-dark); margin-bottom:3px; }
-        .fd-sub   { font-size:.75rem; color:var(--gris-mid); }
+        .fd-main  { font-size:.85rem; font-weight:700; color:var(--azul-dark); margin-bottom:3px; transition: color 0.3s ease; }
+        .fd-sub   { font-size:.75rem; color:var(--gris-mid); transition: color 0.3s ease; }
         .fd-link  { color:var(--azul-blue); font-weight:700; text-decoration:underline; }
-        .fd-hint  { font-size:.72rem; color:var(--gris-mid); margin-top:4px; }
-        .fd-hint strong { color:var(--azul-dark); }
+        .fd-hint  { font-size:.72rem; color:var(--gris-mid); margin-top:4px; transition: color 0.3s ease; }
+        .fd-hint strong { color:var(--azul-dark); transition: color 0.3s ease; }
 
         /* ── FILE MANAGER ── */
         .fmgr { margin-top:14px; }
@@ -215,9 +220,11 @@
         .fmgr-bar-label {
             display:flex; justify-content:space-between; align-items:center;
             font-size:.76rem; font-weight:600; color:var(--azul-dark); margin-bottom:5px;
+            transition: color 0.3s ease;
         }
         .fmgr-bar-track {
             width:100%; height:10px; background:#e5e7eb; border-radius:99px; overflow:hidden;
+            transition: background 0.3s ease;
         }
         .fmgr-bar-fill {
             height:100%; border-radius:99px; transition:width .4s ease, background .4s ease;
@@ -243,11 +250,12 @@
             background:var(--blanco); border:1px solid var(--gris-border);
             border-radius:9px; padding:9px 12px;
             font-size:.78rem; gap:8px;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
         .fmgr-item-left { display:flex; align-items:center; gap:8px; flex:1; min-width:0; }
         .fmgr-item-icon { font-size:1.1rem; flex-shrink:0; }
-        .fmgr-item-name { font-weight:600; color:var(--azul-dark); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-        .fmgr-item-size { color:var(--gris-mid); flex-shrink:0; font-size:.74rem; }
+        .fmgr-item-name { font-weight:600; color:var(--azul-dark); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition: color 0.3s ease; }
+        .fmgr-item-size { color:var(--gris-mid); flex-shrink:0; font-size:.74rem; transition: color 0.3s ease; }
         .fmgr-item-del {
             background:none; border:none; cursor:pointer;
             color:#9ca3af; font-size:1.1rem; line-height:1;
@@ -265,7 +273,7 @@
             border-radius:50%; animation:spin 1s linear infinite;
         }
         @keyframes spin { to { transform:rotate(360deg); } }
-        .recap-txt { font-size:.79rem; margin-top:7px; color:var(--gris-mid); }
+        .recap-txt { font-size:.79rem; margin-top:7px; color:var(--gris-mid); transition: color 0.3s ease; }
         .recap-txt.ok  { color:var(--verde); }
         .recap-txt.err { color:var(--rojo); }
 
@@ -331,7 +339,6 @@
             100% { transform:translateX(100%); }
         }
 
-        /* ── Elfsight: z-index seguro, no tape el form ── */
         .elfsight-app-beb4a331-0ecc-4c09-b401-4d88d35cbf03 { z-index:950 !important; }
 
         /* ── CASILLA DE VERIFICACIÓN ── */
@@ -340,6 +347,7 @@
             border: 1.5px solid var(--gris-border);
             border-radius: var(--r-lg);
             padding: 18px 20px;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
         .check-label {
             display: flex; align-items: flex-start; gap: 14px; cursor: pointer;
@@ -368,6 +376,7 @@
         .check-txt {
             font-size: .77rem; line-height: 1.65;
             color: var(--gris-dark); font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         /* ── TELÉFONO CON LADA ── */
@@ -384,13 +393,13 @@
             box-shadow: 0 0 0 3px rgba(22,93,255,.11);
         }
 
-        /* ── CUSTOM LADA DROPDOWN ── */
         .lada-custom {
             position: relative; flex-shrink: 0;
             border-right: 1.5px solid var(--gris-border);
             background: var(--gris-light);
             border-radius: var(--r) 0 0 var(--r);
             user-select: none;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
         .lada-trigger {
             display: flex; align-items: center; gap: 6px;
@@ -398,6 +407,7 @@
             cursor: pointer; min-width: 108px;
             font-size: .85rem; font-family: 'Inter', sans-serif;
             color: var(--gris-dark); white-space: nowrap;
+            transition: color 0.3s ease;
         }
         .lada-trigger .lada-flag  { font-size: 1.15rem; line-height: 1; }
         .lada-trigger .lada-code  { font-weight: 600; }
@@ -413,6 +423,7 @@
             background: var(--blanco); border: 1.5px solid var(--azul-blue);
             border-radius: var(--r); box-shadow: 0 8px 24px rgba(10,31,68,.14);
             z-index: 200;
+            transition: background 0.3s ease;
         }
         .lada-custom.open .lada-dropdown { display: block; }
 
@@ -420,12 +431,13 @@
             padding: 8px 10px;
             border-bottom: 1px solid var(--gris-border);
             position: sticky; top: 0; background: var(--blanco); z-index: 1;
+            transition: background 0.3s ease;
         }
         .lada-search input {
             width: 100%; border: 1.5px solid var(--gris-border); border-radius: 7px;
             padding: 6px 10px; font-size: .8rem; font-family: 'Inter', sans-serif;
             outline: none; color: var(--gris-dark);
-            transition: border-color .2s;
+            transition: border-color .2s, background 0.3s ease, color 0.3s ease;
         }
         .lada-search input:focus { border-color: var(--azul-blue); }
 
@@ -440,7 +452,6 @@
         .lada-opt .lo-name { color: var(--gris-mid); font-size: .76rem; flex: 1; }
         .lada-opt .lo-code { font-weight: 600; color: var(--azul-dark); flex-shrink: 0; }
 
-        /* hidden real select (mantiene compatibilidad con FormSubmit) */
         .lada-select-hidden { display: none !important; }
 
         .phone-input {
@@ -451,6 +462,256 @@
         }
         .phone-input:focus { outline: none; box-shadow: none !important; }
 
+        /* ===================== THEME TOGGLE BUTTON ===================== */
+        .theme-toggle-btn {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 2000;
+          width: 52px;
+          height: 52px;
+          border-radius: 50%;
+          background: linear-gradient(145deg, #e8ecf4, #d0d6e8);
+          box-shadow:
+            0 6px 20px rgba(0,0,0,0.18),
+            inset 0 -2px 4px rgba(0,0,0,0.15),
+            inset 0 2px 4px rgba(255,255,255,0.9);
+          cursor: pointer;
+          border: none;
+          outline: none;
+          overflow: hidden;
+          transition: all 0.3s ease;
+          animation: subtlePulse 3s infinite ease-in-out;
+        }
+        .theme-toggle-btn::before {
+          content: '';
+          position: absolute;
+          top: -50%; left: -50%;
+          width: 200%; height: 200%;
+          background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 65%);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+          pointer-events: none;
+        }
+        .theme-toggle-btn:hover::before { opacity: 1; }
+        .theme-toggle-btn:hover {
+          animation: none;
+          transform: scale(1.08);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.25),
+            inset 0 -2px 4px rgba(0,0,0,0.15),
+            inset 0 3px 6px rgba(255,255,255,1);
+        }
+        .theme-toggle-btn:active { transform: scale(0.94); }
+
+        @keyframes subtlePulse {
+          0%,100% { transform: scale(1); }
+          50%      { transform: scale(1.03); }
+        }
+
+        .toggle-icon-wrap {
+          position: relative;
+          width: 100%; height: 100%;
+          display: flex; align-items: center; justify-content: center;
+          transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .theme-toggle-btn:hover .toggle-icon-wrap { transform: rotate(20deg); }
+
+        .icon-sun, .icon-moon {
+          position: absolute;
+          width: 28px; height: 28px;
+          transition: all 0.45s cubic-bezier(0.68,-0.55,0.265,1.55);
+        }
+        .icon-sun {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+          filter: drop-shadow(0 0 4px rgba(255,215,0,0.6));
+        }
+        .icon-moon {
+          opacity: 0;
+          transform: scale(0.4) rotate(-80deg);
+          filter: drop-shadow(0 0 4px rgba(100,120,255,0.6));
+        }
+
+        body.dark-mode .icon-sun  { opacity: 0; transform: scale(0.4) rotate(80deg); }
+        body.dark-mode .icon-moon { opacity: 1; transform: scale(1) rotate(0deg); }
+        body.dark-mode .theme-toggle-btn {
+          background: linear-gradient(145deg, #1e2d50, #0f1d38);
+          box-shadow: 0 6px 20px rgba(0,0,0,0.4),
+            0 0 15px rgba(65,105,225,0.3),
+            inset 0 -2px 4px rgba(0,0,0,0.4),
+            inset 0 2px 4px rgba(255,255,255,0.06);
+        }
+
+        /* ===================== DARK MODE ===================== */
+        body.dark-mode {
+          background: #0c1525;
+          color: #d0d8ec;
+        }
+        body.dark-mode .form-card {
+          background: #111e36;
+          border-color: #1e2d4a;
+        }
+        body.dark-mode .sec-title h2 { color: #a8bde0; }
+        body.dark-mode .sec-icon { background: #1a2d50; }
+        body.dark-mode .fld label { color: #7a8fb0; }
+        body.dark-mode input[type="text"],
+        body.dark-mode input[type="email"],
+        body.dark-mode input[type="tel"],
+        body.dark-mode input[type="number"],
+        body.dark-mode select {
+          background: #162040;
+          border-color: #243660;
+          color: #d0d8ec;
+        }
+        body.dark-mode input[type="text"]:focus,
+        body.dark-mode input[type="email"]:focus,
+        body.dark-mode input[type="tel"]:focus,
+        body.dark-mode input[type="number"]:focus,
+        body.dark-mode select:focus {
+          background: #1a2850;
+          border-color: #4d8aff;
+          box-shadow: 0 0 0 3px rgba(77,138,255,0.15);
+        }
+        body.dark-mode input::placeholder { color: #4a5878; }
+        body.dark-mode .div { background: #1e2d4a; }
+        body.dark-mode .cost-pill {
+          background: linear-gradient(135deg, #1a2d50 0%, #162040 100%);
+          border-color: #4d8aff;
+        }
+        body.dark-mode .cp-lbl { color: #a8bde0; }
+        body.dark-mode .cp-amt { color: #78b0ff; }
+        body.dark-mode .rbox { background: #0f1d35; border-color: #1e2d4a; }
+        body.dark-mode .rbox-head { background: #0a1525; }
+        body.dark-mode .rlist li { color: #b0c4e0; border-bottom-color: rgba(255,255,255,.06); }
+        body.dark-mode .r-alert { background: #2a2000; border-color: #6b5300; color: #e0c060; }
+        body.dark-mode .r-fmt { background: #0f1e35; border-color: #1e3a60; color: #6ba3ff; }
+        body.dark-mode .fdrop { background: #0f1d35; border-color: #243660; }
+        body.dark-mode .fdrop:hover, body.dark-mode .fdrop.drag { background: #162040; border-color: #4d8aff; }
+        body.dark-mode .fd-main { color: #a8bde0; }
+        body.dark-mode .fd-sub { color: #4a5878; }
+        body.dark-mode .fd-hint { color: #4a5878; }
+        body.dark-mode .fd-hint strong { color: #7a8fb0; }
+        body.dark-mode .fmgr-bar-label { color: #7a8fb0; }
+        body.dark-mode .fmgr-bar-track { background: #1e2d4a; }
+        body.dark-mode .fmgr-item { background: #162040; border-color: #243660; }
+        body.dark-mode .fmgr-item-name { color: #a8bde0; }
+        body.dark-mode .fmgr-item-size { color: #4a5878; }
+        body.dark-mode .check-wrap { background: #0f1d35; border-color: #1e2d4a; }
+        body.dark-mode .check-box { background: #162040; border-color: #243660; }
+        body.dark-mode .check-txt { color: #b0c4e0; }
+        body.dark-mode .lada-custom { background: #162040; border-color: #243660; }
+        body.dark-mode .lada-trigger { color: #d0d8ec; }
+        body.dark-mode .lada-dropdown { background: #111e36; border-color: #4d8aff; }
+        body.dark-mode .lada-search { background: #0f1d35; border-color: #1e2d4a; }
+        body.dark-mode .lada-search input { background: #162040; border-color: #243660; color: #d0d8ec; }
+        body.dark-mode .lada-opt:hover { background: #1a2d50; }
+        body.dark-mode .lada-opt.active { background: #1a2d50; }
+        body.dark-mode .lada-opt .lo-name { color: #4a5878; }
+        body.dark-mode .lada-opt .lo-code { color: #a8bde0; }
+        body.dark-mode .phone-wrap { border-color: #243660; }
+        body.dark-mode .recap-txt { color: #4a5878; }
+        body.dark-mode .toast.ok  { background: #052e16; color: #86efac; border-color: #166534; }
+        body.dark-mode .toast.err { background: #2d0a0a; color: #fca5a5; border-color: #7f1d1d; }
+
+        /* ===================== FLOATING PROGRESS BAR ===================== */
+        .form-progress-wrap {
+          position: fixed;
+          bottom: 28px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 1500;
+          display: none;
+          width: calc(100% - 200px);
+          max-width: 720px;
+          min-width: 280px;
+          pointer-events: none;
+        }
+        .form-progress-wrap.visible { display: block; }
+
+        .form-progress-pill {
+          background: #ffffff;
+          border-radius: 60px;
+          padding: 10px 20px 10px 16px;
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          box-shadow:
+            0 4px 24px rgba(10,31,68,0.14),
+            0 1px 4px rgba(10,31,68,0.08);
+          border: 1px solid rgba(10,31,68,0.07);
+          transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-progress-bar-track {
+          flex: 1;
+          height: 8px;
+          background: #E8ECF4;
+          border-radius: 99px;
+          overflow: hidden;
+          position: relative;
+          transition: background 0.3s ease;
+        }
+
+        .form-progress-bar-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #165DFF 0%, #3a7fff 100%);
+          border-radius: 99px;
+          width: 0%;
+          transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+        }
+
+        .form-progress-bar-fill::after {
+          content: '';
+          position: absolute;
+          top: 0; left: -60px;
+          width: 50px; height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+          animation: barShine 2.2s ease-in-out infinite;
+        }
+        @keyframes barShine {
+          0%   { left: -60px; opacity: 0; }
+          10%  { opacity: 1; }
+          90%  { opacity: 1; }
+          100% { left: calc(100% + 20px); opacity: 0; }
+        }
+
+        .form-progress-text {
+          font-size: 12.5px;
+          font-weight: 500;
+          color: #6B7A99;
+          white-space: nowrap;
+          flex-shrink: 0;
+          letter-spacing: 0.1px;
+          min-width: 150px;
+          text-align: right;
+          transition: color 0.3s ease;
+        }
+        .form-progress-text strong {
+          color: #165DFF;
+          font-weight: 700;
+        }
+
+        body.dark-mode .form-progress-pill {
+          background: #1a2645;
+          border-color: rgba(255,255,255,0.12);
+          box-shadow:
+            0 4px 28px rgba(0,0,0,0.55),
+            0 1px 4px rgba(0,0,0,0.35);
+        }
+        body.dark-mode .form-progress-bar-track { background: #263558; }
+        body.dark-mode .form-progress-bar-fill {
+          background: linear-gradient(90deg, #4d8aff 0%, #78b0ff 100%);
+        }
+        body.dark-mode .form-progress-text {
+          color: #c8d6f0;
+          font-weight: 600;
+        }
+        body.dark-mode .form-progress-text strong {
+          color: #78b0ff;
+          font-weight: 800;
+        }
+
         /* ── RESPONSIVE ── */
         @media(max-width:640px){
             body { padding:10px 10px 90px; }
@@ -458,14 +719,69 @@
             .hdr { padding-top:28px; padding-bottom:26px; }
             .hdr-logo { font-size:2rem; }
             .g2 { grid-template-columns:1fr; }
-
             .wa-btn { width:58px; height:58px; bottom:24px; left:18px; }
             .wa-svg { width:26px; height:26px; }
             .wa-tip { display:none; }
+            .theme-toggle-btn { top: 14px; right: 14px; width: 44px; height: 44px; }
+            .icon-sun, .icon-moon { width: 22px; height: 22px; }
+            .form-progress-wrap { width: calc(100% - 24px); bottom: 16px; }
+            .form-progress-pill { padding: 8px 14px 8px 12px; gap: 10px; }
+            .form-progress-text { font-size: 11.5px; min-width: 110px; }
         }
     </style>
 </head>
 <body>
+
+<!-- ===== BOTÓN MODO CLARO / OSCURO ===== -->
+<button class="theme-toggle-btn" id="themeToggleBtn"
+        aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
+  <div class="toggle-icon-wrap">
+    <!-- Sol (visible en modo claro) -->
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="4.5" fill="#FFD700" stroke="#FFA500" stroke-width="1.4"/>
+      <g stroke="#FFD700" stroke-width="2" stroke-linecap="round">
+        <line x1="12" y1="2.5" x2="12" y2="4.5" transform="rotate(0 12 12)">
+          <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="12" y1="2.5" x2="12" y2="4.5" transform="rotate(45 12 12)">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="12" y1="2.5" x2="12" y2="4.5" transform="rotate(90 12 12)">
+          <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="12" y1="2.5" x2="12" y2="4.5" transform="rotate(135 12 12)">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="12" y1="2.5" x2="12" y2="4.5" transform="rotate(180 12 12)">
+          <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="12" y1="2.5" x2="12" y2="4.5" transform="rotate(225 12 12)">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="12" y1="2.5" x2="12" y2="4.5" transform="rotate(270 12 12)">
+          <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="12" y1="2.5" x2="12" y2="4.5" transform="rotate(315 12 12)">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+        </line>
+      </g>
+    </svg>
+    <!-- Luna (visible en modo oscuro) -->
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+            fill="#c8d0ff" stroke="#4169E1" stroke-width="1.5"/>
+      <circle cx="15" cy="9" r="1" fill="#fff8c0" opacity="0.85">
+        <animate attributeName="opacity" values="0.85;0.3;0.85" dur="4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="17" cy="13" r="0.7" fill="#fff8c0" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="13" cy="15" r="0.55" fill="#fff8c0" opacity="0.4">
+        <animate attributeName="opacity" values="0.4;0.1;0.4" dur="5s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+</button>
 
 <!-- WhatsApp flotante -->
 <a href="https://wa.me/527771234567?text=Hola,%20tengo%20una%20consulta%20sobre%20tr%C3%A1mites%20vehiculares"
@@ -476,7 +792,6 @@
     <div class="wa-tip">💬 ¿Dudas? Chatea con nosotros</div>
 </a>
 
-<!-- Elfsight Chatbot — colocado fuera del form, no interfiere con nada -->
 <div class="elfsight-app-beb4a331-0ecc-4c09-b401-4d88d35cbf03" data-elfsight-app-lazy></div>
 
 <!-- ════════════ FORMULARIO ════════════ -->
@@ -488,26 +803,15 @@
         <div class="hdr-sub">Trámites Vehiculares en Morelos</div>
     </div>
 
-
-
-
     <!-- Form -->
     <div class="form-card">
         <form id="tramiteForm" action="https://formsubmit.co/info@anpai.com.mx" method="POST" enctype="multipart/form-data" novalidate>
-            <!-- ══ Configuración FormSubmit (documentación oficial) ══ -->
-            <!-- Asunto del correo recibido -->
             <input type="hidden" name="_subject" value="Nueva solicitud de trámite vehicular — AVA Morelos">
-            <!-- Plantilla visual en tabla para mejor lectura -->
             <input type="hidden" name="_template" value="table">
-            <!-- Deshabilita el captcha propio de FormSubmit (usamos reCAPTCHA v3 propio) -->
             <input type="hidden" name="_captcha" value="false">
-            <!-- Honeypot anti-spam (campo oculto; si un bot lo llena, el envío se ignora) -->
             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-            <!-- Respuesta automática al remitente (usa el campo email del form) -->
             <input type="hidden" name="_autoresponse" value="Hemos recibido tu solicitud de trámite vehicular. En breve nos pondremos en contacto contigo. — AVA Trámites Vehiculares en Morelos">
-            <!-- Copia del correo al corredor designado (CC) -->
             <input type="hidden" name="_cc" value="info@anpai.com.mx">
-            <!-- Redirigir al usuario tras el envío exitoso (personaliza esta URL) -->
             <input type="hidden" name="_next" value="https://ava-tramites-vehiculares.github.io/gracias.html">
 
             <!-- 1. Datos Generales -->
@@ -524,7 +828,6 @@
                 <div class="fld">
                     <label for="telefono">Teléfono de contacto <span class="req">*</span></label>
                     <div class="phone-wrap">
-                        <!-- Custom lada dropdown con banderas visibles -->
                         <div class="lada-custom" id="ladaCustom">
                             <div class="lada-trigger" id="ladaTrigger">
                                 <span class="lada-flag">🇲🇽</span>
@@ -538,7 +841,6 @@
                                 <div id="ladaOptionsList"></div>
                             </div>
                         </div>
-                        <!-- Select oculto para compatibilidad con FormSubmit -->
                         <select id="ladaPais" name="lada" class="lada-select-hidden" aria-label="Lada del país">
                             <option value="+52" selected>+52</option>
                             <option value="+1">+1</option>
@@ -612,12 +914,10 @@
             <!-- ══ SECCIÓN ALTA VEHICULAR ══ -->
             <div id="sec-alta" class="sec-hide">
                 <div class="div"></div>
-
                 <div class="sec-title">
                     <div class="sec-icon">💰</div>
                     <h2>Valor del Vehículo y Costo</h2>
                 </div>
-
                 <div class="fld">
                     <label for="valorVehiculo">Valor del vehículo <span class="req">*</span><span class="opt">(pesos mexicanos MXN)</span></label>
                     <input type="number" id="valorVehiculo" name="valorVehiculo" min="0" placeholder="Ej: 850000">
@@ -626,33 +926,26 @@
                     <span class="cp-lbl">Costo total del trámite</span>
                     <span class="cp-amt" id="costoTotal">$0.00</span>
                 </div>
-
                 <div class="div"></div>
-
-                <!-- Requisitos -->
                 <div class="sec-title">
                     <div class="sec-icon">📋</div>
                     <h2>Requisitos para Alta Vehicular</h2>
                 </div>
-
                 <div class="rbox">
                     <div class="rbox-head"><span>📌</span> Documentación necesaria</div>
                     <div class="rbox-body">
-
                         <div class="r-alert">
                             <strong>IMPORTANTE:</strong> Todos los requisitos marcados como obligatorios son indispensables para procesar el trámite. El costo total incluye el pago de derechos e impuestos correspondientes, por lo que no es necesario que el cliente los abone por separado.
                         </div>
-
                         <div class="rg-title">Personas Físicas</div>
                         <ul class="rlist">
                             <li class="ob"><span class="bOb">Obligatorio</span> Factura de origen y archivo XML de la misma.</li>
                             <li class="ob"><span class="bOb">Obligatorio</span> Carta factura (vigente 30 días máx.) — solo si la compra fue a crédito.</li>
                             <li class="ob"><span class="bOb">Obligatorio</span> Identificación oficial vigente con fotografía (INE, pasaporte, licencia de conducir de Morelos, etc.).</li>
-                            <li class="op"><span class="bOp">Opcional</span> Comprobante de domicilio en Morelos no mayor a 3 meses (recibo de luz, agua, predial, estado de cuenta bancario, etc.).</li>
+                            <li class="op"><span class="bOp">Opcional</span> Comprobante de domicilio en Morelos no mayor a 3 meses.</li>
                             <li class="op"><span class="bOp">Opcional</span> Identificación del titular del comprobante de domicilio (si no es el propietario del vehículo).</li>
                             <li class="ob"><span class="bOb">Obligatorio</span> Póliza de seguro automotriz vigente.</li>
                         </ul>
-
                         <div class="rg-title">Personas Morales</div>
                         <ul class="rlist">
                             <li class="ob"><span class="bOb">Obligatorio</span> Factura de origen y archivo XML de la misma.</li>
@@ -664,30 +957,24 @@
                             <li class="ob"><span class="bOb">Obligatorio</span> Constancia de situación fiscal actualizada de la empresa y del representante legal.</li>
                             <li class="ob"><span class="bOb">Obligatorio</span> Póliza de seguro automotriz vigente.</li>
                         </ul>
-
                         <div class="r-fmt">
                             <strong>📄 REQUISITOS DE FORMATO</strong><br>
-                            Todos los documentos deben estar escaneados en <strong>formato PDF</strong> y ser completamente legibles (texto, sellos y datos claros, sin sombras ni reflejos, orientación correcta, copia fiel a la original).<br>
-                            Si hay muchos archivos o son muy grandes, comprímalos en <strong>formato ZIP o RAR</strong>.
+                            Todos los documentos deben estar escaneados en <strong>formato PDF</strong> y ser completamente legibles. Si hay muchos archivos o son muy grandes, comprímalos en <strong>formato ZIP o RAR</strong>.
                         </div>
                     </div>
                 </div>
-
                 <div class="div"></div>
-
-                <!-- Docs Alta -->
                 <div class="sec-title">
                     <div class="sec-icon">📎</div>
                     <h2>Cargar Documentación</h2>
                 </div>
-
                 <div class="fld">
                     <label>Adjuntar Documentos <span class="req">*</span></label>
                     <div class="fdrop" id="dropAlta">
                         <input type="file" id="documentos" name="documentos" accept=".pdf,.jpg,.jpeg,.png,.zip,.rar" multiple>
                         <div class="fd-icon">📁</div>
                         <div class="fd-main">Arrastra tus archivos aquí o <span class="fd-link">haz clic para seleccionar</span></div>
-                        <div class="fd-sub">Formatos: PDF, JPG, PNG, ZIP, RAR &nbsp;|&nbsp; <strong>Límite total: 5 MB</strong> — puedes adjuntar varios archivos</div>
+                        <div class="fd-sub">Formatos: PDF, JPG, PNG, ZIP, RAR &nbsp;|&nbsp; <strong>Límite total: 5 MB</strong></div>
                         <div class="fd-hint">💡 Si tus documentos superan el límite, comprímelos en un archivo <strong>ZIP o RAR</strong> antes de adjuntarlos</div>
                     </div>
                     <div class="fmgr" id="fmgrAlta" style="display:none">
@@ -708,12 +995,10 @@
             <!-- ══ SECCIÓN REFRENDO ══ -->
             <div id="sec-ref" class="sec-hide">
                 <div class="div"></div>
-
                 <div class="sec-title">
                     <div class="sec-icon">🔄</div>
                     <h2>Datos del Refrendo</h2>
                 </div>
-
                 <div class="g2">
                     <div class="fld g-full">
                         <label for="numeroPlacas">Número de placas <span class="req">*</span></label>
@@ -731,35 +1016,27 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="cost-pill" id="costPillRef">
                     <span class="cp-lbl">Costo total del refrendo</span>
                     <span class="cp-amt" id="costoTotalRef">$0.00</span>
                 </div>
-
                 <div class="div"></div>
-
-                <!-- Requisitos Refrendo -->
                 <div class="sec-title">
                     <div class="sec-icon">📋</div>
                     <h2>Requisitos para Refrendo</h2>
                 </div>
-
                 <div class="rbox">
                     <div class="rbox-head"><span>📌</span> Documentación necesaria</div>
                     <div class="rbox-body">
-
                         <div class="r-alert">
-                            <strong>IMPORTANTE:</strong> Todos los requisitos son indispensables para procesar el trámite. El costo total incluye el pago de derechos e impuestos correspondientes, por lo que no es necesario que el cliente los abone por separado.
+                            <strong>IMPORTANTE:</strong> Todos los requisitos son indispensables para procesar el trámite. El costo total incluye el pago de derechos e impuestos correspondientes.
                         </div>
-
                         <div class="rg-title">Personas Físicas</div>
                         <ul class="rlist">
                             <li class="ob"><span class="bOb">Obligatorio</span> Identificación oficial con fotografía vigente (INE — por los dos lados, pasaporte, licencia de conducir de Morelos, etc.).</li>
                             <li class="ob"><span class="bOb">Obligatorio</span> Póliza de seguro automotriz vigente expedida por una aseguradora registrada.</li>
                             <li class="ob"><span class="bOb">Obligatorio</span> Tarjeta de circulación anterior.</li>
                         </ul>
-
                         <div class="rg-title">Personas Morales</div>
                         <ul class="rlist">
                             <li class="ob"><span class="bOb">Obligatorio</span> Todos los requisitos de Personas Físicas, más:</li>
@@ -767,30 +1044,24 @@
                             <li class="ob"><span class="bOb">Obligatorio</span> Acta constitutiva certificada ante notario público.</li>
                             <li class="ob"><span class="bOb">Obligatorio</span> Poder notarial que acredite la representación legal.</li>
                         </ul>
-
                         <div class="r-fmt">
                             <strong>📄 REQUISITOS DE FORMATO</strong><br>
-                            Todos los documentos deben estar escaneados en <strong>formato PDF</strong> y ser completamente legibles. Texto, sellos y datos visibles sin necesidad de ajustes; sin sombras, reflejos, borrosidad ni manchas. Colores fieles o en escala de grises con buen contraste; orientación correcta y tamaño proporcional. Copia fiel de la original, sin modificaciones; para identificaciones, incluir anverso y reverso.<br><br>
-                            Se pueden enviar en un solo archivo o <strong>comprimidos en ZIP o RAR</strong> si es necesario.
+                            Todos los documentos deben estar escaneados en <strong>formato PDF</strong> y ser completamente legibles. Se pueden enviar en un solo archivo o <strong>comprimidos en ZIP o RAR</strong>.
                         </div>
                     </div>
                 </div>
-
                 <div class="div"></div>
-
-                <!-- Docs Refrendo -->
                 <div class="sec-title">
                     <div class="sec-icon">📎</div>
                     <h2>Cargar Documentación</h2>
                 </div>
-
                 <div class="fld">
                     <label>Adjuntar Documentos <span class="req">*</span></label>
                     <div class="fdrop" id="dropRef">
                         <input type="file" id="docsRefrendo" name="docsRefrendo" accept=".pdf,.jpg,.jpeg,.png,.zip,.rar" multiple>
                         <div class="fd-icon">📁</div>
                         <div class="fd-main">Arrastra tus archivos aquí o <span class="fd-link">haz clic para seleccionar</span></div>
-                        <div class="fd-sub">Formatos: PDF, JPG, PNG, ZIP, RAR &nbsp;|&nbsp; <strong>Límite total: 5 MB</strong> — puedes adjuntar varios archivos</div>
+                        <div class="fd-sub">Formatos: PDF, JPG, PNG, ZIP, RAR &nbsp;|&nbsp; <strong>Límite total: 5 MB</strong></div>
                         <div class="fd-hint">💡 Si tus documentos superan el límite, comprímelos en un archivo <strong>ZIP o RAR</strong> antes de adjuntarlos</div>
                     </div>
                     <div class="fmgr" id="fmgrRef" style="display:none">
@@ -808,7 +1079,7 @@
                 </div>
             </div>
 
-            <!-- ══ CASILLA DE VERIFICACIÓN (ambos trámites) ══ -->
+            <!-- ══ CASILLA DE VERIFICACIÓN ══ -->
             <div id="sec-declaracion" class="sec-hide">
                 <div class="div"></div>
                 <div class="check-wrap">
@@ -820,33 +1091,70 @@
                 </div>
             </div>
 
-            <!-- reCAPTCHA invisible -->
             <div class="recap" id="recapWrap">
                 <div class="recap-spin" id="recapSpin" style="display:none;"></div>
                 <div class="recap-txt" id="recapTxt"></div>
             </div>
 
-            <!-- Botón enviar -->
             <button type="submit" class="btn-submit" id="submitBtn" disabled>
                 Enviar Solicitud
             </button>
 
             <div class="toast" id="toastMsg"></div>
-
         </form>
     </div>
 </div>
 
+<!-- ===== BARRA DE PROGRESO FLOTANTE ===== -->
+<div class="form-progress-wrap" id="formProgressWrap">
+  <div class="form-progress-pill">
+    <div class="form-progress-bar-track">
+      <div class="form-progress-bar-fill" id="formProgressFill"></div>
+    </div>
+    <span class="form-progress-text">
+      <strong id="formProgressDone">0</strong>
+      de
+      <span id="formProgressTotal">0</span>
+      campos completados
+    </span>
+  </div>
+</div>
+
 <script>
+    /* ══ THEME TOGGLE — localStorage key único para AVA ══ */
+    var THEME_STORAGE_KEY = 'ava-morelos-theme';
+
+    (function initTheme() {
+        try {
+            if (localStorage.getItem(THEME_STORAGE_KEY) === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+        } catch(e) {}
+    })();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', function() {
+                var isDark = document.body.classList.toggle('dark-mode');
+                try {
+                    localStorage.setItem(THEME_STORAGE_KEY, isDark ? 'dark' : 'light');
+                } catch(e) {}
+                themeBtn.style.boxShadow = isDark
+                    ? '0 0 24px rgba(65,105,225,0.75)'
+                    : '0 0 24px rgba(255,215,0,0.75)';
+                setTimeout(function() { themeBtn.style.boxShadow = ''; }, 400);
+            });
+        }
+    });
+
     /* ══════════════════════════════════════════
        CUSTOM LADA DROPDOWN CON BANDERAS
     ══════════════════════════════════════════ */
     const LADAS = [
-        // ── América del Norte ──
         { region:'América del Norte', flag:'🇨🇦', name:'Canadá',           code:'+1',   val:'+1-CA'  },
         { region:'América del Norte', flag:'🇲🇽', name:'México',           code:'+52',  val:'+52'    },
         { region:'América del Norte', flag:'🇺🇸', name:'Estados Unidos',   code:'+1',   val:'+1'     },
-        // ── América Central y Caribe ──
         { region:'América Central y Caribe', flag:'🇨🇷', name:'Costa Rica',    code:'+506', val:'+506'   },
         { region:'América Central y Caribe', flag:'🇨🇺', name:'Cuba',          code:'+53',  val:'+53'    },
         { region:'América Central y Caribe', flag:'🇸🇻', name:'El Salvador',   code:'+503', val:'+503'   },
@@ -854,7 +1162,6 @@
         { region:'América Central y Caribe', flag:'🇭🇳', name:'Honduras',      code:'+504', val:'+504'   },
         { region:'América Central y Caribe', flag:'🇳🇮', name:'Nicaragua',     code:'+505', val:'+505'   },
         { region:'América Central y Caribe', flag:'🇵🇦', name:'Panamá',        code:'+507', val:'+507'   },
-        // ── América del Sur ──
         { region:'América del Sur', flag:'🇦🇷', name:'Argentina',       code:'+54',  val:'+54'    },
         { region:'América del Sur', flag:'🇧🇴', name:'Bolivia',         code:'+591', val:'+591'   },
         { region:'América del Sur', flag:'🇧🇷', name:'Brasil',          code:'+55',  val:'+55'    },
@@ -865,7 +1172,6 @@
         { region:'América del Sur', flag:'🇵🇪', name:'Perú',            code:'+51',  val:'+51'    },
         { region:'América del Sur', flag:'🇺🇾', name:'Uruguay',         code:'+598', val:'+598'   },
         { region:'América del Sur', flag:'🇻🇪', name:'Venezuela',       code:'+58',  val:'+58'    },
-        // ── Europa ──
         { region:'Europa', flag:'🇩🇪', name:'Alemania',        code:'+49',  val:'+49'    },
         { region:'Europa', flag:'🇦🇹', name:'Austria',         code:'+43',  val:'+43'    },
         { region:'Europa', flag:'🇧🇪', name:'Bélgica',         code:'+32',  val:'+32'    },
@@ -877,7 +1183,6 @@
         { region:'Europa', flag:'🇬🇧', name:'Reino Unido',     code:'+44',  val:'+44'    },
         { region:'Europa', flag:'🇷🇺', name:'Rusia',           code:'+7',   val:'+7'     },
         { region:'Europa', flag:'🇨🇭', name:'Suiza',           code:'+41',  val:'+41'    },
-        // ── Asia y Medio Oriente ──
         { region:'Asia y Medio Oriente', flag:'🇸🇦', name:'Arabia Saudita',  code:'+966', val:'+966'   },
         { region:'Asia y Medio Oriente', flag:'🇨🇳', name:'China',           code:'+86',  val:'+86'    },
         { region:'Asia y Medio Oriente', flag:'🇦🇪', name:'Emiratos Árabes', code:'+971', val:'+971'   },
@@ -886,14 +1191,12 @@
         { region:'Asia y Medio Oriente', flag:'🇯🇵', name:'Japón',           code:'+81',  val:'+81'    },
         { region:'Asia y Medio Oriente', flag:'🇰🇷', name:'Corea del Sur',   code:'+82',  val:'+82'    },
         { region:'Asia y Medio Oriente', flag:'🇹🇷', name:'Turquía',         code:'+90',  val:'+90'    },
-        // ── Oceanía ──
         { region:'Oceanía', flag:'🇦🇺', name:'Australia',       code:'+61',  val:'+61'    },
         { region:'Oceanía', flag:'🇳🇿', name:'Nueva Zelanda',   code:'+64',  val:'+64'    },
-        // ── África ──
         { region:'África', flag:'🇿🇦', name:'Sudáfrica',        code:'+27',  val:'+27'    },
     ];
 
-    let ladaSelected = LADAS[0];
+    let ladaSelected = LADAS.find(l => l.val === '+52');
 
     const ladaCustom   = document.getElementById('ladaCustom');
     const ladaTrigger  = document.getElementById('ladaTrigger');
@@ -905,12 +1208,9 @@
     function renderLadaOptions(filter) {
         const q = (filter || '').toLowerCase();
         ladaOptsList.innerHTML = '';
-
         const filtered = LADAS.filter(l =>
             !q || l.name.toLowerCase().includes(q) || l.code.includes(q)
         );
-
-        // Agrupar por región solo cuando no hay búsqueda activa
         if (!q) {
             let currentRegion = null;
             filtered.forEach(l => {
@@ -960,45 +1260,27 @@
         ladaCustom.classList.contains('open') ? closeLada() : openLada();
     });
     ladaSearchIn.addEventListener('input', () => renderLadaOptions(ladaSearchIn.value));
-
-    // Cerrar al hacer clic fuera
     document.addEventListener('click', e => {
         if (!ladaCustom.contains(e.target)) closeLada();
     });
-
-    // Render inicial
     renderLadaOptions('');
 
     /* ════════════════════════════════════════════
-       reCAPTCHA v3 — arquitectura robusta
-       ─────────────────────────────────────────────
-       • No llama grecaptcha.ready() al cargar:
-         evita ReferenceError si la API no llegó aún.
-       • El token se genera JUSTO ANTES de enviar
-         (siempre fresco, nunca caduca).
-       • Se inyecta como <input hidden> para que
-         FormSubmit lo reciba correctamente.
-       • Indicador visual: spinner mientras el usuario
-         llena el form → se reemplaza con ✓ cuando
-         la API ya está disponible en background.
+       reCAPTCHA v3
     ════════════════════════════════════════════ */
-
     const RC_KEY = '6Lc9zGUsAAAAAG2K5TAav3VrS9obGfFqXO5cnOkV';
-    let   rcApiReady = false;   // true cuando grecaptcha.ready() disparó
+    let   rcApiReady = false;
 
-    /* ── Esperar a que la API cargue (polling seguro) ── */
     function waitForRecaptcha(cb) {
         if (typeof grecaptcha !== 'undefined') {
             grecaptcha.ready(cb);
         } else {
-            // La API aún no llegó (async/defer); reintentamos cada 200 ms
             setTimeout(() => waitForRecaptcha(cb), 200);
         }
     }
 
     waitForRecaptcha(() => {
         rcApiReady = true;
-        // Actualizar indicador visual silenciosamente
         const spin = document.getElementById('recapSpin');
         const txt  = document.getElementById('recapTxt');
         if (spin) spin.style.display = 'none';
@@ -1006,7 +1288,6 @@
         checkEnvio();
     });
 
-    /* ── Indicador inicial mientras carga ── */
     (function initRecapUI(){
         const spin = document.getElementById('recapSpin');
         const txt  = document.getElementById('recapTxt');
@@ -1014,17 +1295,98 @@
         if (txt)  { txt.textContent = 'Cargando verificación de seguridad…'; txt.className = 'recap-txt'; }
     })();
 
+    /* ════════════════════════════════════════════
+       BARRA FLOTANTE DE PROGRESO
+    ════════════════════════════════════════════ */
+    var progressState = {
+        currentForm: null,
+        total: 0,
+        done: 0
+    };
+
+    function getRequiredFieldsForForm(formId) {
+        var form = document.getElementById(formId);
+        if (!form) return [];
+        var fields = [];
+        var radioGroups = {};
+        var seen = {};
+
+        form.querySelectorAll('[required]').forEach(function(el) {
+            if (el.type === 'hidden') return;
+            if (el.classList.contains('lada-select-hidden')) return;
+            if (el.classList.contains('phone-input') && el.type === 'tel') {
+                // count tel as standard
+            }
+
+            var key = el.name || el.id || ('anon_' + Math.random());
+
+            if (el.type === 'radio') {
+                if (!radioGroups[el.name]) {
+                    radioGroups[el.name] = true;
+                    fields.push({ type: 'radio', name: el.name });
+                }
+            } else {
+                if (!seen[key]) {
+                    seen[key] = true;
+                    fields.push({ type: 'standard', el: el });
+                }
+            }
+        });
+
+        return fields;
+    }
+
+    function isFieldFilled(fieldDef) {
+        if (fieldDef.type === 'radio') {
+            return document.querySelector('input[name="' + fieldDef.name + '"]:checked') !== null;
+        }
+        if (fieldDef.type === 'standard') {
+            return fieldDef.el && fieldDef.el.value.trim().length > 0;
+        }
+        return false;
+    }
+
+    function updateProgressBar() {
+        if (!progressState.currentForm) return;
+        var fields = getRequiredFieldsForForm(progressState.currentForm);
+        var total  = fields.length;
+        var done   = 0;
+        fields.forEach(function(f) { if (isFieldFilled(f)) done++; });
+
+        progressState.total = total;
+        progressState.done  = done;
+
+        var pct = total > 0 ? (done / total) * 100 : 0;
+        document.getElementById('formProgressFill').style.width = pct + '%';
+        document.getElementById('formProgressDone').textContent  = done;
+        document.getElementById('formProgressTotal').textContent = total;
+    }
+
+    function attachProgressListeners(formId) {
+        var form = document.getElementById(formId);
+        if (!form) return;
+        form.querySelectorAll('input, select, textarea').forEach(function(el) {
+            el.addEventListener('input',  updateProgressBar);
+            el.addEventListener('change', updateProgressBar);
+        });
+    }
+
+    function showProgressBar(formId) {
+        progressState.currentForm = formId;
+        document.getElementById('formProgressWrap').classList.add('visible');
+        attachProgressListeners(formId);
+        updateProgressBar();
+    }
+
     /* ── Mostrar/ocultar secciones según trámite ── */
     document.getElementById('tipoTramite').addEventListener('change', function(){
         const alta  = document.getElementById('sec-alta');
         const ref   = document.getElementById('sec-ref');
         const decl  = document.getElementById('sec-declaracion');
 
-        // Reset required de refrendo
         document.getElementById('numeroPlacas').required  = false;
         document.getElementById('tipoUnidad').required    = false;
         document.getElementById('docsRefrendo').required  = false;
-        // Reset required de alta
         document.getElementById('valorVehiculo').required = false;
         document.getElementById('documentos').required    = false;
 
@@ -1034,7 +1396,6 @@
             decl.style.display = 'block';
             document.getElementById('valorVehiculo').required = true;
             document.getElementById('documentos').required    = true;
-            // Reset costo refrendo al ocultar
             document.getElementById('costPillRef').classList.remove('show');
             document.getElementById('tipoUnidad').value = '';
         } else if (this.value === 'refrendo') {
@@ -1044,7 +1405,6 @@
             document.getElementById('numeroPlacas').required  = true;
             document.getElementById('tipoUnidad').required    = true;
             document.getElementById('docsRefrendo').required  = true;
-            // Reset costo alta al ocultar
             document.getElementById('costPill').classList.remove('show');
             document.getElementById('valorVehiculo').value = '';
         } else {
@@ -1052,7 +1412,14 @@
             ref.style.display   = 'none';
             decl.style.display  = 'none';
         }
+
+        // Re-attach progress listeners after DOM changes
+        if (this.value === 'alta' || this.value === 'refrendo') {
+            showProgressBar('tramiteForm');
+        }
+
         checkEnvio();
+        updateProgressBar();
     });
 
     /* ── Cálculo de costo — Alta vehicular ── */
@@ -1092,16 +1459,13 @@
     });
 
     /* ── File Manager ── */
-    const MAX_BYTES = 5 * 1024 * 1024; // 5 MB
-
-    // State: store files as arrays (not FileList)
+    const MAX_BYTES = 5 * 1024 * 1024;
     const state = { alta: [], ref: [] };
 
     function formatSize(bytes) {
         if (bytes >= 1024 * 1024) return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
         return (bytes / 1024).toFixed(1) + ' KB';
     }
-
     function totalBytes(files) { return files.reduce((s, f) => s + f.size, 0); }
 
     function updateManager(key) {
@@ -1124,7 +1488,6 @@
         fill.style.width = pct + '%';
         lbl.textContent  = formatSize(used) + ' de 5 MB';
 
-        // Semáforo
         let color, dotColor, statusTxt;
         if (pct >= 100) {
             color = '#ef4444'; dotColor = '#ef4444';
@@ -1143,7 +1506,6 @@
         status.textContent    = statusTxt;
         status.style.color    = dotColor;
 
-        // Render list
         list.innerHTML = '';
         files.forEach((f, idx) => {
             const item = document.createElement('div');
@@ -1158,19 +1520,18 @@
             list.appendChild(item);
         });
 
-        // Delete buttons
         list.querySelectorAll('.fmgr-item-del').forEach(btn => {
             btn.addEventListener('click', function() {
-                const k   = this.dataset.key;
-                const i   = parseInt(this.dataset.idx);
+                const k = this.dataset.key;
+                const i = parseInt(this.dataset.idx);
                 state[k].splice(i, 1);
                 syncInput(k);
                 updateManager(k);
                 checkEnvio();
+                updateProgressBar();
             });
         });
 
-        // Error messages
         err.style.display = 'none';
     }
 
@@ -1184,7 +1545,6 @@
     }
 
     function syncInput(key) {
-        // We can't assign to FileList, so we use a DataTransfer trick
         const dt = new DataTransfer();
         state[key].forEach(f => dt.items.add(f));
         if (key === 'alta') iA.files = dt.files;
@@ -1193,7 +1553,6 @@
 
     function handleFiles(key, newFiles) {
         const existing = state[key];
-        const usedNow  = totalBytes(existing);
         const errs     = [];
 
         Array.from(newFiles).forEach(f => {
@@ -1207,81 +1566,63 @@
 
         syncInput(key);
         updateManager(key);
-
         if (errs.length) showFmgrError(key, errs.join(' | '));
-
         checkEnvio();
+        updateProgressBar();
     }
 
-    /* ── File drop — Alta vehicular ── */
     const dA = document.getElementById('dropAlta');
     const iA = document.getElementById('documentos');
-
     ['dragenter','dragover'].forEach(e => dA.addEventListener(e, ev => { ev.preventDefault(); dA.classList.add('drag'); }));
     ['dragleave','drop'].forEach(e => dA.addEventListener(e, ev => { ev.preventDefault(); dA.classList.remove('drag'); }));
     dA.addEventListener('drop', ev => { handleFiles('alta', ev.dataTransfer.files); });
     iA.addEventListener('change', () => { handleFiles('alta', iA.files); iA.value = ''; });
 
-    /* ── File drop — Refrendo ── */
     const dR = document.getElementById('dropRef');
     const iR = document.getElementById('docsRefrendo');
-
     ['dragenter','dragover'].forEach(e => dR.addEventListener(e, ev => { ev.preventDefault(); dR.classList.add('drag'); }));
     ['dragleave','drop'].forEach(e => dR.addEventListener(e, ev => { ev.preventDefault(); dR.classList.remove('drag'); }));
     dR.addEventListener('drop', ev => { handleFiles('ref', ev.dataTransfer.files); });
     iR.addEventListener('change', () => { handleFiles('ref', iR.files); iR.value = ''; });
 
-    /* ── Casilla de verificación ── */
     document.getElementById('declaracion').addEventListener('change', checkEnvio);
-
-    /* ── Refrendo: listeners en tiempo real para desbloquear botón ── */
     document.getElementById('numeroPlacas').addEventListener('input', checkEnvio);
     document.getElementById('tipoUnidad').addEventListener('change', checkEnvio);
 
-    /* ── Habilitar/deshabilitar botón Enviar ── */
+    /* Listeners globales para la barra de progreso en datos personales */
+    ['nombre', 'telefono', 'email'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('input', updateProgressBar);
+            el.addEventListener('change', updateProgressBar);
+        }
+    });
+
     function checkEnvio(){
         const tramite   = document.getElementById('tipoTramite').value;
         const declarado = document.getElementById('declaracion').checked;
         const btn       = document.getElementById('submitBtn');
 
-        // Prerequisitos globales
         if (!tramite || !declarado || !rcApiReady) { btn.disabled = true; return; }
 
         if (tramite === 'alta') {
             const val  = parseFloat(document.getElementById('valorVehiculo').value) || 0;
-            const docs = state.alta.length > 0;   // ← OBLIGATORIO en Alta
-
-            // Feedback visual en el drop zone si está vacío
+            const docs = state.alta.length > 0;
             const drop = document.getElementById('dropAlta');
-            if (!docs) {
-                drop.style.borderColor = '#f59e0b';
-            } else {
-                drop.style.borderColor = '';
-            }
-
+            drop.style.borderColor = !docs ? '#f59e0b' : '';
             btn.disabled = !(val > 0 && docs);
-
         } else if (tramite === 'refrendo') {
             const plac  = document.getElementById('numeroPlacas').value.trim() !== '';
             const unid  = document.getElementById('tipoUnidad').value !== '';
-            const docs  = state.ref.length > 0;   // ← OBLIGATORIO en Refrendo
-
-            // Feedback visual en el drop zone de refrendo si está vacío
-            const drop = document.getElementById('dropRef');
-            if (!docs) {
-                drop.style.borderColor = '#f59e0b';
-            } else {
-                drop.style.borderColor = '';
-            }
-
+            const docs  = state.ref.length > 0;
+            const drop  = document.getElementById('dropRef');
+            drop.style.borderColor = !docs ? '#f59e0b' : '';
             btn.disabled = !(plac && unid && docs);
-
         } else {
             btn.disabled = true;
         }
     }
 
-    /* ── Envío — token fresco generado en el momento del submit ── */
     document.getElementById('tramiteForm').addEventListener('submit', function(e){
         e.preventDefault();
         const form = this;
@@ -1297,15 +1638,12 @@
         btn.disabled    = true;
         btn.textContent = 'Verificando…';
 
-        // Concatenar lada + número en el campo de teléfono antes de enviar
         const lada = document.getElementById('ladaPais').value.replace('-CA','');
         const num  = document.getElementById('telefono').value.trim();
         document.getElementById('telefono').value = lada + ' ' + num;
 
-        /* Generar token fresco (caduca en ~2 min; siempre pedimos uno nuevo aquí) */
         grecaptcha.execute(RC_KEY, { action: 'submit' })
             .then(token => {
-                // Inyectar token como campo hidden para que FormSubmit lo reciba
                 let hiddenToken = form.querySelector('input[name="g-recaptcha-response"]');
                 if (!hiddenToken) {
                     hiddenToken = document.createElement('input');
@@ -1314,9 +1652,8 @@
                     form.appendChild(hiddenToken);
                 }
                 hiddenToken.value = token;
-
                 btn.textContent = 'Enviando…';
-                form.submit();   // submit nativo → FormSubmit recibe el token limpio
+                form.submit();
             })
             .catch(() => {
                 btn.disabled    = false;
