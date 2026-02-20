@@ -619,62 +619,14 @@
            biselado que se funde con el color principal del botón
         ───────────────────────────────────────────────────────── */
 
-        /* Botón "Iniciar Trámite" (azul marino oscuro) */
+        /* Botón "Iniciar Trámite" — sin contorno en dark mode */
         body.dark-mode .tramite-float {
-            /* Borde transparente: ya no corta con blanco */
-            border: 4px solid transparent;
-            background-clip: padding-box;
-            box-shadow:
-                /* Anillo exterior biselado: fondo dark que se funde con el botón */
-                0 0 0 4px #091830,
-                /* Highlight interno: arista superior-izquierda más luminosa */
-                inset 0 2px 0 rgba(60, 110, 175, 0.60),
-                inset 2px 0 0 rgba(45, 85, 145, 0.40),
-                /* Sombra interna: arista inferior-derecha más oscura */
-                inset 0 -2px 0 rgba(4, 10, 24, 0.75),
-                inset -2px 0 0 rgba(4, 10, 24, 0.55),
-                /* Sombra exterior */
-                0 10px 30px rgba(10, 31, 68, 0.60),
-                0 4px 12px rgba(10, 31, 68, 0.40);
-        }
-        body.dark-mode .tramite-float:hover {
-            box-shadow:
-                0 0 0 4px #091830,
-                inset 0 2px 0 rgba(60, 110, 175, 0.60),
-                inset 2px 0 0 rgba(45, 85, 145, 0.40),
-                inset 0 -2px 0 rgba(4, 10, 24, 0.75),
-                inset -2px 0 0 rgba(4, 10, 24, 0.55),
-                0 20px 44px rgba(10, 31, 68, 0.70),
-                0 8px 20px rgba(10, 31, 68, 0.50);
+            border: none;
         }
 
-        /* Botón WhatsApp (verde) */
+        /* Botón WhatsApp — sin contorno en dark mode */
         body.dark-mode .wa-btn {
-            /* Borde transparente: ya no corta con blanco */
-            border: 4px solid transparent;
-            background-clip: padding-box;
-            box-shadow:
-                /* Anillo exterior biselado: verde muy oscuro que se funde */
-                0 0 0 4px #0a2115,
-                /* Highlight interno: arista superior-izquierda verde claro */
-                inset 0 2px 0 rgba(55, 195, 110, 0.62),
-                inset 2px 0 0 rgba(40, 165, 85, 0.42),
-                /* Sombra interna: arista inferior-derecha verde muy oscuro */
-                inset 0 -2px 0 rgba(4, 22, 10, 0.78),
-                inset -2px 0 0 rgba(4, 22, 10, 0.58),
-                /* Sombra exterior */
-                0 10px 30px rgba(18, 140, 126, 0.35),
-                0 4px 12px rgba(18, 140, 126, 0.20);
-        }
-        body.dark-mode .wa-btn:hover {
-            box-shadow:
-                0 0 0 4px #0a2115,
-                inset 0 2px 0 rgba(55, 195, 110, 0.62),
-                inset 2px 0 0 rgba(40, 165, 85, 0.42),
-                inset 0 -2px 0 rgba(4, 22, 10, 0.78),
-                inset -2px 0 0 rgba(4, 22, 10, 0.58),
-                0 20px 44px rgba(37, 211, 102, 0.40),
-                0 8px 20px rgba(18, 140, 126, 0.30);
+            border: none;
         }
 
         /* Tooltip en dark mode */
