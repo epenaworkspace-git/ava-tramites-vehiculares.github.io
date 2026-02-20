@@ -613,14 +613,76 @@
         body.dark-mode .toast.ok  { background: #052e16; color: #86efac; border-color: #166534; }
         body.dark-mode .toast.err { background: #2d0a0a; color: #fca5a5; border-color: #7f1d1d; }
 
-        /* Dark mode para botón de trámite */
+        /* ─────────────────────────────────────────────────────────
+           DARK MODE — BOTONES FLOTANTES: BISEL MONOCROMÁTICO
+           El contorno blanco desaparece y se convierte en un
+           biselado que se funde con el color principal del botón
+        ───────────────────────────────────────────────────────── */
+
+        /* Botón "Iniciar Trámite" (azul marino oscuro) */
         body.dark-mode .tramite-float {
-            border: 4px solid #1a202c;
+            /* Borde transparente: ya no corta con blanco */
+            border: 4px solid transparent;
+            background-clip: padding-box;
+            box-shadow:
+                /* Anillo exterior biselado: fondo dark que se funde con el botón */
+                0 0 0 4px #091830,
+                /* Highlight interno: arista superior-izquierda más luminosa */
+                inset 0 2px 0 rgba(60, 110, 175, 0.60),
+                inset 2px 0 0 rgba(45, 85, 145, 0.40),
+                /* Sombra interna: arista inferior-derecha más oscura */
+                inset 0 -2px 0 rgba(4, 10, 24, 0.75),
+                inset -2px 0 0 rgba(4, 10, 24, 0.55),
+                /* Sombra exterior */
+                0 10px 30px rgba(10, 31, 68, 0.60),
+                0 4px 12px rgba(10, 31, 68, 0.40);
         }
+        body.dark-mode .tramite-float:hover {
+            box-shadow:
+                0 0 0 4px #091830,
+                inset 0 2px 0 rgba(60, 110, 175, 0.60),
+                inset 2px 0 0 rgba(45, 85, 145, 0.40),
+                inset 0 -2px 0 rgba(4, 10, 24, 0.75),
+                inset -2px 0 0 rgba(4, 10, 24, 0.55),
+                0 20px 44px rgba(10, 31, 68, 0.70),
+                0 8px 20px rgba(10, 31, 68, 0.50);
+        }
+
+        /* Botón WhatsApp (verde) */
+        body.dark-mode .wa-btn {
+            /* Borde transparente: ya no corta con blanco */
+            border: 4px solid transparent;
+            background-clip: padding-box;
+            box-shadow:
+                /* Anillo exterior biselado: verde muy oscuro que se funde */
+                0 0 0 4px #0a2115,
+                /* Highlight interno: arista superior-izquierda verde claro */
+                inset 0 2px 0 rgba(55, 195, 110, 0.62),
+                inset 2px 0 0 rgba(40, 165, 85, 0.42),
+                /* Sombra interna: arista inferior-derecha verde muy oscuro */
+                inset 0 -2px 0 rgba(4, 22, 10, 0.78),
+                inset -2px 0 0 rgba(4, 22, 10, 0.58),
+                /* Sombra exterior */
+                0 10px 30px rgba(18, 140, 126, 0.35),
+                0 4px 12px rgba(18, 140, 126, 0.20);
+        }
+        body.dark-mode .wa-btn:hover {
+            box-shadow:
+                0 0 0 4px #0a2115,
+                inset 0 2px 0 rgba(55, 195, 110, 0.62),
+                inset 2px 0 0 rgba(40, 165, 85, 0.42),
+                inset 0 -2px 0 rgba(4, 22, 10, 0.78),
+                inset -2px 0 0 rgba(4, 22, 10, 0.58),
+                0 20px 44px rgba(37, 211, 102, 0.40),
+                0 8px 20px rgba(18, 140, 126, 0.30);
+        }
+
+        /* Tooltip en dark mode */
         body.dark-mode .tramite-tooltip {
-            background: rgba(26, 32, 44, 0.95);
-            color: white;
-            border: 1px solid #2d3748;
+            background: rgba(14, 24, 44, 0.96);
+            color: #c8d8f0;
+            border: 1px solid #243660;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.40);
         }
 
         /* ===================== FLOATING PROGRESS BAR ===================== */
@@ -827,7 +889,6 @@
             .form-progress-wrap { width: calc(100% - 24px); bottom: 16px; }
             .form-progress-pill { padding: 8px 14px 8px 12px; gap: 10px; }
             .form-progress-text { font-size: 11.5px; min-width: 110px; }
-            /* Responsive tramite btn */
             .tramite-float {
                 width: 65px;
                 height: 65px;
@@ -862,7 +923,6 @@
 <button class="theme-toggle-btn" id="themeToggleBtn"
         aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
   <div class="toggle-icon-wrap">
-    <!-- Sol (visible en modo claro) -->
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="12" cy="12" r="4.5" fill="#FFD700" stroke="#FFA500" stroke-width="1.4"/>
       <g stroke="#FFD700" stroke-width="2" stroke-linecap="round">
@@ -892,7 +952,6 @@
         </line>
       </g>
     </svg>
-    <!-- Luna (visible en modo oscuro) -->
     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
             fill="#c8d0ff" stroke="#4169E1" stroke-width="1.5"/>
@@ -1247,9 +1306,8 @@
 </div>
 
 <script>
-    /* ══ THEME TOGGLE — localStorage key único para AVA ══ */
+    /* ══ THEME TOGGLE ══ */
     var THEME_STORAGE_KEY = 'ava-morelos-theme';
-
     (function initTheme() {
         try {
             if (localStorage.getItem(THEME_STORAGE_KEY) === 'dark') {
@@ -1274,9 +1332,7 @@
         }
     });
 
-    /* ══════════════════════════════════════════
-       CUSTOM LADA DROPDOWN CON BANDERAS
-    ══════════════════════════════════════════ */
+    /* ══ CUSTOM LADA DROPDOWN ══ */
     const LADAS = [
         { region:'América del Norte', flag:'🇨🇦', name:'Canadá',           code:'+1',   val:'+1-CA'  },
         { region:'América del Norte', flag:'🇲🇽', name:'México',           code:'+52',  val:'+52'    },
@@ -1391,9 +1447,7 @@
     });
     renderLadaOptions('');
 
-    /* ════════════════════════════════════════════
-       reCAPTCHA v3
-    ════════════════════════════════════════════ */
+    /* ══ reCAPTCHA v3 ══ */
     const RC_KEY = '6Lc9zGUsAAAAAG2K5TAav3VrS9obGfFqXO5cnOkV';
     let   rcApiReady = false;
 
@@ -1421,14 +1475,8 @@
         if (txt)  { txt.textContent = 'Cargando verificación de seguridad…'; txt.className = 'recap-txt'; }
     })();
 
-    /* ════════════════════════════════════════════
-       BARRA FLOTANTE DE PROGRESO
-    ════════════════════════════════════════════ */
-    var progressState = {
-        currentForm: null,
-        total: 0,
-        done: 0
-    };
+    /* ══ BARRA FLOTANTE DE PROGRESO ══ */
+    var progressState = { currentForm: null, total: 0, done: 0 };
 
     function getRequiredFieldsForForm(formId) {
         var form = document.getElementById(formId);
@@ -1436,16 +1484,10 @@
         var fields = [];
         var radioGroups = {};
         var seen = {};
-
         form.querySelectorAll('[required]').forEach(function(el) {
             if (el.type === 'hidden') return;
             if (el.classList.contains('lada-select-hidden')) return;
-            if (el.classList.contains('phone-input') && el.type === 'tel') {
-                // count tel as standard
-            }
-
             var key = el.name || el.id || ('anon_' + Math.random());
-
             if (el.type === 'radio') {
                 if (!radioGroups[el.name]) {
                     radioGroups[el.name] = true;
@@ -1458,7 +1500,6 @@
                 }
             }
         });
-
         return fields;
     }
 
@@ -1478,10 +1519,8 @@
         var total  = fields.length;
         var done   = 0;
         fields.forEach(function(f) { if (isFieldFilled(f)) done++; });
-
         progressState.total = total;
         progressState.done  = done;
-
         var pct = total > 0 ? (done / total) * 100 : 0;
         document.getElementById('formProgressFill').style.width = pct + '%';
         document.getElementById('formProgressDone').textContent  = done;
@@ -1539,7 +1578,6 @@
             decl.style.display  = 'none';
         }
 
-        // Re-attach progress listeners after DOM changes
         if (this.value === 'alta' || this.value === 'refrendo') {
             showProgressBar('tramiteForm');
         }
@@ -1554,11 +1592,9 @@
         const pill = document.getElementById('costPill');
         const amt  = document.getElementById('costoTotal');
         let   c    = 0;
-
         if      (v > 0 && v <= 990000)        c = 6000;
         else if (v >= 1000000 && v <= 1950000) c = 6500;
         else if (v >= 2000000)                 c = 7500;
-
         if (c > 0) {
             amt.textContent = '$' + c.toLocaleString('es-MX', { minimumFractionDigits:2 });
             pill.classList.add('show');
@@ -1574,7 +1610,6 @@
         const amt  = document.getElementById('costoTotalRef');
         const opt  = this.options[this.selectedIndex];
         const c    = parseFloat(opt.dataset.costo) || 0;
-
         if (c > 0) {
             amt.textContent = '$' + c.toLocaleString('es-MX', { minimumFractionDigits:2 });
             pill.classList.add('show');
@@ -1680,7 +1715,6 @@
     function handleFiles(key, newFiles) {
         const existing = state[key];
         const errs     = [];
-
         Array.from(newFiles).forEach(f => {
             const projectedTotal = totalBytes(existing) + f.size;
             if (projectedTotal > MAX_BYTES) {
@@ -1689,7 +1723,6 @@
                 existing.push(f);
             }
         });
-
         syncInput(key);
         updateManager(key);
         if (errs.length) showFmgrError(key, errs.join(' | '));
@@ -1715,7 +1748,6 @@
     document.getElementById('numeroPlacas').addEventListener('input', checkEnvio);
     document.getElementById('tipoUnidad').addEventListener('change', checkEnvio);
 
-    /* Listeners globales para la barra de progreso en datos personales */
     ['nombre', 'telefono', 'email'].forEach(function(id) {
         var el = document.getElementById(id);
         if (el) {
