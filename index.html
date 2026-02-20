@@ -619,14 +619,20 @@
            biselado que se funde con el color principal del botón
         ───────────────────────────────────────────────────────── */
 
-        /* Botón "Iniciar Trámite" — sin contorno en dark mode */
+        /* Botón "Iniciar Trámite" — bisel clásico en dark mode */
         body.dark-mode .tramite-float {
-            border: none;
+            border-top:    4px solid #3a6ab5;   /* highlight arriba */
+            border-left:   4px solid #2d5490;   /* highlight izquierda */
+            border-bottom: 4px solid #040c1c;   /* sombra abajo */
+            border-right:  4px solid #08132a;   /* sombra derecha */
         }
 
-        /* Botón WhatsApp — sin contorno en dark mode */
+        /* Botón WhatsApp — bisel clásico en dark mode */
         body.dark-mode .wa-btn {
-            border: none;
+            border-top:    4px solid #4dd98a;   /* highlight arriba */
+            border-left:   4px solid #30b868;   /* highlight izquierda */
+            border-bottom: 4px solid #053d1a;   /* sombra abajo */
+            border-right:  4px solid #075022;   /* sombra derecha */
         }
 
         /* Tooltip en dark mode */
