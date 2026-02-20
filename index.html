@@ -613,6 +613,16 @@
         body.dark-mode .toast.ok  { background: #052e16; color: #86efac; border-color: #166534; }
         body.dark-mode .toast.err { background: #2d0a0a; color: #fca5a5; border-color: #7f1d1d; }
 
+        /* Dark mode para botón de trámite */
+        body.dark-mode .tramite-float {
+            border: 4px solid #1a202c;
+        }
+        body.dark-mode .tramite-tooltip {
+            background: rgba(26, 32, 44, 0.95);
+            color: white;
+            border: 1px solid #2d3748;
+        }
+
         /* ===================== FLOATING PROGRESS BAR ===================== */
         .form-progress-wrap {
           position: fixed;
@@ -712,6 +722,96 @@
           font-weight: 800;
         }
 
+        /* ===================== BOTÓN FLOTANTE — INICIAR TRÁMITE ===================== */
+        .tramite-float {
+            position: fixed;
+            top: 50px;
+            left: 50px;
+            background: linear-gradient(135deg, #0A1F44 0%, #1a3a6e 100%);
+            color: white;
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(10, 31, 68, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            animation: floatPremium 3s ease-in-out infinite;
+            border: 4px solid white;
+            overflow: hidden;
+        }
+
+        .tramite-float::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        .tramite-float:hover {
+            transform: scale(1.2) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(10, 31, 68, 0.6);
+            animation: none;
+        }
+
+        .tramite-tooltip {
+            position: absolute;
+            left: 95px;
+            background: white;
+            color: #0A1F44;
+            padding: 15px 25px;
+            border-radius: 12px;
+            white-space: nowrap;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            font-weight: 600;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+        }
+
+        .tramite-float:hover .tramite-tooltip {
+            opacity: 1;
+            transform: translateX(10px);
+        }
+
+        .tramite-icon {
+            width: 36px;
+            height: 36px;
+            position: relative;
+            z-index: 1;
+            fill: white;
+        }
+
+        @keyframes floatPremium {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-15px) rotate(2deg);
+            }
+            75% {
+                transform: translateY(-5px) rotate(-2deg);
+            }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
         /* ── RESPONSIVE ── */
         @media(max-width:640px){
             body { padding:10px 10px 90px; }
@@ -727,10 +827,36 @@
             .form-progress-wrap { width: calc(100% - 24px); bottom: 16px; }
             .form-progress-pill { padding: 8px 14px 8px 12px; gap: 10px; }
             .form-progress-text { font-size: 11.5px; min-width: 110px; }
+            /* Responsive tramite btn */
+            .tramite-float {
+                width: 65px;
+                height: 65px;
+                top: 30px;
+                left: 30px;
+            }
+            .tramite-icon {
+                width: 32px;
+                height: 32px;
+            }
+            .tramite-tooltip {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+
+<!-- ===== BOTÓN FLOTANTE — INICIAR TRÁMITE ===== -->
+<a href="https://www.anpai.com.mx/iniciar-tramite"
+   class="tramite-float"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Iniciar trámite en ANPAI">
+    <span class="tramite-tooltip">📝 Iniciar trámite</span>
+    <svg class="tramite-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+    </svg>
+</a>
 
 <!-- ===== BOTÓN MODO CLARO / OSCURO ===== -->
 <button class="theme-toggle-btn" id="themeToggleBtn"
