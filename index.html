@@ -619,20 +619,18 @@
            biselado que se funde con el color principal del botón
         ───────────────────────────────────────────────────────── */
 
-        /* Botón "Iniciar Trámite" — bisel casi invisible en dark mode */
+        /* Botón "Iniciar Trámite" — bisel solo claro, fino, en dark mode */
         body.dark-mode .tramite-float {
-            border-top:    4px solid rgba(255,255,255,0.12);
-            border-left:   4px solid rgba(255,255,255,0.07);
-            border-bottom: 4px solid rgba(0,0,0,0.35);
-            border-right:  4px solid rgba(0,0,0,0.25);
+            border: 2px solid transparent;
+            border-top-color:  rgba(255,255,255,0.10);
+            border-left-color: rgba(255,255,255,0.07);
         }
 
-        /* Botón WhatsApp — bisel casi invisible en dark mode */
+        /* Botón WhatsApp — bisel solo claro, fino, en dark mode */
         body.dark-mode .wa-btn {
-            border-top:    4px solid rgba(255,255,255,0.18);
-            border-left:   4px solid rgba(255,255,255,0.10);
-            border-bottom: 4px solid rgba(0,0,0,0.30);
-            border-right:  4px solid rgba(0,0,0,0.20);
+            border: 2px solid transparent;
+            border-top-color:  rgba(255,255,255,0.14);
+            border-left-color: rgba(255,255,255,0.09);
         }
 
         /* Tooltip en dark mode */
