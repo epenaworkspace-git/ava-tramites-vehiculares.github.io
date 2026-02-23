@@ -1199,7 +1199,7 @@
                             <li class="ob"><span class="bOb">Obligatorio</span> Constancia de situación fiscal actualizada de la empresa y del representante legal.</li>
                             <li class="ob"><span class="bOb">Obligatorio</span> Póliza de seguro automotriz vigente.</li>
                         </ul>
-                        <div class="r-fmt"><strong>📄 REQUISITOS DE FORMATO</strong><br>Todos los documentos deben estar escaneados en <strong>formato PDF</strong> y ser completamente legibles.<br><br>Este formulario cuenta con un <strong>sistema de compresión automática en ZIP</strong>. Sin embargo, si la compresión resultante supera los 5 MB, deberás comprimirlos por tu cuenta en archivos <strong>ZIP o RAR que no superen los 5 MB cada uno</strong> y enviarlos por separado al correo <a href="mailto:info@anpai.com.mx" style="color:inherit;font-weight:700;">info@anpai.com.mx</a>. Es preferible enviar <strong>varios correos con archivos de hasta 5 MB</strong> que intentar enviar archivos de mayor tamaño o varios archivos de 5 MB en un mismo correo, ya que el sistema de mensajería podría no entregarlos o rechazarlos.</div>
+                        <div class="r-fmt"><strong>📄 REQUISITOS DE FORMATO</strong><br>Todos los documentos deben estar escaneados en <strong>formato PDF</strong> y ser completamente legibles.<br><br>Este formulario cuenta con un <strong>sistema de compresión automática en ZIP</strong>. Sin embargo, si la compresión resultante supera los 5 MB, deberás comprimirlos por tu cuenta en archivos <strong>ZIP o RAR que no superen los 5 MB cada uno</strong> y enviarlos por separado al correo <a href="/cdn-cgi/l/email-protection#98f1f6fef7d8f9f6e8f9f1b6fbf7f5b6f5e0" style="color:inherit;font-weight:700;"><span class="__cf_email__" data-cfemail="7b12151d143b1a150b1a1255181416551603">[email&#160;protected]</span></a>. Es preferible enviar <strong>varios correos con archivos de hasta 5 MB</strong> que intentar enviar archivos de mayor tamaño o varios archivos de 5 MB en un mismo correo, ya que el sistema de mensajería podría no entregarlos o rechazarlos.</div>
                     </div>
                 </div>
 
@@ -1335,7 +1335,7 @@
                             <li class="ob"><span class="bOb">Obligatorio</span> Acta constitutiva certificada ante notario público.</li>
                             <li class="ob"><span class="bOb">Obligatorio</span> Poder notarial que acredite la representación legal.</li>
                         </ul>
-                        <div class="r-fmt"><strong>📄 REQUISITOS DE FORMATO</strong><br>Todos los documentos deben estar escaneados en <strong>formato PDF</strong> y ser completamente legibles.<br><br>Este formulario cuenta con un <strong>sistema de compresión automática en ZIP</strong>. Sin embargo, si la compresión resultante supera los 5 MB, deberás comprimirlos por tu cuenta en archivos <strong>ZIP o RAR que no superen los 5 MB cada uno</strong> y enviarlos por separado al correo <a href="mailto:info@anpai.com.mx" style="color:inherit;font-weight:700;">info@anpai.com.mx</a>. Es preferible enviar <strong>varios correos con archivos de hasta 5 MB</strong> que intentar enviar archivos de mayor tamaño o varios archivos de 5 MB en un mismo correo, ya que el sistema de mensajería podría no entregarlos o rechazarlos.</div>
+                        <div class="r-fmt"><strong>📄 REQUISITOS DE FORMATO</strong><br>Todos los documentos deben estar escaneados en <strong>formato PDF</strong> y ser completamente legibles.<br><br>Este formulario cuenta con un <strong>sistema de compresión automática en ZIP</strong>. Sin embargo, si la compresión resultante supera los 5 MB, deberás comprimirlos por tu cuenta en archivos <strong>ZIP o RAR que no superen los 5 MB cada uno</strong> y enviarlos por separado al correo <a href="/cdn-cgi/l/email-protection#3a53545c557a5b544a5b5314595557145742" style="color:inherit;font-weight:700;"><span class="__cf_email__" data-cfemail="d5bcbbb3ba95b4bba5b4bcfbb6bab8fbb8ad">[email&#160;protected]</span></a>. Es preferible enviar <strong>varios correos con archivos de hasta 5 MB</strong> que intentar enviar archivos de mayor tamaño o varios archivos de 5 MB en un mismo correo, ya que el sistema de mensajería podría no entregarlos o rechazarlos.</div>
                     </div>
                 </div>
 
@@ -1480,20 +1480,21 @@
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+
 /* ══ THEME ══ */
 var THEME_KEY = 'ava-morelos-theme';
 (function(){ try{ if(localStorage.getItem(THEME_KEY)==='dark') document.body.classList.add('dark-mode'); }catch(e){} })();
-document.addEventListener('DOMContentLoaded', function(){
-    var btn = document.getElementById('themeToggleBtn');
-    if(btn) btn.addEventListener('click', function(){
-        var d = document.body.classList.toggle('dark-mode');
-        try{ localStorage.setItem(THEME_KEY, d?'dark':'light'); }catch(e){}
-    });
+var themeBtn = document.getElementById('themeToggleBtn');
+if(themeBtn) themeBtn.addEventListener('click', function(){
+    var d = document.body.classList.toggle('dark-mode');
+    try{ localStorage.setItem(THEME_KEY, d?'dark':'light'); }catch(e){}
 });
 
 /* ══ LADA ══ */
-const LADAS = [
+var LADAS = [
     {region:'América del Norte',flag:'🇲🇽',name:'México',code:'+52',val:'+52'},
     {region:'América del Norte',flag:'🇺🇸',name:'Estados Unidos',code:'+1',val:'+1'},
     {region:'América del Norte',flag:'🇨🇦',name:'Canadá',code:'+1',val:'+1-CA'},
@@ -1528,84 +1529,100 @@ const LADAS = [
     {region:'Asia',flag:'🇦🇪',name:'Emiratos Árabes',code:'+971',val:'+971'},
     {region:'Oceanía',flag:'🇦🇺',name:'Australia',code:'+61',val:'+61'},
     {region:'Oceanía',flag:'🇳🇿',name:'Nueva Zelanda',code:'+64',val:'+64'},
-    {region:'África',flag:'🇿🇦',name:'Sudáfrica',code:'+27',val:'+27'},
+    {region:'África',flag:'🇿🇦',name:'Sudáfrica',code:'+27',val:'+27'}
 ];
-let ladaSelected = LADAS[0];
-const ladaCustom = document.getElementById('ladaCustom');
-const ladaTrigger = document.getElementById('ladaTrigger');
-const ladaSearchIn = document.getElementById('ladaSearchInput');
-const ladaOptsList = document.getElementById('ladaOptionsList');
-const ladaHidden = document.getElementById('ladaPais');
+var ladaSelected = LADAS[0];
+var ladaCustomEl  = document.getElementById('ladaCustom');
+var ladaTriggerEl = document.getElementById('ladaTrigger');
+var ladaSearchIn  = document.getElementById('ladaSearchInput');
+var ladaOptsList  = document.getElementById('ladaOptionsList');
+var ladaHidden    = document.getElementById('ladaPais');
 
 function renderLadaOptions(filter){
-    const q = (filter||'').toLowerCase();
-    ladaOptsList.innerHTML = '';
-    const filtered = LADAS.filter(l => !q || l.name.toLowerCase().includes(q) || l.code.includes(q));
-    let cur = null;
-    filtered.forEach(l => {
-        if(!q && l.region !== cur){
-            cur = l.region;
-            const h = document.createElement('div');
-            h.style.cssText = 'padding:6px 12px 3px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--azul-blue);background:var(--gris-light);border-bottom:1px solid var(--gris-border);';
-            h.textContent = l.region;
+    var q=(filter||'').toLowerCase();
+    ladaOptsList.innerHTML='';
+    var filtered=LADAS.filter(function(l){ return !q||l.name.toLowerCase().includes(q)||l.code.includes(q); });
+    var cur=null;
+    filtered.forEach(function(l){
+        if(!q && l.region!==cur){
+            cur=l.region;
+            var h=document.createElement('div');
+            h.style.cssText='padding:6px 12px 3px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--azul-blue);background:var(--gris-light);border-bottom:1px solid var(--gris-border);';
+            h.textContent=l.region;
             ladaOptsList.appendChild(h);
         }
-        const div = document.createElement('div');
-        div.className = 'lada-opt'+(l.val===ladaSelected.val?' active':'');
-        div.innerHTML = `<span class="lo-flag">${l.flag}</span><span class="lo-name">${l.name}</span><span class="lo-code">${l.code}</span>`;
-        div.addEventListener('click', ()=>{
-            ladaSelected = l;
-            ladaTrigger.querySelector('.lada-flag').textContent = l.flag;
-            ladaTrigger.querySelector('.lada-code').textContent = l.code;
-            ladaHidden.value = l.val;
-            ladaCustom.classList.remove('open');
-            ladaSearchIn.value = '';
+        var div=document.createElement('div');
+        div.className='lada-opt'+(l.val===ladaSelected.val?' active':'');
+        div.innerHTML='<span class="lo-flag">'+l.flag+'</span><span class="lo-name">'+l.name+'</span><span class="lo-code">'+l.code+'</span>';
+        div.addEventListener('click', function(){
+            ladaSelected=l;
+            ladaTriggerEl.querySelector('.lada-flag').textContent=l.flag;
+            ladaTriggerEl.querySelector('.lada-code').textContent=l.code;
+            ladaHidden.value=l.val;
+            ladaCustomEl.classList.remove('open');
+            ladaSearchIn.value='';
             renderLadaOptions('');
         });
         ladaOptsList.appendChild(div);
     });
 }
-ladaTrigger.addEventListener('click', ()=> ladaCustom.classList.contains('open') ? (ladaCustom.classList.remove('open')) : (ladaCustom.classList.add('open'), ladaSearchIn.focus(), renderLadaOptions('')));
-ladaSearchIn.addEventListener('input', ()=> renderLadaOptions(ladaSearchIn.value));
-document.addEventListener('click', e => { if(!ladaCustom.contains(e.target)) ladaCustom.classList.remove('open'); });
+ladaTriggerEl.addEventListener('click', function(){
+    if(ladaCustomEl.classList.contains('open')){ ladaCustomEl.classList.remove('open'); }
+    else { ladaCustomEl.classList.add('open'); ladaSearchIn.focus(); renderLadaOptions(''); }
+});
+ladaSearchIn.addEventListener('input', function(){ renderLadaOptions(this.value); });
+document.addEventListener('click', function(e){ if(!ladaCustomEl.contains(e.target)) ladaCustomEl.classList.remove('open'); });
 renderLadaOptions('');
 
 /* ══ reCAPTCHA v3 ══ */
-const RC_KEY = '6Lc9zGUsAAAAAG2K5TAav3VrS9obGfFqXO5cnOkV';
-let rcApiReady = false;
-function waitForRecaptcha(cb){ if(typeof grecaptcha!=='undefined') grecaptcha.ready(cb); else setTimeout(()=>waitForRecaptcha(cb),200); }
-waitForRecaptcha(()=>{
-    rcApiReady = true;
-    var spin=document.getElementById('recapSpin'), txt=document.getElementById('recapTxt');
-    if(spin) spin.style.display='none';
-    if(txt){ txt.textContent='✓ Verificación de seguridad lista'; txt.className='recap-txt ok'; }
-});
-(function(){ var spin=document.getElementById('recapSpin'),txt=document.getElementById('recapTxt'); if(spin) spin.style.display='inline-block'; if(txt){ txt.textContent='Cargando verificación de seguridad…'; txt.className='recap-txt'; } })();
+var RC_KEY = '6Lc9zGUsAAAAAG2K5TAav3VrS9obGfFqXO5cnOkV';
+var rcApiReady = false;
+var recapSpin = document.getElementById('recapSpin');
+var recapTxt  = document.getElementById('recapTxt');
+if(recapSpin) recapSpin.style.display='inline-block';
+if(recapTxt){ recapTxt.textContent='Cargando verificación de seguridad…'; recapTxt.className='recap-txt'; }
 
-/* ══ JSZip FILE MANAGER ══ */
-var MAX_ZIP_BYTES = 5 * 1024 * 1024;
+function waitForRecaptcha(cb){
+    if(typeof grecaptcha!=='undefined') grecaptcha.ready(cb);
+    else setTimeout(function(){ waitForRecaptcha(cb); }, 200);
+}
+waitForRecaptcha(function(){
+    rcApiReady=true;
+    if(recapSpin) recapSpin.style.display='none';
+    if(recapTxt){ recapTxt.textContent='✓ Verificación de seguridad lista'; recapTxt.className='recap-txt ok'; }
+    checkEnvio();
+});
+
+/* ══ UTILIDADES ══ */
+function fmtBytes(b){ if(b<1024) return b+'B'; if(b<1048576) return (b/1024).toFixed(1)+' KB'; return (b/1048576).toFixed(2)+' MB'; }
+function fmtSec(s){ return s<60?Math.round(s)+'s':Math.floor(s/60)+'m '+Math.round(s%60)+'s'; }
+function getFileIcon(name){ var e=name.split('.').pop().toLowerCase(); if(['jpg','jpeg','png','gif','webp'].indexOf(e)>=0) return '🖼️'; if(e==='pdf') return '📄'; return '📎'; }
+function getToday(){ var d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1).toString().padStart(2,'0')+'-'+d.getDate().toString().padStart(2,'0'); }
+function V(id){ var el=document.getElementById(id); return el?el.value:''; }
+
+/* ══ ESTADO JSZip ══ */
+var MAX_ZIP_BYTES = 5*1024*1024;
 var attachState = {
     'ALTA': {files:[],zipBlob:null,compressing:false,paused:false,startTime:null,elapsed:0,_runId:null},
     'REF':  {files:[],zipBlob:null,compressing:false,paused:false,startTime:null,elapsed:0,_runId:null}
 };
 var compressionTimers = {};
 
-function fmtBytes(b){ if(b<1024) return b+'B'; if(b<1048576) return (b/1024).toFixed(1)+' KB'; return (b/1048576).toFixed(2)+' MB'; }
-function fmtSec(s){ return s<60 ? Math.round(s)+'s' : Math.floor(s/60)+'m '+Math.round(s%60)+'s'; }
-function getFileIcon(name){ var e=name.split('.').pop().toLowerCase(); if(['jpg','jpeg','png','gif','webp'].indexOf(e)>=0) return '🖼️'; if(e==='pdf') return '📄'; return '📎'; }
-function getToday(){ var d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1).toString().padStart(2,'0')+'-'+d.getDate().toString().padStart(2,'0'); }
+/* ══ DRAG & DROP ══ */
+function onDragOver(e,type){ e.preventDefault(); var dz=document.getElementById('attachDropzone'+type); if(dz) dz.classList.add('drag-over'); }
+function onDragLeave(e,type){ var dz=document.getElementById('attachDropzone'+type); if(dz) dz.classList.remove('drag-over'); }
+function onDrop(e,type){ e.preventDefault(); var dz=document.getElementById('attachDropzone'+type); if(dz) dz.classList.remove('drag-over'); handleFiles(e.dataTransfer.files,type); }
+// Expose drag functions globally (used in HTML inline handlers)
+window.onDragOver=onDragOver; window.onDragLeave=onDragLeave; window.onDrop=onDrop;
 
-function onDragOver(e,type){ e.preventDefault(); document.getElementById('attachDropzone'+type).classList.add('drag-over'); }
-function onDragLeave(e,type){ document.getElementById('attachDropzone'+type).classList.remove('drag-over'); }
-function onDrop(e,type){ e.preventDefault(); document.getElementById('attachDropzone'+type).classList.remove('drag-over'); handleFiles(e.dataTransfer.files,type); }
-
+/* ══ MANEJO DE ARCHIVOS ══ */
 function handleFiles(fileList,type){
-    var state = attachState[type];
+    var state=attachState[type];
     Array.from(fileList).forEach(function(f){
-        var dup = state.files.some(function(ex){ return ex.name===f.name && ex.size===f.size; });
+        var dup=state.files.some(function(ex){ return ex.name===f.name&&ex.size===f.size; });
         if(!dup) state.files.push(f);
     });
-    state.zipBlob = null;
+    state.zipBlob=null;
     renderFileList(type);
     updateCapacityBar(type);
     if(state.files.length>=1 && typeof JSZip!=='undefined') scheduleCompression(type);
@@ -1613,11 +1630,12 @@ function handleFiles(fileList,type){
     updateProgressBar();
     buildSummaryIfVisible();
 }
+window.handleFiles=handleFiles;
 
 function removeFile(type,idx){
-    var state = attachState[type];
+    var state=attachState[type];
     state.files.splice(idx,1);
-    state.zipBlob = null;
+    state.zipBlob=null;
     renderFileList(type);
     hideAttachMsg(type);
     updateCapacityBar(type);
@@ -1627,14 +1645,16 @@ function removeFile(type,idx){
     updateProgressBar();
     buildSummaryIfVisible();
 }
+window.removeFile=removeFile;
 
 function renderFileList(type){
-    var list = document.getElementById('fileList'+type);
-    list.innerHTML = '';
+    var list=document.getElementById('fileList'+type);
+    if(!list) return;
+    list.innerHTML='';
     attachState[type].files.forEach(function(f,i){
-        var item = document.createElement('div');
-        item.className = 'attach-file-item';
-        item.innerHTML = '<span class="attach-file-icon">'+getFileIcon(f.name)+'</span>'+
+        var item=document.createElement('div');
+        item.className='attach-file-item';
+        item.innerHTML='<span class="attach-file-icon">'+getFileIcon(f.name)+'</span>'+
             '<span class="attach-file-name">'+f.name+'</span>'+
             '<span class="attach-file-size">'+fmtBytes(f.size)+'</span>'+
             '<button type="button" class="attach-file-remove" onclick="removeFile(\''+type+'\','+i+')">×</button>';
@@ -1643,16 +1663,17 @@ function renderFileList(type){
 }
 
 function updateCapacityBar(type){
-    var state = attachState[type];
-    var wrap = document.getElementById('capacityWrap'+type);
-    var bar = document.getElementById('attachBar'+type);
-    var valEl = document.getElementById('capacityValue'+type);
-    var dot = document.getElementById('attachDot'+type);
-    var statusTxt = document.getElementById('attachStatusText'+type);
-    var rtStats = document.getElementById('attachRealtime'+type);
-    var rtCount = document.getElementById('attachCount'+type);
-    var rtWeight = document.getElementById('attachWeight'+type);
-    var limitExc = document.getElementById('attachLimitExc'+type);
+    var state=attachState[type];
+    var wrap=document.getElementById('capacityWrap'+type);
+    var bar=document.getElementById('attachBar'+type);
+    var valEl=document.getElementById('capacityValue'+type);
+    var dot=document.getElementById('attachDot'+type);
+    var statusTxt=document.getElementById('attachStatusText'+type);
+    var rtStats=document.getElementById('attachRealtime'+type);
+    var rtCount=document.getElementById('attachCount'+type);
+    var rtWeight=document.getElementById('attachWeight'+type);
+    var limitExc=document.getElementById('attachLimitExc'+type);
+    if(!wrap||!bar) return;
 
     if(state.files.length===0){
         wrap.classList.remove('visible');
@@ -1667,67 +1688,69 @@ function updateCapacityBar(type){
 
     if(!state.zipBlob){
         bar.className='attach-bar-fill green'; bar.style.width='0%';
-        dot.className='attach-status-dot green';
-        statusTxt.textContent = state.compressing ? 'Comprimiendo archivos…' : 'En espera de compresión…';
-        valEl.textContent = '— de 5 MB (ZIP pendiente)';
+        if(dot) dot.className='attach-status-dot green';
+        if(statusTxt) statusTxt.textContent=state.compressing?'Comprimiendo archivos…':'En espera de compresión…';
+        if(valEl) valEl.textContent='— de 5 MB (ZIP pendiente)';
         if(rtWeight) rtWeight.textContent='—';
         if(limitExc) limitExc.style.display='none';
         return;
     }
 
-    var zSize = state.zipBlob.size;
-    var pct = Math.min(100,(zSize/MAX_ZIP_BYTES)*100);
-    var zStr = fmtBytes(zSize);
-    bar.style.width = pct+'%';
-    valEl.textContent = zStr+' de 5 MB (ZIP comprimido)';
+    var zSize=state.zipBlob.size;
+    var pct=Math.min(100,(zSize/MAX_ZIP_BYTES)*100);
+    var zStr=fmtBytes(zSize);
+    bar.style.width=pct+'%';
+    if(valEl) valEl.textContent=zStr+' de 5 MB (ZIP comprimido)';
     if(rtWeight) rtWeight.textContent=zStr;
     bar.className='attach-bar-fill';
-    dot.className='attach-status-dot';
+    if(dot) dot.className='attach-status-dot';
 
     if(zSize>=MAX_ZIP_BYTES){
-        bar.classList.add('red'); dot.classList.add('red');
-        statusTxt.textContent='ZIP supera 5 MB — elimina archivos';
-        showAttachMsg(type,'error','El ZIP pesa '+zStr+' y supera el límite. Elimina archivos.');
+        bar.classList.add('red'); if(dot) dot.classList.add('red');
+        if(statusTxt) statusTxt.textContent='ZIP supera 5 MB — elimina archivos';
+        showAttachMsg(type,'El ZIP pesa '+zStr+' y supera el límite. Elimina archivos o comprime por tu cuenta.');
         if(limitExc) limitExc.style.display='block';
     } else if(zSize>=MAX_ZIP_BYTES*0.80){
-        bar.classList.add('yellow'); dot.classList.add('yellow');
-        statusTxt.textContent='Casi lleno — quedan '+fmtBytes(MAX_ZIP_BYTES-zSize)+' en el ZIP';
+        bar.classList.add('yellow'); if(dot) dot.classList.add('yellow');
+        if(statusTxt) statusTxt.textContent='Casi lleno — quedan '+fmtBytes(MAX_ZIP_BYTES-zSize)+' en el ZIP';
         hideAttachMsg(type);
         if(limitExc) limitExc.style.display='none';
     } else {
-        bar.classList.add('green'); dot.classList.add('green');
-        statusTxt.textContent='ZIP listo — quedan '+fmtBytes(MAX_ZIP_BYTES-zSize)+' disponibles';
+        bar.classList.add('green'); if(dot) dot.classList.add('green');
+        if(statusTxt) statusTxt.textContent='ZIP listo — quedan '+fmtBytes(MAX_ZIP_BYTES-zSize)+' disponibles';
         hideAttachMsg(type);
         if(limitExc) limitExc.style.display='none';
     }
 }
 
-function showAttachMsg(type,level,msg){
+function showAttachMsg(type,msg){
     var el=document.getElementById('attachErr'+type), tx=document.getElementById('attachErrText'+type);
     if(tx) tx.textContent=msg; if(el) el.classList.add('show');
 }
 function hideAttachMsg(type){ var el=document.getElementById('attachErr'+type); if(el) el.classList.remove('show'); }
 
+/* ══ COMPRESIÓN JSZip ══ */
 function scheduleCompression(type){
     clearTimeout(compressionTimers[type]);
-    compressionTimers[type] = setTimeout(function(){ startCompression(type); }, 80);
+    compressionTimers[type]=setTimeout(function(){ startCompression(type); },80);
 }
 
 function startCompression(type){
-    var state = attachState[type];
+    var state=attachState[type];
     if(state.compressing) state.compressing=false;
     if(state.files.length===0) return;
     if(!navigator.onLine){
-        document.getElementById('offlineMsg'+type).classList.add('show');
+        var om=document.getElementById('offlineMsg'+type); if(om) om.classList.add('show');
         state.paused=true;
-        document.getElementById('compressResume'+type).classList.add('show');
-        document.getElementById('compressProgress'+type).classList.add('show');
+        var cr=document.getElementById('compressResume'+type); if(cr) cr.classList.add('show');
+        var cp=document.getElementById('compressProgress'+type); if(cp) cp.classList.add('show');
         return;
     }
     var snapshot=state.files.slice(), runId=Date.now(), zip=new JSZip();
     var totalRaw=snapshot.reduce(function(a,f){ return a+f.size; },0), processed=0;
-    state.compressing=true; state.paused=false; state.startTime=Date.now(); state.elapsed=0; state._runId=runId;
-    document.getElementById('compressProgress'+type).classList.add('show');
+    state.compressing=true; state.paused=false;
+    state.startTime=Date.now(); state.elapsed=0; state._runId=runId;
+    var cp=document.getElementById('compressProgress'+type); if(cp) cp.classList.add('show');
     updateCapacityBar(type);
 
     var ticker=setInterval(function(){
@@ -1736,12 +1759,15 @@ function startCompression(type){
         var el=document.getElementById('compressElapsed'+type); if(el) el.textContent=fmtSec(state.elapsed/1000);
     },300);
 
-    function abort(){ clearInterval(ticker); state.compressing=false; document.getElementById('compressProgress'+type).classList.remove('show'); }
+    function abort(){
+        clearInterval(ticker); state.compressing=false;
+        var cp2=document.getElementById('compressProgress'+type); if(cp2) cp2.classList.remove('show');
+    }
 
     function processFile(idx){
         if(state._runId!==runId||!state.compressing){ abort(); return; }
         if(idx>=snapshot.length){
-            document.getElementById('compressInfo'+type).textContent='Generando ZIP…';
+            var ci=document.getElementById('compressInfo'+type); if(ci) ci.textContent='Generando ZIP…';
             zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}},function(meta){
                 if(state._runId!==runId) return;
                 updateCompressUI(type,Math.round(meta.percent),processed,0,(Date.now()-state.startTime)/1000,totalRaw);
@@ -1749,12 +1775,13 @@ function startCompression(type){
                 clearInterval(ticker);
                 if(state._runId!==runId){ abort(); return; }
                 state.compressing=false; state.zipBlob=blob;
-                document.getElementById('compressProgress'+type).classList.remove('show');
+                var cp3=document.getElementById('compressProgress'+type); if(cp3) cp3.classList.remove('show');
+                var h=document.getElementById('attachHidden'+type);
+                if(h) h.value='ZIP: archivos-'+getToday()+'.zip ('+fmtBytes(blob.size)+')';
                 updateCapacityBar(type);
-                var h=document.getElementById('attachHidden'+type); if(h) h.value='ZIP: archivos-'+getToday()+'.zip ('+fmtBytes(blob.size)+')';
                 buildSummaryIfVisible();
                 checkEnvio();
-            }).catch(function(){ abort(); showAttachMsg(type,'error','Error al comprimir. Intenta de nuevo.'); });
+            }).catch(function(){ abort(); showAttachMsg(type,'Error al comprimir. Intenta de nuevo.'); });
             return;
         }
         var f=snapshot[idx], reader=new FileReader();
@@ -1764,7 +1791,12 @@ function startCompression(type){
             processed+=f.size;
             var pct=Math.round((processed/totalRaw)*70);
             updateCompressUI(type,pct,processed,totalRaw-processed,(Date.now()-state.startTime)/1000,totalRaw);
-            if(!navigator.onLine){ clearInterval(ticker); state.paused=true; state.compressing=false; document.getElementById('offlineMsg'+type).classList.add('show'); document.getElementById('compressResume'+type).classList.add('show'); return; }
+            if(!navigator.onLine){
+                clearInterval(ticker); state.paused=true; state.compressing=false;
+                var om2=document.getElementById('offlineMsg'+type); if(om2) om2.classList.add('show');
+                var cr2=document.getElementById('compressResume'+type); if(cr2) cr2.classList.add('show');
+                return;
+            }
             setTimeout(function(){ processFile(idx+1); },0);
         };
         reader.onerror=function(){ setTimeout(function(){ processFile(idx+1); },0); };
@@ -1774,9 +1806,9 @@ function startCompression(type){
 }
 
 function updateCompressUI(type,pct,done,remaining,elapsedSec,total){
-    var ids={pct:'compressPct',bar:'compressBarFill',done:'compressDoneMB',rem:'compressRemMB',donePct:'compressDonePct',elapsed:'compressElapsed',eta:'compressEta',info:'compressInfo'};
-    Object.keys(ids).forEach(function(k){
-        var el=document.getElementById(ids[k]+type); if(!el) return;
+    var map={pct:'compressPct',bar:'compressBarFill',done:'compressDoneMB',rem:'compressRemMB',donePct:'compressDonePct',elapsed:'compressElapsed',eta:'compressEta',info:'compressInfo'};
+    Object.keys(map).forEach(function(k){
+        var el=document.getElementById(map[k]+type); if(!el) return;
         if(k==='pct') el.textContent=pct+'%';
         if(k==='bar') el.style.width=pct+'%';
         if(k==='done') el.textContent=fmtBytes(done);
@@ -1791,21 +1823,23 @@ function updateCompressUI(type,pct,done,remaining,elapsedSec,total){
 window.addEventListener('online', function(){
     Object.keys(attachState).forEach(function(type){
         var state=attachState[type];
-        document.getElementById('offlineMsg'+type).classList.remove('show');
+        var om=document.getElementById('offlineMsg'+type); if(om) om.classList.remove('show');
         if(state.paused&&state.files.length>=1){ state.paused=false; startCompression(type); }
     });
 });
 window.addEventListener('offline', function(){
     Object.keys(attachState).forEach(function(type){
         var state=attachState[type];
-        document.getElementById('offlineMsg'+type).classList.add('show');
-        if(state.compressing){ state.paused=true; state.compressing=false; state.elapsed=Date.now()-state.startTime; document.getElementById('compressResume'+type).classList.add('show'); }
+        var om=document.getElementById('offlineMsg'+type); if(om) om.classList.add('show');
+        if(state.compressing){
+            state.paused=true; state.compressing=false;
+            state.elapsed=Date.now()-state.startTime;
+            var cr=document.getElementById('compressResume'+type); if(cr) cr.classList.add('show');
+        }
     });
 });
 
-/* ══ SUMMARY ══ */
-function V(id){ var el=document.getElementById(id); return el?el.value:''; }
-
+/* ══ RESUMEN DE SOLICITUD ══ */
 function buildSummary(){
     var sumBox=document.getElementById('sumBox'), sumCont=document.getElementById('sumCont');
     if(!sumBox||!sumCont) return;
@@ -1822,98 +1856,110 @@ function buildSummary(){
         return '<div class="sum-group"><div class="sum-group-label"><span class="sum-group-label-icon">'+emoji+'</span><span class="sum-group-label-text">'+titulo+'</span></div>'+filas+'</div>';
     }
 
-    var tramite = V('tipoTramite');
-    var tramiteLabel = tramite==='alta'?'Alta vehicular':tramite==='refrendo'?'Refrendo':'—';
-    var lada = document.getElementById('ladaPais').value.replace('-CA','') || '+52';
-    var tel = V('telefono');
-    var telFull = tel ? lada+' '+tel : '';
+    var tramite=V('tipoTramite');
+    var tramiteLabel=tramite==='alta'?'Alta vehicular':tramite==='refrendo'?'Refrendo':'—';
+    var lada=(ladaHidden?ladaHidden.value:'+52').replace('-CA','');
+    var tel=V('telefono');
+    var telFull=tel?(lada+' '+tel):'';
 
-    var g1 = makeGroup('👤','Datos Personales',
+    var g1=makeGroup('👤','Datos Personales',
         makeRow('Nombre',V('nombre'))+
         makeRow('Teléfono',telFull)+
         makeRow('Correo',V('email'))
     );
-
-    var g2 = makeGroup('🚗','Trámite',
-        makeRow('Tipo',tramiteLabel,'sum-chip')
-    );
+    var g2=makeGroup('🚗','Trámite', makeRow('Tipo',tramiteLabel,'sum-chip'));
 
     if(tramite==='alta'){
-        var val = V('valorVehiculo');
-        var costoEl = document.getElementById('costoTotal');
-        var costo = costoEl ? costoEl.textContent : '—';
-        g2 += makeGroup('💰','Vehículo y Costo',
-            makeRow('Valor del vehículo', val ? 'MX$ '+parseFloat(val).toLocaleString('es-MX') : '','sum-chip--amount')+
-            makeRow('Costo del trámite',costo?costo:'—','sum-chip--amount')
+        var valV=V('valorVehiculo');
+        var costoEl=document.getElementById('costoTotal');
+        var costo=costoEl?costoEl.textContent:'—';
+        g2+=makeGroup('💰','Vehículo y Costo',
+            makeRow('Valor del vehículo',valV?'MX$ '+parseFloat(valV).toLocaleString('es-MX'):'','sum-chip--amount')+
+            makeRow('Costo del trámite',costo||'—','sum-chip--amount')
         );
     } else if(tramite==='refrendo'){
-        var placas = V('numeroPlacas');
-        var unidadSel = document.getElementById('tipoUnidad');
-        var unidadTxt = unidadSel&&unidadSel.selectedIndex>0 ? unidadSel.options[unidadSel.selectedIndex].text : '';
-        var costoRefEl = document.getElementById('costoTotalRef');
-        var costoRef = costoRefEl ? costoRefEl.textContent : '—';
-        g2 += makeGroup('🔄','Datos del Refrendo',
-            makeRow('Placas',placas)+
+        var unidadSel=document.getElementById('tipoUnidad');
+        var unidadTxt=unidadSel&&unidadSel.selectedIndex>0?unidadSel.options[unidadSel.selectedIndex].text:'';
+        var costoRefEl=document.getElementById('costoTotalRef');
+        var costoRef=costoRefEl?costoRefEl.textContent:'—';
+        g2+=makeGroup('🔄','Datos del Refrendo',
+            makeRow('Placas',V('numeroPlacas'))+
             makeRow('Tipo de unidad',unidadTxt)+
-            makeRow('Costo',costoRef?costoRef:'—','sum-chip--amount')
+            makeRow('Costo',costoRef||'—','sum-chip--amount')
         );
     }
 
-    var stateKey = tramite==='alta'?'ALTA':'REF';
-    var stateData = attachState[stateKey];
-    var archivos = stateData ? stateData.files.length : 0;
-    var zipInfo = stateData&&stateData.zipBlob ? fmtBytes(stateData.zipBlob.size) : 'Pendiente';
-    var archivosStr = archivos>0 ? archivos+' archivo(s) — ZIP: '+zipInfo : 'Sin archivos';
-    var g3 = makeGroup('📎','Documentos Adjuntos', makeRow('Archivos',archivosStr,'sum-chip--files'));
+    var stateKey=tramite==='alta'?'ALTA':'REF';
+    var sd=attachState[stateKey];
+    var archivos=sd?sd.files.length:0;
+    var zipInfo=sd&&sd.zipBlob?fmtBytes(sd.zipBlob.size):'Pendiente';
+    var archivosStr=archivos>0?(archivos+' archivo(s) — ZIP: '+zipInfo):'Sin archivos';
+    g2+=makeGroup('📎','Documentos Adjuntos', makeRow('Archivos',archivosStr,'sum-chip--files'));
 
-    sumCont.innerHTML = g1+g2+g3;
+    sumCont.innerHTML=g1+g2;
     sumBox.style.display='';
 }
 
 function buildSummaryIfVisible(){
-    var secRes = document.getElementById('sec-resumen');
-    if(secRes && secRes.style.display!=='none') buildSummary();
+    var secRes=document.getElementById('sec-resumen');
+    if(secRes && window.getComputedStyle(secRes).display!=='none') buildSummary();
 }
 
-/* ══ SHOW/HIDE SECTIONS ══ */
-document.getElementById('tipoTramite').addEventListener('change', function(){
-    var alta=document.getElementById('sec-alta'), ref=document.getElementById('sec-ref');
-    var decl=document.getElementById('sec-declaracion'), resumen=document.getElementById('sec-resumen');
+/* ══ MOSTRAR / OCULTAR SECCIONES ══ */
+var selTramite=document.getElementById('tipoTramite');
+selTramite.addEventListener('change', function(){
+    var val=this.value;
+    var secAlta=document.getElementById('sec-alta');
+    var secRef=document.getElementById('sec-ref');
+    var secDecl=document.getElementById('sec-declaracion');
+    var secRes=document.getElementById('sec-resumen');
 
+    // Limpiar requeridos
     document.getElementById('numeroPlacas').required=false;
     document.getElementById('tipoUnidad').required=false;
     document.getElementById('valorVehiculo').required=false;
 
-    if(this.value==='alta'){
-        alta.style.display='block'; ref.style.display='none';
-        decl.style.display='block'; resumen.style.display='block';
+    if(val==='alta'){
+        secAlta.style.display='block';
+        secRef.style.display='none';
+        secDecl.style.display='block';
+        secRes.style.display='block';
         document.getElementById('valorVehiculo').required=true;
         document.getElementById('costPillRef').classList.remove('show');
         document.getElementById('tipoUnidad').value='';
-    } else if(this.value==='refrendo'){
-        alta.style.display='none'; ref.style.display='block';
-        decl.style.display='block'; resumen.style.display='block';
+        document.getElementById('costPillRef').classList.remove('show');
+    } else if(val==='refrendo'){
+        secAlta.style.display='none';
+        secRef.style.display='block';
+        secDecl.style.display='block';
+        secRes.style.display='block';
         document.getElementById('numeroPlacas').required=true;
         document.getElementById('tipoUnidad').required=true;
         document.getElementById('costPill').classList.remove('show');
         document.getElementById('valorVehiculo').value='';
     } else {
-        alta.style.display='none'; ref.style.display='none';
-        decl.style.display='none'; resumen.style.display='none';
+        secAlta.style.display='none';
+        secRef.style.display='none';
+        secDecl.style.display='none';
+        secRes.style.display='none';
     }
 
-    if(this.value==='alta'||this.value==='refrendo'){
+    if(val==='alta'||val==='refrendo'){
         showProgressBar('tramiteForm');
         buildSummary();
     }
 
+    document.getElementById('declaracion').checked=false;
     checkEnvio();
     updateProgressBar();
 });
 
-/* ── Cost — Alta ── */
+/* ══ CÁLCULO DE COSTOS ══ */
 document.getElementById('valorVehiculo').addEventListener('input', function(){
-    var v=parseFloat(this.value)||0, pill=document.getElementById('costPill'), amt=document.getElementById('costoTotal'), c=0;
+    var v=parseFloat(this.value)||0;
+    var pill=document.getElementById('costPill');
+    var amt=document.getElementById('costoTotal');
+    var c=0;
     if(v>0&&v<=990000) c=6000;
     else if(v>=1000000&&v<=1950000) c=6500;
     else if(v>=2000000) c=7500;
@@ -1922,166 +1968,173 @@ document.getElementById('valorVehiculo').addEventListener('input', function(){
     checkEnvio(); buildSummaryIfVisible();
 });
 
-/* ── Cost — Refrendo ── */
 document.getElementById('tipoUnidad').addEventListener('change', function(){
-    var pill=document.getElementById('costPillRef'), amt=document.getElementById('costoTotalRef');
-    var opt=this.options[this.selectedIndex], c=parseFloat(opt.dataset.costo)||0;
+    var pill=document.getElementById('costPillRef');
+    var amt=document.getElementById('costoTotalRef');
+    var opt=this.options[this.selectedIndex];
+    var c=parseFloat(opt.dataset.costo)||0;
     if(c>0){ amt.textContent='$'+c.toLocaleString('es-MX',{minimumFractionDigits:2}); pill.classList.add('show'); }
     else pill.classList.remove('show');
     checkEnvio(); buildSummaryIfVisible();
 });
 
-/* ── Listeners for summary rebuild ── */
+/* ── Listeners para rebuild de resumen ── */
 ['nombre','telefono','email','numeroPlacas'].forEach(function(id){
     var el=document.getElementById(id);
     if(el) el.addEventListener('input', buildSummaryIfVisible);
 });
 
-/* ══ CHECK SUBMIT ══ */
+/* ══ VALIDACIÓN Y BOTÓN ENVIAR ══ */
 function checkEnvio(){
     var tramite=document.getElementById('tipoTramite').value;
     var declarado=document.getElementById('declaracion').checked;
     var btn=document.getElementById('submitBtn');
-
-    // Button enables as soon as checkbox is checked (regardless of field completion)
-    // But we validate fields on submit and scroll to first empty
-    if(!tramite || !rcApiReady){ btn.disabled=true; return; }
-    btn.disabled = !declarado;
+    if(!tramite||!rcApiReady){ btn.disabled=true; return; }
+    // El botón se activa solo con checkbox marcado; validación completa ocurre al submit
+    btn.disabled=!declarado;
 }
 
-document.getElementById('declaracion').addEventListener('change', function(){
-    checkEnvio();
-    updateProgressBar();
-});
+document.getElementById('declaracion').addEventListener('change', function(){ checkEnvio(); updateProgressBar(); });
 document.getElementById('numeroPlacas').addEventListener('input', function(){ checkEnvio(); updateProgressBar(); });
 document.getElementById('tipoUnidad').addEventListener('change', function(){ checkEnvio(); updateProgressBar(); });
-
 ['nombre','telefono','email'].forEach(function(id){
     var el=document.getElementById(id);
     if(el){ el.addEventListener('input',updateProgressBar); el.addEventListener('change',updateProgressBar); }
 });
 
-/* ══ PROGRESS BAR ══ */
-var progressState = {currentForm:null,total:0,done:0};
+/* ══ BARRA DE PROGRESO ══ */
+var progressState={currentForm:null};
 
-function getRequiredFieldsForForm(formId){
+function getRequiredFieldsVisible(formId){
     var form=document.getElementById(formId); if(!form) return [];
-    var fields=[], seen={}, radioGroups={};
+    var fields=[], seen={};
     form.querySelectorAll('[required]').forEach(function(el){
         if(el.type==='hidden') return;
-        if(el.classList.contains('lada-select-hidden')) return;
-        var key=el.name||el.id||('anon_'+Math.random());
-        if(el.type==='radio'){ if(!radioGroups[el.name]){ radioGroups[el.name]=true; fields.push({type:'radio',name:el.name}); } }
-        else{ if(!seen[key]){ seen[key]=true; fields.push({type:'standard',el:el}); } }
+        if(el.classList&&el.classList.contains('lada-select-hidden')) return;
+        // Skip fields in hidden sections
+        var parent=el.closest('.sec-hide, [style*="display: none"], [style*="display:none"]');
+        if(parent) return;
+        var key=el.name||el.id||('f'+Math.random());
+        if(!seen[key]){ seen[key]=true; fields.push(el); }
     });
     return fields;
 }
 
-function isFieldFilled(f){
-    if(f.type==='radio') return document.querySelector('input[name="'+f.name+'"]:checked')!==null;
-    if(f.type==='standard') return f.el&&f.el.value.trim().length>0;
-    return false;
-}
-
 function updateProgressBar(){
     if(!progressState.currentForm) return;
-    var fields=getRequiredFieldsForForm(progressState.currentForm);
+    var fields=getRequiredFieldsVisible(progressState.currentForm);
     var total=fields.length, done=0;
-    fields.forEach(function(f){ if(isFieldFilled(f)) done++; });
-    progressState.total=total; progressState.done=done;
+    fields.forEach(function(el){
+        if(el.value&&el.value.trim().length>0) done++;
+    });
     var pct=total>0?(done/total)*100:0;
     document.getElementById('formProgressFill').style.width=pct+'%';
     document.getElementById('formProgressDone').textContent=done;
     document.getElementById('formProgressTotal').textContent=total;
 }
 
-function attachProgressListeners(formId){
-    var form=document.getElementById(formId); if(!form) return;
-    form.querySelectorAll('input,select,textarea').forEach(function(el){
-        el.addEventListener('input',updateProgressBar);
-        el.addEventListener('change',updateProgressBar);
-    });
-}
-
 function showProgressBar(formId){
     progressState.currentForm=formId;
     document.getElementById('formProgressWrap').classList.add('visible');
-    attachProgressListeners(formId);
+    var form=document.getElementById(formId);
+    if(form) form.querySelectorAll('input,select,textarea').forEach(function(el){
+        el.addEventListener('input',updateProgressBar);
+        el.addEventListener('change',updateProgressBar);
+    });
     updateProgressBar();
 }
 
-/* ══ SUBMIT ══ */
+/* ══ ENVÍO DEL FORMULARIO ══ */
 document.getElementById('tramiteForm').addEventListener('submit', function(e){
     e.preventDefault();
     var form=this;
-
-    if(!document.getElementById('declaracion').checked){ showToast('Debe marcar la casilla de declaración para continuar.','err'); return; }
-    if(!rcApiReady){ showToast('Espere a que se complete la verificación de seguridad.','err'); return; }
-
     var tramite=document.getElementById('tipoTramite').value;
 
-    // Validate required fields and scroll to first empty
-    var missingField = findFirstMissingField(tramite);
-    if(missingField){
-        missingField.focus();
-        missingField.scrollIntoView({behavior:'smooth', block:'center'});
-        missingField.style.borderColor = '#ef4444';
-        setTimeout(function(){ missingField.style.borderColor=''; }, 3000);
-        showToast('Por favor completa todos los campos obligatorios antes de enviar.','err');
+    if(!document.getElementById('declaracion').checked){
+        showToast('Debe marcar la casilla de declaración para continuar.','err'); return;
+    }
+    if(!rcApiReady){
+        showToast('Espere a que se complete la verificación de seguridad.','err'); return;
+    }
+
+    // Validar campos obligatorios y hacer scroll al primero vacío
+    var primerVacio=findFirstEmpty(tramite);
+    if(primerVacio){
+        primerVacio.focus();
+        primerVacio.scrollIntoView({behavior:'smooth',block:'center'});
+        primerVacio.style.borderColor='#ef4444';
+        setTimeout(function(){ primerVacio.style.borderColor=''; },3000);
+        showToast('Completa todos los campos obligatorios antes de enviar.','err');
         return;
     }
 
-    // Validate files
-    var filesOk = tramite==='alta' ? attachState['ALTA'].files.length>0 : attachState['REF'].files.length>0;
-    if(!filesOk){ showToast('Debe adjuntar al menos un documento antes de enviar.','err'); return; }
+    // Validar archivos adjuntos
+    var stateKey=tramite==='alta'?'ALTA':'REF';
+    if(attachState[stateKey].files.length===0){
+        var dz=document.getElementById('attachDropzone'+stateKey);
+        if(dz){ dz.style.borderColor='#ef4444'; setTimeout(function(){ dz.style.borderColor=''; },3000); }
+        showToast('Debe adjuntar al menos un documento antes de enviar.','err');
+        return;
+    }
+
+    // Validar que el ZIP no supere el límite
+    var sd=attachState[stateKey];
+    if(sd.zipBlob && sd.zipBlob.size>=MAX_ZIP_BYTES){
+        showToast('El archivo ZIP supera los 5 MB. Elimina archivos antes de enviar.','err');
+        return;
+    }
 
     var btn=document.getElementById('submitBtn');
     btn.disabled=true; btn.textContent='Verificando…';
 
-    var lada=document.getElementById('ladaPais').value.replace('-CA','');
+    // Preparar teléfono con lada
+    var lada=(ladaHidden?ladaHidden.value:'+52').replace('-CA','');
     var num=document.getElementById('telefono').value.trim();
     document.getElementById('telefono').value=lada+' '+num;
 
     grecaptcha.execute(RC_KEY,{action:'submit'}).then(function(token){
         var hiddenToken=form.querySelector('input[name="g-recaptcha-response"]');
-        if(!hiddenToken){ hiddenToken=document.createElement('input'); hiddenToken.type='hidden'; hiddenToken.name='g-recaptcha-response'; form.appendChild(hiddenToken); }
+        if(!hiddenToken){
+            hiddenToken=document.createElement('input');
+            hiddenToken.type='hidden'; hiddenToken.name='g-recaptcha-response';
+            form.appendChild(hiddenToken);
+        }
         hiddenToken.value=token;
         btn.textContent='Enviando…';
 
-        // Build FormData and submit via fetch to show success modal
         var fd=new FormData(form);
 
-        // Adjuntar el ZIP generado por JSZip según el tipo de trámite
-        var tramiteActual=document.getElementById('tipoTramite').value;
-        var stateKey = tramiteActual==='alta' ? 'ALTA' : 'REF';
-        var zipState = attachState[stateKey];
-        if(zipState && zipState.zipBlob){
-            var zipFileName = 'documentos-tramite-'+getToday()+'.zip';
-            fd.append('documentos_zip', zipState.zipBlob, zipFileName);
+        // Adjuntar ZIP generado por JSZip
+        if(sd.zipBlob){
+            var zipFileName='documentos-tramite-'+getToday()+'.zip';
+            fd.append('documentos_zip',sd.zipBlob,zipFileName);
         }
 
         fetch(form.action,{method:'POST',body:fd})
-            .then(function(res){
-                showSuccessModal();
-            })
-            .catch(function(){
-                showSuccessModal(); // Show anyway
-            });
+            .then(function(){ showSuccessModal(); })
+            .catch(function(){ showSuccessModal(); }); // Mostrar siempre al usuario
+
     }).catch(function(){
         btn.disabled=false; btn.textContent='Enviar Solicitud';
         showToast('Error en la verificación de seguridad. Intente de nuevo.','err');
     });
 });
 
-function findFirstMissingField(tramite){
-    // Common fields
+function findFirstEmpty(tramite){
     var nombre=document.getElementById('nombre');
     if(!nombre.value.trim()) return nombre;
     var tel=document.getElementById('telefono');
     if(!tel.value.trim()) return tel;
     var email=document.getElementById('email');
     if(!email.value.trim()) return email;
-
+    // Validar email básico
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){
+        showToast('El correo electrónico no tiene un formato válido.','err');
+        email.focus(); email.scrollIntoView({behavior:'smooth',block:'center'});
+        email.style.borderColor='#ef4444';
+        setTimeout(function(){ email.style.borderColor=''; },3000);
+        return email;
+    }
     if(tramite==='alta'){
         var val=document.getElementById('valorVehiculo');
         if(!val.value||parseFloat(val.value)<=0) return val;
@@ -2094,6 +2147,7 @@ function findFirstMissingField(tramite){
     return null;
 }
 
+/* ══ MODAL DE ÉXITO ══ */
 function showSuccessModal(){
     document.getElementById('successOverlay').classList.add('show');
     document.body.style.overflow='hidden';
@@ -2103,7 +2157,7 @@ function closeSuccessModal(){
     document.getElementById('successOverlay').classList.remove('show');
     document.body.style.overflow='';
 
-    // Reset form
+    // Reset formulario
     document.getElementById('tramiteForm').reset();
     document.getElementById('sec-alta').style.display='none';
     document.getElementById('sec-ref').style.display='none';
@@ -2113,7 +2167,7 @@ function closeSuccessModal(){
     document.getElementById('costPillRef').classList.remove('show');
     document.getElementById('sumBox').style.display='none';
 
-    // Reset attach state
+    // Reset adjuntos
     Object.keys(attachState).forEach(function(type){
         attachState[type]={files:[],zipBlob:null,compressing:false,paused:false,startTime:null,elapsed:0,_runId:null};
         var fl=document.getElementById('fileList'+type); if(fl) fl.innerHTML='';
@@ -2121,15 +2175,29 @@ function closeSuccessModal(){
         var om=document.getElementById('offlineMsg'+type); if(om) om.classList.remove('show');
         var cw=document.getElementById('capacityWrap'+type); if(cw) cw.classList.remove('visible');
         var rs=document.getElementById('attachRealtime'+type); if(rs) rs.style.display='none';
+        var hi=document.getElementById('attachHidden'+type); if(hi) hi.value='';
     });
 
     document.getElementById('submitBtn').disabled=true;
     document.getElementById('submitBtn').textContent='Enviar Solicitud';
     document.getElementById('formProgressWrap').classList.remove('visible');
     progressState.currentForm=null;
-
     window.scrollTo({top:0,behavior:'smooth'});
 }
+window.closeSuccessModal=closeSuccessModal;
 
 document.addEventListener('click', function(e){
-    if(e.target&&e.target.id==='successOverlay')
+    if(e.target&&e.target.id==='successOverlay') closeSuccessModal();
+});
+
+/* ══ TOAST ══ */
+function showToast(msg,type){
+    var t=document.getElementById('toastMsg');
+    t.textContent=msg; t.className='toast '+type;
+    setTimeout(function(){ t.className='toast'; },6000);
+}
+
+}); // FIN DOMContentLoaded
+</script>
+</body>
+</html>
