@@ -1034,7 +1034,7 @@
           <strong>Contacto directo</strong>
           <div class="success-contact-list">
             <div class="success-contact-item">📞 <a href="tel:+527771234567">+52 (777) 123-4567</a></div>
-            <div class="success-contact-item">✉️ <a href="/cdn-cgi/l/email-protection#7f161119103f1e110f1e16511c1012511207"><span class="__cf_email__" data-cfemail="127b7c747d52737c62737b3c717d7f3c7f6a">[email&#160;protected]</span></a></div>
+            <div class="success-contact-item">✉️ <a href="mailto:info@anpai.com.mx">info@anpai.com.mx</a></div>
             <div class="success-contact-item">🌐 <a href="https://www.anpai.com.mx" target="_blank">www.anpai.com.mx</a></div>
           </div>
         </div>
@@ -1199,14 +1199,10 @@
                             <li class="ob"><span class="bOb">Obligatorio</span> Constancia de situación fiscal actualizada de la empresa y del representante legal.</li>
                             <li class="ob"><span class="bOb">Obligatorio</span> Póliza de seguro automotriz vigente.</li>
                         </ul>
-                        <div class="r-fmt"><strong>📄 REQUISITOS DE FORMATO</strong><br>Todos los documentos deben estar escaneados en <strong>formato PDF</strong> y ser completamente legibles.<br><br>Este formulario cuenta con un <strong>sistema de compresión automática en ZIP</strong>. Sin embargo, si la compresión resultante supera los 5 MB, deberás comprimirlos por tu cuenta en archivos <strong>ZIP o RAR que no superen los 5 MB cada uno</strong> y enviarlos por separado al correo <a href="/cdn-cgi/l/email-protection#5b32353d341b3a352b3a3275383436753623" style="color:inherit;font-weight:700;"><span class="__cf_email__" data-cfemail="d7beb9b1b897b6b9a7b6bef9b4b8baf9baaf">[email&#160;protected]</span></a>. Es preferible enviar <strong>varios correos con archivos de hasta 5 MB</strong> que intentar enviar archivos de mayor tamaño o varios archivos de 5 MB en un mismo correo, ya que el sistema de mensajería podría no entregarlos o rechazarlos.</div>
-                    </div>
-
-                <!-- Legibility Guide -->
+                        <div class="r-fmt"><strong>📄 REQUISITOS DE FORMATO</strong><br>Todos los documentos deben estar escaneados en <strong>formato PDF</strong> y ser completamente legibles.<br><br>Este formulario cuenta con un <strong>sistema de compresión automática en ZIP</strong>. Sin embargo, si la compresión resultante supera los 5 MB, deberás comprimirlos por tu cuenta en archivos <strong>ZIP o RAR que no superen los 5 MB cada uno</strong> y enviarlos por separado al correo <a href="mailto:info@anpai.com.mx" style="color:inherit;font-weight:700;">info@anpai.com.mx</a>. Es preferible enviar <strong>varios correos con archivos de hasta 5 MB</strong> que intentar enviar archivos de mayor tamaño o varios archivos de 5 MB en un mismo correo, ya que el sistema de mensajería podría no entregarlos o rechazarlos.</div>
                     </div>
                 </div>
 
-                <!-- Legibility Guide -->
                 <div class="auth-req">
                     📄 <strong>Requisito de autenticidad.</strong> Los documentos deben ser copia fiel del original: completamente legibles, sin alteraciones.
                 </div>
@@ -1288,7 +1284,6 @@
                 </div>
             </div>
 
-            <!-- ══ SECCIÓN REFRENDO ══ -->
             <div id="sec-ref" class="sec-hide">
                 <div class="div"></div>
                 <div class="sec-title">
@@ -1338,11 +1333,10 @@
                             <li class="ob"><span class="bOb">Obligatorio</span> Acta constitutiva certificada ante notario público.</li>
                             <li class="ob"><span class="bOb">Obligatorio</span> Poder notarial que acredite la representación legal.</li>
                         </ul>
-                        <div class="r-fmt"><strong>📄 REQUISITOS DE FORMATO</strong><br>Todos los documentos deben estar escaneados en <strong>formato PDF</strong> y ser completamente legibles.<br><br>Este formulario cuenta con un <strong>sistema de compresión automática en ZIP</strong>. Sin embargo, si la compresión resultante supera los 5 MB, deberás comprimirlos por tu cuenta en archivos <strong>ZIP o RAR que no superen los 5 MB cada uno</strong> y enviarlos por separado al correo <a href="/cdn-cgi/l/email-protection#a8c1c6cec7e8c9c6d8c9c186cbc7c586c5d0" style="color:inherit;font-weight:700;"><span class="__cf_email__" data-cfemail="c0a9aea6af80a1aeb0a1a9eea3afadeeadb8">[email&#160;protected]</span></a>. Es preferible enviar <strong>varios correos con archivos de hasta 5 MB</strong> que intentar enviar archivos de mayor tamaño o varios archivos de 5 MB en un mismo correo, ya que el sistema de mensajería podría no entregarlos o rechazarlos.</div>
+                        <div class="r-fmt"><strong>📄 REQUISITOS DE FORMATO</strong><br>Todos los documentos deben estar escaneados en <strong>formato PDF</strong> y ser completamente legibles.<br><br>Este formulario cuenta con un <strong>sistema de compresión automática en ZIP</strong>. Sin embargo, si la compresión resultante supera los 5 MB, deberás comprimirlos por tu cuenta en archivos <strong>ZIP o RAR que no superen los 5 MB cada uno</strong> y enviarlos por separado al correo <a href="mailto:info@anpai.com.mx" style="color:inherit;font-weight:700;">info@anpai.com.mx</a>. Es preferible enviar <strong>varios correos con archivos de hasta 5 MB</strong> que intentar enviar archivos de mayor tamaño o varios archivos de 5 MB en un mismo correo, ya que el sistema de mensajería podría no entregarlos o rechazarlos.</div>
                     </div>
                 </div>
 
-                <!-- Legibility Guide -->
                 <div class="auth-req">
                     📄 <strong>Requisito de autenticidad.</strong> Los documentos deben ser copia fiel del original: completamente legibles, sin alteraciones.
                 </div>
@@ -2184,4 +2178,24 @@ function closeSuccessModal(){
     document.getElementById('submitBtn').disabled=true;
     document.getElementById('submitBtn').textContent='Enviar Solicitud';
     document.getElementById('formProgressWrap').classList.remove('visible');
-    progressState.cu
+    progressState.currentForm=null;
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+window.closeSuccessModal=closeSuccessModal;
+
+document.addEventListener('click',function(e){
+    if(e.target&&e.target.id==='successOverlay') closeSuccessModal();
+});
+
+/* ══ TOAST ══ */
+function showToast(msg,type){
+    var t=document.getElementById('toastMsg');
+    if(!t) return;
+    t.textContent=msg; t.className='toast '+(type||'');
+    setTimeout(function(){ t.className='toast'; },6000);
+}
+
+}); // FIN DOMContentLoaded
+</script>
+</body>
+</html>
