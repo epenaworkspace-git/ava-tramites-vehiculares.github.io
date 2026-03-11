@@ -28,7 +28,6 @@
             --r-lg:        16px;
             --shadow:      0 4px 24px rgba(10,31,68,.10);
             --shadow-lg:   0 8px 40px rgba(10,31,68,.14);
-            /* For summary component */
             --navy:        #0A1F44;
             --blue:        #165DFF;
             --ok:          #0FC373;
@@ -64,7 +63,6 @@
             to   { opacity:1; transform:translateY(0); }
         }
 
-        /* ── HEADER ── */
         .hdr {
             background: linear-gradient(135deg, var(--azul-dark) 0%, var(--azul-mid) 100%);
             border-radius: var(--r-lg) var(--r-lg) 0 0;
@@ -90,7 +88,6 @@
             position:relative; z-index:1;
         }
 
-        /* ── FORM CARD ── */
         .form-card {
             background: var(--blanco);
             border:1px solid var(--gris-border); border-top:none;
@@ -99,7 +96,6 @@
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
-        /* ── SECTION TITLE ── */
         .sec-title {
             display:flex; align-items:center; gap:12px;
             margin-bottom:24px; padding-bottom:14px;
@@ -117,11 +113,9 @@
             transition: color 0.3s ease;
         }
 
-        /* ── GRID ── */
         .g2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
         .g-full { grid-column:1 / -1; }
 
-        /* ── FIELD ── */
         .fld { display:flex; flex-direction:column; gap:6px; }
         .fld label {
             font-size:.8rem; font-weight:600; color:var(--azul-dark); letter-spacing:.2px;
@@ -149,6 +143,11 @@
             outline:none; border-color:var(--azul-blue);
             box-shadow:0 0 0 3px rgba(22,93,255,.11);
         }
+        input[readonly] {
+            background: var(--gris-light);
+            color: var(--gris-mid);
+            cursor: default;
+        }
         select {
             cursor:pointer; appearance:none;
             background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23165DFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
@@ -156,10 +155,8 @@
             padding-right:40px;
         }
 
-        /* ── DIVIDER ── */
         .div { height:1px; background:var(--gris-border); margin:30px 0; transition: background 0.3s ease; }
 
-        /* ── COST PILL ── */
         .cost-pill {
             display:none; align-items:center; justify-content:space-between;
             background:linear-gradient(135deg, var(--azul-light) 0%, #dbeafe 100%);
@@ -172,7 +169,6 @@
         .cp-lbl { font-size:.8rem; font-weight:700; color:var(--azul-dark); transition: color 0.3s ease; }
         .cp-amt { font-size:1.65rem; font-weight:800; color:var(--azul-blue); font-feature-settings:"tnum"; }
 
-        /* ── REQ BOX ── */
         .rbox { background:var(--gris-light); border-radius:var(--r-lg); border:1px solid var(--gris-border); overflow:hidden; transition: background 0.3s ease, border-color 0.3s ease; }
         .rbox-head {
             background:var(--azul-dark); color:var(--blanco);
@@ -217,7 +213,6 @@
             transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
 
-        /* ── LEGIBILITY GUIDE ── */
         .legibility-guide {
             display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
             margin-top: 16px; margin-bottom: 4px;
@@ -257,7 +252,6 @@
         }
         .auth-req strong { color: var(--azul-dark); }
 
-        /* ── FILE UPLOAD (JSZip Component) ── */
         .attach-dropzone {
             border: 2.5px dashed var(--gris-border);
             border-radius: var(--r-lg);
@@ -408,10 +402,6 @@
         }
         .compress-resume-note.show { display: flex; }
 
-        /* ══════════════════════════════════════════════════════════
-           NUEVO COMPONENTE: SUMBOX
-           Diseño premium con badge de 3 estados (pending/warn/ok)
-        ══════════════════════════════════════════════════════════ */
         @keyframes sumboxReveal {
             from { opacity: 0; transform: translateY(10px); }
             to   { opacity: 1; transform: translateY(0); }
@@ -427,7 +417,6 @@
             transition: background .3s, border-color .3s;
         }
 
-        /* ── Encabezado ── */
         .sum-hd {
             display: flex; align-items: center; justify-content: space-between;
             padding: 14px 20px;
@@ -455,7 +444,6 @@
         }
         .sum-sub { font-size: 11px; color: rgba(255,255,255,.55); margin-top: 2px; }
 
-        /* Badge de estado */
         .sum-badge {
             display: inline-flex; align-items: center; gap: 6px;
             border-radius: 99px; padding: 5px 13px;
@@ -477,7 +465,6 @@
         @keyframes blink-amber { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.2;transform:scale(.75)} }
         @keyframes blink-green { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.85)} }
 
-        /* Grupos de datos */
         .sum-grp { padding: 12px 20px; }
         .sum-grp + .sum-grp { border-top: 1px solid var(--gray-200); }
         .sum-grp-lbl { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; }
@@ -488,17 +475,14 @@
             color: var(--blue); letter-spacing: .1em; text-transform: uppercase;
         }
 
-        /* Filas clave–valor */
         .sum-row { display: flex; align-items: baseline; gap: 8px; font-size: 13px; line-height: 1.9; }
         .sum-k { color: var(--mid); font-weight: 500; min-width: 145px; flex-shrink: 0; font-size: 12px; }
         .sum-v { color: #1a1a2e; font-weight: 600; word-break: break-word; transition: color .3s; }
         .sum-v.empty { color: var(--lt); font-weight: 400; font-style: italic; }
 
-        /* Flash de actualización */
         @keyframes rowFlash { 0%{background:rgba(22,93,255,.08)} 100%{background:transparent} }
         .sum-row.row-updated { animation: rowFlash .6s ease forwards; border-radius: 6px; }
 
-        /* Chips */
         .sum-chip {
             display: inline-flex; align-items: center;
             background: rgba(22,93,255,.08); color: var(--blue);
@@ -509,7 +493,6 @@
         .sum-chip.files { background: rgba(15,195,115,.09); color: #0a7a49; border-color: rgba(15,195,115,.25); }
         .sum-chip.amount { background: rgba(245,158,11,.09); color: #92400e; border-color: rgba(245,158,11,.25); }
 
-        /* Footer */
         .sum-footer {
             border-top: 1px solid var(--gray-200);
             padding: 11px 20px;
@@ -520,7 +503,6 @@
         .sum-footer-txt { font-size: 12px; color: var(--mid); line-height: 1.6; }
         .sum-footer-txt strong { color: var(--navy); }
 
-        /* ── CASILLA DE VERIFICACIÓN ── */
         .check-wrap {
             background: var(--gris-light);
             border: 1.5px solid var(--gris-border);
@@ -550,7 +532,6 @@
         .check-label:hover .check-box { border-color: var(--azul-blue); }
         .check-txt { font-size: .77rem; line-height: 1.65; color: var(--gris-dark); font-weight: 500; transition: color 0.3s ease; }
 
-        /* ── TELÉFONO CON LADA ── */
         .phone-wrap {
             display: flex; gap: 0;
             border: 1.5px solid var(--gris-border);
@@ -604,7 +585,6 @@
         .phone-input { border: none !important; border-radius: 0 var(--r) var(--r) 0 !important; box-shadow: none !important; flex: 1; }
         .phone-input:focus { outline: none; box-shadow: none !important; }
 
-        /* ── RECAPTCHA ── */
         .recap { margin:26px 0 18px; text-align:center; min-height:32px; }
         .recap-spin { display:inline-block; width:26px; height:26px; border:3px solid var(--gris-border); border-top:3px solid var(--azul-blue); border-radius:50%; animation:spin 1s linear infinite; }
         @keyframes spin { to { transform:rotate(360deg); } }
@@ -612,7 +592,6 @@
         .recap-txt.ok  { color:var(--verde); }
         .recap-txt.err { color:var(--rojo); }
 
-        /* ── SUBMIT ── */
         .btn-submit {
             width:100%; padding:14px;
             background:linear-gradient(135deg, var(--azul-blue) 0%, #0d3dcc 100%);
@@ -626,15 +605,12 @@
         .btn-submit:hover:not(:disabled) { transform:translateY(-2px); box-shadow:0 10px 28px rgba(22,93,255,.38); }
         .btn-submit:disabled { opacity:.5; cursor:not-allowed; }
 
-        /* ── TOAST ── */
         .toast { display:none; margin-top:16px; padding:13px 16px; border-radius:var(--r); font-size:.84rem; font-weight:600; text-align:center; }
         .toast.ok  { background:#f0fdf4; color:#166534; border:1px solid #bbf7d0; display:block; }
         .toast.err { background:#fef2f2; color:#991b1b; border:1px solid #fecaca; display:block; }
 
-        /* ── HIDDEN ── */
         .sec-hide { display:none; }
 
-        /* ── SUCCESS MODAL ── */
         .success-overlay {
             display: none; position: fixed; inset: 0;
             background: rgba(8,18,42,0.75); backdrop-filter: blur(6px);
@@ -680,7 +656,6 @@
         .success-close-btn { width:100%; background:linear-gradient(135deg,#165DFF,#0e46cc); color:#fff; border:none; border-radius:14px; padding:16px 28px; font-size:15px; font-weight:700; cursor:pointer; transition:all 0.25s; box-shadow:0 6px 20px rgba(22,93,255,0.35); }
         .success-close-btn:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(22,93,255,0.5); }
 
-        /* ── WHATSAPP ── */
         .wa-btn { position:fixed; bottom:50px; left:50px; background:linear-gradient(135deg,#25d366 0%,#128c7e 100%); color:white; width:72px; height:72px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 30px rgba(37,211,102,.4); cursor:pointer; z-index:900; transition:all .4s cubic-bezier(.4,0,.2,1); text-decoration:none; animation:waFloat 3s ease-in-out infinite; border:4px solid white; overflow:hidden; }
         .wa-btn::before { content:''; position:absolute; inset:0; background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,.3) 50%,transparent 70%); animation:waShine 3s infinite; }
         .wa-btn:hover { transform:scale(1.18) translateY(-5px); box-shadow:0 20px 40px rgba(37,211,102,.6); animation:none; }
@@ -691,7 +666,6 @@
         @keyframes waFloat { 0%,100%{transform:translateY(0) rotate(0deg)} 25%{transform:translateY(-13px) rotate(2deg)} 75%{transform:translateY(-5px) rotate(-2deg)} }
         @keyframes waShine { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
 
-        /* ── THEME TOGGLE ── */
         .theme-toggle-btn { position:fixed; top:20px; right:20px; z-index:2000; width:52px; height:52px; border-radius:50%; background:linear-gradient(145deg,#e8ecf4,#d0d6e8); box-shadow:0 6px 20px rgba(0,0,0,0.18),inset 0 -2px 4px rgba(0,0,0,0.15),inset 0 2px 4px rgba(255,255,255,0.9); cursor:pointer; border:none; outline:none; overflow:hidden; transition:all 0.3s ease; animation:subtlePulse 3s infinite ease-in-out; }
         .theme-toggle-btn::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.75) 0%,rgba(255,255,255,0) 65%); opacity:0; transition:opacity 0.4s ease; pointer-events:none; }
         .theme-toggle-btn:hover::before { opacity:1; }
@@ -707,7 +681,6 @@
         body.dark-mode .icon-moon { opacity:1; transform:scale(1) rotate(0deg); }
         body.dark-mode .theme-toggle-btn { background:linear-gradient(145deg,#1e2d50,#0f1d38); box-shadow:0 6px 20px rgba(0,0,0,0.4),0 0 15px rgba(65,105,225,0.3),inset 0 -2px 4px rgba(0,0,0,0.4),inset 0 2px 4px rgba(255,255,255,0.06); }
 
-        /* ── FLOATING BUTTON TRAMITE ── */
         .tramite-float { position:fixed; top:50px; left:50px; background:linear-gradient(135deg,#0A1F44 0%,#1a3a6e 100%); color:white; width:75px; height:75px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 30px rgba(10,31,68,.4); cursor:pointer; z-index:1000; transition:all .4s cubic-bezier(.4,0,.2,1); text-decoration:none; animation:floatPremium 3s ease-in-out infinite; border:4px solid white; overflow:hidden; }
         .tramite-float::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,.2) 50%,transparent 70%); animation:shine 3s infinite; }
         .tramite-float:hover { transform:scale(1.2) translateY(-5px); box-shadow:0 20px 40px rgba(10,31,68,.6); animation:none; }
@@ -717,7 +690,6 @@
         @keyframes floatPremium { 0%,100%{transform:translateY(0) rotate(0deg)} 25%{transform:translateY(-15px) rotate(2deg)} 75%{transform:translateY(-5px) rotate(-2deg)} }
         @keyframes shine { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
 
-        /* ── PROGRESS BAR ── */
         .form-progress-wrap { position:fixed; bottom:28px; left:50%; transform:translateX(-50%); z-index:1500; display:none; width:calc(100% - 200px); max-width:720px; min-width:280px; pointer-events:none; }
         .form-progress-wrap.visible { display:block; }
         .form-progress-pill { background:#ffffff; border-radius:60px; padding:10px 20px 10px 16px; display:flex; align-items:center; gap:14px; box-shadow:0 4px 24px rgba(10,31,68,0.14),0 1px 4px rgba(10,31,68,0.08); border:1px solid rgba(10,31,68,0.07); transition:background .3s ease,border-color .3s ease,box-shadow .3s ease; }
@@ -727,9 +699,6 @@
         .form-progress-text { font-size:12.5px; font-weight:500; color:#6B7A99; white-space:nowrap; flex-shrink:0; letter-spacing:.1px; min-width:150px; text-align:right; transition:color .3s ease; }
         .form-progress-text strong { color:#165DFF; font-weight:700; }
 
-        /* ══════════════════════════════════════
-           DARK MODE
-        ══════════════════════════════════════ */
         body.dark-mode { background:#0c1525; color:#d0d8ec; }
         body.dark-mode .form-card { background:#111e36; border-color:#1e2d4a; }
         body.dark-mode .sec-title h2 { color:#a8bde0; }
@@ -740,6 +709,7 @@
         body.dark-mode input[type="tel"],
         body.dark-mode input[type="number"],
         body.dark-mode select { background:#162040; border-color:#243660; color:#d0d8ec; }
+        body.dark-mode input[readonly] { background:#0e1a2e; color:#4a5878; }
         body.dark-mode input[type="text"]:focus,
         body.dark-mode input[type="email"]:focus,
         body.dark-mode input[type="tel"]:focus,
@@ -804,7 +774,6 @@
         body.dark-mode .form-progress-bar-fill { background:linear-gradient(90deg,#4d8aff 0%,#78b0ff 100%); }
         body.dark-mode .form-progress-text { color:#c8d6f0; font-weight:600; }
         body.dark-mode .form-progress-text strong { color:#78b0ff; font-weight:800; }
-        /* sumbox dark mode */
         body.dark-mode .sumbox { --card-bg:#111f3a; --border:#1e2d50; --navy:#07111f; --blue:#4d8aff; --mid:#7a8fb0; --lt:#3a4e70; --gray-100:#1a2540; --gray-200:#2a3a5c; background:var(--card-bg); border-color:var(--border); }
         body.dark-mode .sum-v { color:#c8d6f0; }
         body.dark-mode .sum-chip.files { background:rgba(15,195,115,.12); color:#6eeabb; }
@@ -812,7 +781,10 @@
         body.dark-mode .sum-footer-txt { color:#c8d6f0; }
         body.dark-mode .sum-footer-txt strong { color:#e8edf8; }
 
-        /* ── RESPONSIVE ── */
+        /* CP inline messages */
+        #cpLoad { font-size:.78rem; color:var(--azul-blue); margin-top:4px; }
+        #cpErr  { font-size:.78rem; color:var(--rojo); margin-top:4px; }
+
         @media(max-width:640px){
             body { padding:10px 10px 90px; }
             .hdr, .form-card { padding-left:20px; padding-right:20px; }
@@ -966,6 +938,27 @@
                 <div class="fld">
                     <label for="email">Correo electrónico <span class="req">*</span></label>
                     <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+                </div>
+                <!-- ── Código Postal ── -->
+                <div class="fld">
+                    <label for="cp">Código postal <span class="req">*</span></label>
+                    <input type="text" id="cp" name="codigoPostal" maxlength="5" placeholder="Ej: 62000" inputmode="numeric">
+                    <div id="cpLoad" style="display:none;">🔍 Buscando…</div>
+                    <div id="cpErr"  style="display:none;"></div>
+                </div>
+                <div class="fld">
+                    <label for="estado">Estado <span class="opt">(autocompletado)</span></label>
+                    <input type="text" id="estado" name="estado" readonly placeholder="Se completará automáticamente">
+                </div>
+                <div class="fld">
+                    <label for="mun">Municipio / Alcaldía <span class="opt">(autocompletado)</span></label>
+                    <input type="text" id="mun" name="municipio" readonly placeholder="Se completará automáticamente">
+                </div>
+                <div class="fld g-full" id="colWrap" style="display:none">
+                    <label for="colSel">Colonia <span class="req">*</span></label>
+                    <select id="colSel" name="colonia">
+                        <option value="">Elige tu colonia…</option>
+                    </select>
                 </div>
             </div>
 
@@ -1242,14 +1235,10 @@
                 </div>
             </div>
 
-            <!-- ══ RESUMEN DE SOLICITUD — NUEVO DISEÑO ══ -->
+            <!-- ══ RESUMEN DE SOLICITUD ══ -->
             <div id="sec-resumen" class="sec-hide">
                 <div class="div"></div>
-
-                <!-- SUMBOX — componente de resumen premium -->
                 <div class="sumbox" id="sumBox" style="display:none">
-
-                    <!-- Encabezado con badge de estado dinámico -->
                     <div class="sum-hd">
                         <div class="sum-hd-left">
                             <div class="sum-hd-icon">
@@ -1262,17 +1251,12 @@
                                 <div class="sum-sub">Revisa tus datos antes de enviar</div>
                             </div>
                         </div>
-                        <!-- Badge con 3 estados: pending / warn / ok -->
                         <div class="sum-badge pending" id="sumBadge">
                             <span class="badge-dot"></span>
                             <span id="sumBadgeTxt">Pendiente</span>
                         </div>
                     </div>
-
-                    <!-- Cuerpo dinámico — generado por JS -->
                     <div id="sumCont"></div>
-
-                    <!-- Footer informativo -->
                     <div class="sum-footer">
                         <span style="font-size:16px">ℹ️</span>
                         <p class="sum-footer-txt">
@@ -1280,9 +1264,7 @@
                             Si detectas algún error, corrige los campos correspondientes arriba.
                         </p>
                     </div>
-
                 </div>
-                <!-- /sumbox -->
             </div>
 
             <!-- ══ CASILLA DE VERIFICACIÓN ══ -->
@@ -1692,9 +1674,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     /* ══════════════════════════════════════════
-       RESUMEN DE SOLICITUD — NUEVO DISEÑO
-       Usa la estructura: .sum-grp > .sum-grp-lbl + .sum-row[]
-       Badge: pending (gris) / warn (ámbar) / ok (verde)
+       RESUMEN DE SOLICITUD
     ══════════════════════════════════════════ */
     function makeSumRow(label, value, chipClass) {
         var empty   = !value || !String(value).trim() || value === 'N/A';
@@ -1704,7 +1684,6 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (chipClass) {
             valHtml = '<span class="sum-chip ' + chipClass + '">' + value + '</span>';
         } else {
-            // Flash animation on update
             valHtml = '<span class="sum-v">' + value + '</span>';
         }
         return '<div class="sum-row"><span class="sum-k">' + label + ':</span>' + valHtml + '</div>';
@@ -1739,19 +1718,22 @@ document.addEventListener('DOMContentLoaded', function () {
         var lada = (ladaHidden ? ladaHidden.value : '+52').replace('-CA', '');
         var tel  = V('telefono');
 
-        // Grupo 1: Datos Personales
+        var colonia = V('colSel');
+
         var g1 = makeSumGrp('👤', 'Datos Personales',
             makeSumRow('Nombre',   V('nombre')) +
             makeSumRow('Teléfono', tel ? (lada + ' ' + tel) : '') +
-            makeSumRow('Correo',   V('email'))
+            makeSumRow('Correo',   V('email')) +
+            makeSumRow('C.P.',     V('cp')) +
+            makeSumRow('Estado',   V('estado')) +
+            makeSumRow('Municipio', V('mun')) +
+            makeSumRow('Colonia',   colonia)
         );
 
-        // Grupo 2: Trámite
         var g2 = makeSumGrp('🚗', 'Tipo de Trámite',
             makeSumRow('Trámite', tramiteLabel, '')
         );
 
-        // Grupo 3: Detalle según tipo
         var g3 = '';
         if (tramite === 'alta') {
             var valV    = V('valorVehiculo');
@@ -1773,7 +1755,6 @@ document.addEventListener('DOMContentLoaded', function () {
             );
         }
 
-        // Grupo 4: Documentos
         var stateKey = tramite === 'alta' ? 'ALTA' : 'REF';
         var sd       = attachState[stateKey];
         var archivos = sd ? sd.files.length : 0;
@@ -1788,7 +1769,6 @@ document.addEventListener('DOMContentLoaded', function () {
         sumCont.innerHTML = g1 + g2 + g3 + g4;
         sumBox.style.display = '';
 
-        // Actualizar badge según completitud
         var nombre  = V('nombre').trim();
         var telVal  = V('telefono').trim();
         var emailV  = V('email').trim();
@@ -1922,6 +1902,110 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('declaracion').addEventListener('change',  function () { checkEnvio(); updateProgressBar(); });
     document.getElementById('numeroPlacas').addEventListener('input',  function () { checkEnvio(); updateProgressBar(); buildSummaryIfVisible(); });
     document.getElementById('tipoUnidad').addEventListener('change',   function () { checkEnvio(); updateProgressBar(); });
+
+    var colSelEl = document.getElementById('colSel');
+    if (colSelEl) colSelEl.addEventListener('change', function () { buildSummaryIfVisible(); updateProgressBar(); });
+
+    /* ══════════════════════════════════════════
+       AUTOCOMPLETADO CÓDIGO POSTAL MÉXICO
+       API: https://mexico-api.devaleff.com
+       Sin API key · CORS abierto · Sin codigos.zip
+    ══════════════════════════════════════════ */
+    var _cpTimer = null;
+    var CP_URL   = 'https://mexico-api.devaleff.com/api/codigo-postal/';
+
+    var cpInput = document.getElementById('cp');
+    if (cpInput) {
+        cpInput.addEventListener('input', function () {
+            var val = this.value.replace(/\D/g, '');
+            this.value = val;
+            resetCP();
+            clearTimeout(_cpTimer);
+            if (val.length !== 5) return;
+            _cpTimer = setTimeout(function () { fetchCP(val); }, 400);
+        });
+    }
+
+    function fetchCP(cp) {
+        var loadEl = document.getElementById('cpLoad');
+        var errEl  = document.getElementById('cpErr');
+        if (loadEl) loadEl.style.display = 'block';
+        if (errEl)  errEl.style.display  = 'none';
+
+        fetch(CP_URL + encodeURIComponent(cp))
+            .then(function (res) {
+                if (res.status === 404) throw { handled: true, msg: 'Código postal no encontrado.' };
+                if (!res.ok)           throw { handled: true, msg: 'Error del servidor. Intenta de nuevo.' };
+                return res.json();
+            })
+            .then(function (json) {
+                if (loadEl) loadEl.style.display = 'none';
+                var rows = json.data;
+                if (!Array.isArray(rows) || rows.length === 0) {
+                    return showCPError('Código postal no encontrado.');
+                }
+                /* CRÍTICO: D_mnpio lleva la D en MAYÚSCULA */
+                var estadoEl = document.getElementById('estado');
+                var munEl    = document.getElementById('mun');
+                if (estadoEl) estadoEl.value = (rows[0].d_estado || '').trim();
+                if (munEl)    munEl.value    = (rows[0].D_mnpio  || rows[0].d_ciudad || '').trim();
+
+                /* Colonias únicas, ordenadas */
+                var seen = {}, colonias = [];
+                rows.forEach(function (r) {
+                    var c = (r.d_asenta || '').trim();
+                    if (c && !seen[c]) { seen[c] = true; colonias.push(c); }
+                });
+                colonias.sort(function (a, b) { return a.localeCompare(b, 'es'); });
+
+                var cs = document.getElementById('colSel');
+                var cw = document.getElementById('colWrap');
+                if (cs) {
+                    cs.innerHTML = colonias.length > 1
+                        ? '<option value="">Elige tu colonia\u2026</option>'
+                        : '';
+                    colonias.forEach(function (c) {
+                        var o = document.createElement('option');
+                        o.value = o.textContent = c;
+                        cs.appendChild(o);
+                    });
+                    /* Con 1 sola colonia: preseleccionar */
+                    if (colonias.length === 1) cs.selectedIndex = 0;
+                }
+                if (cw) cw.style.display = 'block';
+
+                buildSummaryIfVisible();
+                updateProgressBar();
+            })
+            .catch(function (e) {
+                if (loadEl) loadEl.style.display = 'none';
+                var msg = (e && e.handled)
+                    ? e.msg
+                    : (navigator.onLine
+                        ? 'No se pudo consultar el C.P. Intenta de nuevo.'
+                        : 'Sin conexión a internet.');
+                showCPError(msg);
+            });
+    }
+
+    function showCPError(msg) {
+        var errEl = document.getElementById('cpErr');
+        if (errEl) { errEl.textContent = msg; errEl.style.display = 'block'; }
+        resetCP();
+    }
+
+    function resetCP() {
+        var estadoEl = document.getElementById('estado');
+        var munEl    = document.getElementById('mun');
+        var csEl     = document.getElementById('colSel');
+        var cwEl     = document.getElementById('colWrap');
+        var loadEl   = document.getElementById('cpLoad');
+        if (estadoEl) estadoEl.value = '';
+        if (munEl)    munEl.value    = '';
+        if (csEl)     csEl.innerHTML = '<option value="">Elige tu colonia\u2026</option>';
+        if (cwEl)     cwEl.style.display = 'none';
+        if (loadEl)   loadEl.style.display = 'none';
+    }
 
     /* ══════════════════════════════════════════
        VALIDACIÓN — BOTÓN ENVIAR
@@ -2085,6 +2169,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.style.overflow = '';
 
         document.getElementById('tramiteForm').reset();
+        clearTimeout(_cpTimer); resetCP();
+
         ['sec-alta','sec-ref','sec-declaracion','sec-resumen'].forEach(function (id) {
             document.getElementById(id).style.display = 'none';
         });
