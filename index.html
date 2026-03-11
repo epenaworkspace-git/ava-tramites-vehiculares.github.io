@@ -2218,4 +2218,18 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target && e.target.id === 'successOverlay') window.closeSuccessModal();
     });
 
-    /* ══════════════════════════════�
+    /* ══════════════════════════════════════════
+       TOAST
+    ══════════════════════════════════════════ */
+    function showToast(msg, type) {
+        var t = document.getElementById('toastMsg');
+        if (!t) return;
+        t.textContent = msg;
+        t.className   = 'toast ' + (type || '');
+        setTimeout(function () { t.className = 'toast'; }, 6000);
+    }
+
+}); // FIN DOMContentLoaded
+</script>
+</body>
+</html>
