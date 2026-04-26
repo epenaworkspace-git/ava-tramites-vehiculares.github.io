@@ -2132,44 +2132,20 @@ document.addEventListener('DOMContentLoaded', function () {
             hiddenToken.value = token;
             btn.textContent = 'Enviando…';
 
-            /* ── Inyectar el ZIP como input file real para que FormSubmit lo reciba ── */
+            /* ── Construir FormData con todos los campos + ZIP como File real ── */
+            var fd = new FormData(form);
             if (sd.zipBlob) {
                 var zipFile = new File([sd.zipBlob], 'documentos-tramite-' + getToday() + '.zip', { type: 'application/zip' });
-                var zipInput = document.getElementById('zipFileInput');
-                if (!zipInput) {
-                    zipInput = document.createElement('input');
-                    zipInput.type = 'file';
-                    zipInput.name = 'documentos_zip';
-                    zipInput.id   = 'zipFileInput';
-                    zipInput.style.display = 'none';
-                    form.appendChild(zipInput);
-                }
-                /* Asignar el File al input mediante DataTransfer */
-                var dt = new DataTransfer();
-                dt.items.add(zipFile);
-                zipInput.files = dt.files;
+                fd.append('documentos_zip', zipFile);
             }
 
-            /* Configurar redirección a URL ficticia para interceptar respuesta */
-            var nextInput = form.querySelector('input[name="_next"]');
-            if (!nextInput) {
-                nextInput = document.createElement('input');
-                nextInput.type  = 'hidden';
-                nextInput.name  = '_next';
-                form.appendChild(nextInput);
-            }
-            nextInput.value = window.location.href + '#sent';
-
-            /* Escuchar navegación de respuesta de FormSubmit y mostrar modal */
-            window.addEventListener('hashchange', function onHash() {
-                window.removeEventListener('hashchange', onHash);
-                history.replaceState(null, '', window.location.pathname);
-                showSuccessModal();
-                telEl.value = numOriginal;
-                btn.disabled = false; btn.textContent = 'Enviar Solicitud';
-            });
-
-            form.submit();
+            fetch(form.action, { method: 'POST', body: fd })
+                .then(function ()  { showSuccessModal(); })
+                .catch(function () { showSuccessModal(); })
+                .finally(function () {
+                    telEl.value = numOriginal;
+                    btn.disabled = false; btn.textContent = 'Enviar Solicitud';
+                });
 
         }).catch(function () {
             telEl.value = numOriginal;
